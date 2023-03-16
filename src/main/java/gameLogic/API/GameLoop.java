@@ -11,10 +11,14 @@ public class GameLoop implements Runnable{
             double currentTime = clock.millis();
             double timeDifference = currentTime - previousTime;
             //inputs
-            //update
+            update(timeDifference);
             //output
             previousTime = currentTime;
         }
+    }
+
+    private void update(double timeDifference) {
+        
     }
 
 
