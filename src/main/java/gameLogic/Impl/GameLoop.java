@@ -1,11 +1,8 @@
 package main.java.gameLogic.Impl;
 import java.time.Clock;
-import java.util.List;
 import java.util.Map;
-import javax.swing.tree.FixedHeightLayoutCache;
 import javafx.util.Pair;
 import main.java.Entities.API.Entity;
-import main.java.gameLogic.API.GameLogic;
 
 public class GameLoop implements Runnable{
 
