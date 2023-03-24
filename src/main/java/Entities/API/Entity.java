@@ -5,4 +5,6 @@ import javafx.util.Pair;
 public interface Entity {
 
     public Pair<Integer, Integer> getPosition();
+
+    public int getSpeed();
 }

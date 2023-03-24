@@ -1,14 +1,23 @@
 package main.java.gameLogic.Impl;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javafx.util.Pair;
 import main.java.Entities.API.Entity;
+import main.java.Entities.Impl.TowerSingleton;
 import main.java.gameLogic.API.GameLogic;
 
 public class GameLogicImpl implements GameLogic{
-    public static Map<Entity, Pair<Integer, Integer>> getNewPositions(){
-        //TODO
-        return null;
+    
+    private static Map<Entity, Pair<Integer, Integer>> entityPositions = new HashMap<>();
+    
+    public static Map<Entity, Pair<Integer, Integer>> getPositions(){
+        entityPositions.forEach((entity, pair) -> pair = new Pair<>((pair.getKey()+entity.getSpeed()), pair.getValue()));
+        return entityPositions;
+    }
+
+    public static boolean isGameEnd() {
+        return (TowerSingleton.getInstance().getHp() > 0);
     }
 }

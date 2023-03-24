@@ -12,7 +12,7 @@ public class GameLoop implements Runnable{
     
     @Override
     public void run() {
-        while (true /*!GameLogic.isGameEnd()*/) {
+        while (true /*!GameLogicImpl.isGameEnd()*/) {
             double currentTime = clock.millis();
             double timeDifference = currentTime - previousTime;
             //inputs
@@ -23,7 +23,7 @@ public class GameLoop implements Runnable{
     }
 
     private void update(double timeDifference) {
-        Map<Entity, Pair<Integer, Integer>> entityPositions = GameLogicImpl.getNewPositions();
+        Map<Entity, Pair<Integer, Integer>> entityPositions = GameLogicImpl.getPositions();
         //Draw.draw(entityPositions);
         try {
             this.wait((long)(FIXED_TIME - timeDifference));
