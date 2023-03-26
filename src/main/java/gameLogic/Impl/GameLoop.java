@@ -12,7 +12,7 @@ public class GameLoop implements Runnable{
     
     @Override
     public void run() {
-        while (true /*!GameLogicImpl.isGameEnd()*/) {
+        while (!GameLogicImpl.isGameEnd()) {
             double currentTime = clock.millis();
             double timeDifference = currentTime - previousTime;
             //inputs
