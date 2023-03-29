@@ -1,10 +1,11 @@
 package main.java.Entities.API;
 
-import javafx.util.Pair;
+import java.awt.Point;
+import java.util.List;
 
 public interface Entity {
 
-    public Pair<Integer, Integer> getPosition();
+    public List<Point> getPosition();
     public int getSpeed();
     public int getHp();
     public int getDamage();

@@ -1,12 +1,14 @@
 package main.java.Entities.Impl;
 
-import javafx.util.Pair;
+import java.awt.Point;
+import java.util.List;
+
 import main.java.Entities.API.Entity;
 
 public class TowerSingleton implements Entity{
 
     private int hp;
-    private Pair<Integer, Integer> position;
+    private List<Point> position;
     private static TowerSingleton instance = null;
     private int damage;
     private int speed;
@@ -25,7 +27,7 @@ public class TowerSingleton implements Entity{
         return this.hp;
     }
 
-    public Pair<Integer, Integer> getPosition() {
+    public List<Point> getPosition() {
         return this.position;
     }
 
