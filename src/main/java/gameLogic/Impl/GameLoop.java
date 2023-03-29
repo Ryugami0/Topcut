@@ -15,9 +15,7 @@ public class GameLoop implements Runnable{
         while (!GameLogicImpl.isGameEnd()) {
             double currentTime = clock.millis();
             double timeDifference = currentTime - previousTime;
-            //inputs
             update(timeDifference);
-            //output
             previousTime = currentTime;
         }
     }

@@ -13,7 +13,7 @@ public class GameLogicImpl implements GameLogic{
     private static Map<Entity, Pair<Integer, Integer>> entityPositions = new HashMap<>();
     
     public static Map<Entity, Pair<Integer, Integer>> getPositions(){
-        entityPositions.forEach((entity, pair) -> pair = new Pair<>((pair.getKey()+entity.getSpeed()), pair.getValue()));
+        entityPositions.forEach((entity, pair) -> entity.updatePosition());
         return entityPositions;
     }
 
