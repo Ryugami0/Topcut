@@ -1,8 +1,8 @@
 package main.java.gameLogic.Impl;
+import java.awt.Point;
 import java.time.Clock;
 import java.util.Map;
-import javafx.util.Pair;
-import main.java.Entities.API.Entity;
+import main.java.Entities.API.MovingEntity;
 
 public class GameLoop implements Runnable{
 
@@ -21,7 +21,7 @@ public class GameLoop implements Runnable{
     }
 
     private void update(double timeDifference) {
-        Map<Entity, Pair<Integer, Integer>> entityPositions = GameLogicImpl.getPositions();
+        Map<MovingEntity, Point> entityPositions = GameLogicImpl.getPositions();
         //Draw.draw(entityPositions);
         try {
             this.wait((long)(FIXED_TIME - timeDifference));

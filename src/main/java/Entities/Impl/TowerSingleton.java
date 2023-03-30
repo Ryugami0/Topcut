@@ -1,14 +1,15 @@
 package main.java.Entities.Impl;
 
 import java.awt.Point;
-import java.util.List;
+import java.awt.Rectangle;
 
 import main.java.Entities.API.Entity;
 
 public class TowerSingleton implements Entity{
 
     private int hp;
-    private List<Point> position;
+    private Point position;
+    private Rectangle hitbox;
     private static TowerSingleton instance = null;
     private int damage;
     private int speed;
@@ -27,7 +28,7 @@ public class TowerSingleton implements Entity{
         return this.hp;
     }
 
-    public List<Point> getPosition() {
+    public Point getPosition() {
         return this.position;
     }
 

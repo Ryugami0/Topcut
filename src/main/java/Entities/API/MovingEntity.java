@@ -1,6 +1,6 @@
 package main.java.Entities.API;
+
 import java.awt.Point;
-import java.util.List;
 import java.awt.Rectangle;
 
 public abstract class MovingEntity implements Entity{
