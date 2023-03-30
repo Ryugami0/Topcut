@@ -1,6 +1,6 @@
-package main.java.MainClass;
+package TowerDefense.MainClass;
 
-import main.java.gameLogic.Impl.GameLoop;
+import TowerDefense.gameLogic.Impl.GameLoop;
 
 public class MainClass {
     public static void main(String[] args) {

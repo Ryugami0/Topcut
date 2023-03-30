@@ -1,9 +1,10 @@
-package main.java.Entities.Impl;
+package TowerDefense.Entities.Impl;
+
+import TowerDefense.Entities.API.Entity;
 
 import java.awt.Point;
 import java.util.List;
 
-import main.java.Entities.API.Entity;
 
 public class TowerSingleton implements Entity{
 

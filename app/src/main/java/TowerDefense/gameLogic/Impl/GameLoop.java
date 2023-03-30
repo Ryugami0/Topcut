@@ -1,8 +1,8 @@
-package main.java.gameLogic.Impl;
+package TowerDefense.gameLogic.Impl;
 import java.time.Clock;
 import java.util.Map;
 import javafx.util.Pair;
-import main.java.Entities.API.Entity;
+import TowerDefense.Entities.API.Entity;
 
 public class GameLoop implements Runnable{
 

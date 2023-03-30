@@ -1,7 +1,7 @@
-package main.java.Entities.API;
+package TowerDefense.Entities.API;
 
 import java.awt.Point;
-import java.util.List;
+//import java.util.List;
 
 public interface Entity {
 
