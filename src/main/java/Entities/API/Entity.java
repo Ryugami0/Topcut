@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface Entity {
 
-    public List<Point> getPosition();
+    public Point getPosition();
     public int getSpeed();
     public int getHp();
     public int getDamage();
