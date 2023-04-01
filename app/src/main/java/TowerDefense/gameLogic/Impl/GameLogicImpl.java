@@ -11,7 +11,7 @@ public class GameLogicImpl implements GameLogic{
     private static Map<MovingEntity, Point> entityPositions = new HashMap<>();
     
     public static Map<MovingEntity, Point> getPositions(){
-        entityPositions.forEach((entity, pair) -> entity.updatePosition());
+        entityPositions.forEach((entity, point) -> entity.updatePosition());
         return entityPositions;
     }
 
