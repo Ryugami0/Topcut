@@ -15,4 +15,8 @@ public class GameLogicImpl implements GameLogic{
         return entityPositions;
     }
 
+    public void checkCollision(){
+        
+    }
+
 }
