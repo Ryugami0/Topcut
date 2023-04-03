@@ -70,7 +70,7 @@ public class MovingEntity implements Entity{
 
     public void draw(Graphics g){
         g.drawImage(this.sprite, this.getPosition().x, this.getPosition().y, null);
-        System.out.println("MovingEntity drawed");
+        //System.out.println("MovingEntity drawed");
     }
 
     @Override

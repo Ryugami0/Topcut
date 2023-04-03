@@ -29,6 +29,7 @@ public class gamePanel extends JPanel {
         }
         JButton summon = new JButton("summon");
         JTextField text = new JTextField("0");
+        text.setEditable(false);
 
         this.add(summon);
         this.add(text);
@@ -38,7 +39,10 @@ public class gamePanel extends JPanel {
             public void actionPerformed(ActionEvent e){
                 tower.queueCreature(10, 1);
                 text.setText(tower.getSummonQueueSize());
-                System.out.println("button clicked");
+                //System.out.println("button clicked");
+                summon.setEnabled(false);
+                //aggiungere un deelay di tempo in cui il bottone è disabilitato
+                summon.setEnabled(true);
             }
         });
         }

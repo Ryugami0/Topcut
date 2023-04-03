@@ -1,5 +1,6 @@
 package TowerDefense.Game;
 
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,7 +15,9 @@ public class gameWindow {
         
         jFrame = new JFrame("Tower Defense");
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setSize(800, 600);
+        double width=Toolkit.getDefaultToolkit().getScreenSize().getWidth()/1.3;
+        double height=Toolkit.getDefaultToolkit().getScreenSize().getHeight()/1.3;
+        jFrame.setSize((int)width, (int)height);
         jFrame.add(gamePanel);
         jFrame.setVisible(true);
     }
