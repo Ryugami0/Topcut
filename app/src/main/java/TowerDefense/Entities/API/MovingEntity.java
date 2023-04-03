@@ -25,7 +25,7 @@ public class MovingEntity implements Entity{
         this.hp = hp;
         this.damage = damage;
         try{
-            this.sprite = ImageIO.read(new File("/Users/giovanniminoccari/Documents/codes/github/OOP22-towerdefense/Assets/Barbarian/spr_Walk_strip.png"));
+            this.sprite = ImageIO.read(new File("/Users/giovanniminoccari/Documents/codes/github/OOP22-towerdefense/Assets/Barbarian/Walk/1.png"));
         }catch(Exception e){
             System.out.println("error loading image " + e.getMessage());
         }
