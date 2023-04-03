@@ -23,12 +23,13 @@ public class gamePanel extends JPanel {
     public gamePanel() {
         this.tower = new TowerSingleton();
         try{
-            this.background = ImageIO.read(new File("/Users/giovanniminoccari/Downloads/War-of-Ages-master - Copia/WarOfAges/src/Assets/Backgrounds/Game.jpg"));
+            this.background = ImageIO.read(new File("/Users/Cesco/Downloads/War-of-Ages-master - Copia/WarOfAges/src/Assets/Backgrounds/Game.jpg"));
         }catch(Exception e){
             System.out.println("error loading background " + e.getMessage());
         }
         JButton summon = new JButton("summon");
         JTextField text = new JTextField("0");
+        text.setEditable(false);
 
         this.add(summon);
         this.add(text);
@@ -38,7 +39,10 @@ public class gamePanel extends JPanel {
             public void actionPerformed(ActionEvent e){
                 tower.queueCreature(10, 1);
                 text.setText(tower.getSummonQueueSize());
-                System.out.println("button clicked");
+                //System.out.println("button clicked");
+                summon.setEnabled(false);
+                //aggiungere un deelay di tempo in cui il bottone è disabilitato
+                summon.setEnabled(true);
             }
         });
         }
