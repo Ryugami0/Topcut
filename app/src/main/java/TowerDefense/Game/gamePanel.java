@@ -23,7 +23,7 @@ public class gamePanel extends JPanel {
     public gamePanel() {
         this.tower = new TowerSingleton();
         try{
-            this.background = ImageIO.read(new File("/Users/giovanniminoccari/Downloads/War-of-Ages-master - Copia/WarOfAges/src/Assets/Backgrounds/Game.jpg"));
+            this.background = ImageIO.read(new File("/Users/Cesco/Downloads/War-of-Ages-master - Copia/WarOfAges/src/Assets/Backgrounds/Game.jpg"));
         }catch(Exception e){
             System.out.println("error loading background " + e.getMessage());
         }
