@@ -41,9 +41,11 @@ public class TowerSingleton implements Entity{
     }
 
     public void queueCreature(int cost, int type) {
-        MovingEntity entity = new MovingEntity(new Point(50,500), 1, 10, 10);
-        this.summonQueue.add(entity);
-        System.out.println("queued creature\n " + summonQueue.size());
+        if(this.summonQueue.size()<1){
+            MovingEntity entity = new MovingEntity(new Point(50,500), 1, 10, 10);
+            this.summonQueue.add(entity);
+            //System.out.println("queued creature\n " + summonQueue.size());
+        }
     }
 
     public void summonEntity() {
@@ -52,7 +54,7 @@ public class TowerSingleton implements Entity{
 
     public void draw(Graphics g){
         for(MovingEntity entity : this.entities){
-            System.out.println("calling Entity to draw");
+            //System.out.println("calling Entity to draw");
             entity.draw(g);
         }
     }
