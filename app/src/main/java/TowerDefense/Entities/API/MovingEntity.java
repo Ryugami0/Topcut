@@ -38,28 +38,28 @@ public class MovingEntity implements Entity{
     private void updateSprite() {
         try {
             if(currentsprite==1){
-                this.sprite= ImageIO.read(new File("/Users/Cesco/Documents/GitHub/OOP22-towerdefense/Assets/Barbarian/Walk/2.png"));
+                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/2.png"));
                 currentsprite++;
             }else if(currentsprite==2){
-                this.sprite= ImageIO.read(new File("/Users/Cesco/Documents/GitHub/OOP22-towerdefense/Assets/Barbarian/Walk/3.png"));
+                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/3.png"));
                 currentsprite++;
             }else if(currentsprite==3){
-                this.sprite= ImageIO.read(new File("/Users/Cesco/Documents/GitHub/OOP22-towerdefense/Assets/Barbarian/Walk/4.png"));
+                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/4.png"));
                 currentsprite++;
             }else if(currentsprite==4){
-                this.sprite= ImageIO.read(new File("/Users/Cesco/Documents/GitHub/OOP22-towerdefense/Assets/Barbarian/Walk/5.png"));
+                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/5.png"));
                 currentsprite++;
             }else if(currentsprite==5){
-                this.sprite= ImageIO.read(new File("/Users/Cesco/Documents/GitHub/OOP22-towerdefense/Assets/Barbarian/Walk/6.png"));
+                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/6.png"));
                 currentsprite++;
             }else if(currentsprite==6){
-                this.sprite= ImageIO.read(new File("/Users/Cesco/Documents/GitHub/OOP22-towerdefense/Assets/Barbarian/Walk/7.png"));
+                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/7.png"));
                 currentsprite++;
             }else if(currentsprite==7){
-                this.sprite= ImageIO.read(new File("/Users/Cesco/Documents/GitHub/OOP22-towerdefense/Assets/Barbarian/Walk/8.png"));
+                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/8.png"));
                 currentsprite++;
             }else if(currentsprite==8||currentsprite==0){
-                this.sprite= ImageIO.read(new File("/Users/Cesco/Documents/GitHub/OOP22-towerdefense/Assets/Barbarian/Walk/1.png"));
+                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/1.png"));
                 currentsprite=1;
             }
         } catch (IOException e) {

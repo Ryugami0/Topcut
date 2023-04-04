@@ -2,9 +2,11 @@ package TowerDefense.Game;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
-
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 
 import TowerDefense.Entities.Impl.TowerSingleton;
 
@@ -23,13 +25,15 @@ public class gamePanel extends JPanel {
     public gamePanel() {
         this.tower = new TowerSingleton();
         try{
-            this.background = ImageIO.read(new File("/Users/Cesco/Downloads/War-of-Ages-master - Copia/WarOfAges/src/Assets/Backgrounds/Game.jpg"));
+            this.background = ImageIO.read(this.getClass().getResource("../Assets/Backgrounds/Game.jpg"));
         }catch(Exception e){
             System.out.println("error loading background " + e.getMessage());
         }
         JButton summon = new JButton("summon");
         JTextField text = new JTextField("0");
         text.setEditable(false);
+        Timer stopwatch = new Timer(1000, new MyTimerListener(summon));
+        stopwatch.setRepeats(false);
 
         this.add(summon);
         this.add(text);
@@ -42,10 +46,25 @@ public class gamePanel extends JPanel {
                 //System.out.println("button clicked");
                 summon.setEnabled(false);
                 //aggiungere un deelay di tempo in cui il bottone è disabilitato
-                summon.setEnabled(true);
+                stopwatch.start();
             }
         });
+
+    }
+
+    static class MyTimerListener implements ActionListener {
+        JComponent target;
+
+        public MyTimerListener(JComponent target) {
+            this.target = target;
         }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            target.setEnabled(true);
+        }
+
+    }
     
     public void update(){
         this.tower.update();
