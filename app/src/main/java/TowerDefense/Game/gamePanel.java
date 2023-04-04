@@ -5,6 +5,7 @@ import javax.swing.JButton;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JPopupMenu.Separator;
 
 import TowerDefense.Entities.Impl.TowerSingleton;
 
@@ -14,16 +15,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-public class gamePanel extends JPanel {
+public class GamePanel extends JPanel {
 
     TowerSingleton tower;
     BufferedImage background;
      
-    public gamePanel() {
-        this.tower = new TowerSingleton();
+    public GamePanel() {
+        this.tower = TowerSingleton.getInstance();
         try{
-            this.background = ImageIO.read(new File("/Users/giovanniminoccari/Downloads/War-of-Ages-master - Copia/WarOfAges/src/Assets/Backgrounds/Game.jpg"));
+            this.background = ImageIO.read(new File("D:/Downloads/War-of-Ages-master - Copia/WarOfAges/src/Assets/Backgrounds/Game.jpg"));
         }catch(Exception e){
             System.out.println("error loading background " + e.getMessage());
         }
@@ -41,6 +48,30 @@ public class gamePanel extends JPanel {
                 System.out.println("button clicked");
             }
         });
+
+        Path saveFile = Paths.get(".").toAbsolutePath().resolve("./Assets/SaveFile.txt");
+        JButton saveScore = new JButton("Save Score");
+        JTextField nameScore = new JTextField("             ");
+
+        saveScore.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                try {
+                    Files.writeString(saveFile, Files.readString(saveFile) + 
+                        "\n" + 
+                        nameScore.getText() +
+                        String.valueOf(tower.getScore()), 
+                        StandardCharsets.UTF_8);
+                    } catch (IOException e) {
+                    e.printStackTrace();
+                    }
+            }
+            
+        });
+
+        this.add(saveScore);
+        this.add(nameScore);
         }
     
     public void update(){
@@ -53,4 +84,7 @@ public class gamePanel extends JPanel {
             g.drawImage(background, 0, 0, null);
             tower.draw(g);
         }
+
+
+    
 }

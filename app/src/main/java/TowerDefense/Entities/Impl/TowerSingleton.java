@@ -18,11 +18,18 @@ public class TowerSingleton implements Entity{
     private static TowerSingleton instance = null;
     private int damage;
     private int speed;
+    private int score;
+    private int money;
 
     private LinkedList<MovingEntity> entities = new LinkedList<MovingEntity>();
 	private Queue<MovingEntity> summonQueue = new LinkedList<MovingEntity>();
 
-    public TowerSingleton() {
+    private TowerSingleton() {
+        this.hp = 1000;
+        this.speed = 0;
+        this.damage = 0;
+        this.score = 0;
+        this.money = 0;
 
     }
 
@@ -90,6 +97,10 @@ public class TowerSingleton implements Entity{
     @Override
     public void incomeDamage(int value) {
         this.hp -= value;
+    }
+
+    public int getScore() {
+        return this.score;
     }
     
 }

@@ -1,9 +1,5 @@
 package TowerDefense.gameLogic.Impl;
-import java.awt.Point;
 import java.lang.System;
-import java.util.Map;
-import TowerDefense.Entities.API.MovingEntity;
-import TowerDefense.Entities.Impl.TowerSingleton;
 import TowerDefense.Game.Game;
 
 public class GameLoop extends Thread{
@@ -27,14 +23,14 @@ public class GameLoop extends Thread{
             double currentTime = System.currentTimeMillis();
             double timeDifference = currentTime - previousTime;
             update(timeDifference);
-            game.gamePanel.repaint();
+            game.getGamePanel().repaint();
             //System.out.println("repainted");
             previousTime = currentTime;
         }
     }
 
     private void update(double timeDifference) {
-        game.gamePanel.update();
+        game.getGamePanel().update();
 
         try {
             GameLoop.sleep((long)(10));
