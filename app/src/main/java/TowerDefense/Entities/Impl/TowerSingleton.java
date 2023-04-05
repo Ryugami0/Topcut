@@ -12,24 +12,25 @@ import java.util.Queue;
 
 public class TowerSingleton implements Entity{
 
-    private int hp;
-    private Point position;
-    private Rectangle hitbox;
+    private static int hp;
+    private static Point position;
+    private static Rectangle hitbox;
     private static TowerSingleton instance = null;
-    private int damage;
-    private int speed;
-    private int score;
-    private int money;
+    private static int damage;
+    private static int speed;
+    private static int score;
+    private static int money;
+    private static int i = 0;
 
     private LinkedList<MovingEntity> entities = new LinkedList<MovingEntity>();
 	private Queue<MovingEntity> summonQueue = new LinkedList<MovingEntity>();
 
     private TowerSingleton() {
-        this.hp = 1000;
-        this.speed = 0;
-        this.damage = 0;
-        this.score = 0;
-        this.money = 0;
+        TowerSingleton.hp = 1000;
+        TowerSingleton.speed = 0;
+        TowerSingleton.damage = 0;
+        TowerSingleton.score = 0;
+        TowerSingleton.money = 0;
 
     }
 
@@ -66,6 +67,7 @@ public class TowerSingleton implements Entity{
         if(this.summonQueue.size()>0){
             this.summonEntity();
         }
+        TowerSingleton.updateScoreMoney();
        // System.out.println("positions updated");
     }
 
@@ -79,30 +81,52 @@ public class TowerSingleton implements Entity{
     }
 
     public int getHp() {
-        return this.hp;
+        return TowerSingleton.hp;
     }
 
     public Point getPosition() {
-        return this.position;
+        return TowerSingleton.position;
     }
 
     @Override
     public int getSpeed() {
-        return this.speed;
+        return TowerSingleton.speed;
     }
 
     @Override
     public int getDamage() {
-       return this.damage;
+       return TowerSingleton.damage;
     }
 
     @Override
     public void incomeDamage(int value) {
-        this.hp -= value;
+        TowerSingleton.hp -= value;
     }
 
     public int getScore() {
-        return this.score;
+        return TowerSingleton.score;
     }
+
+    public int getMoney() {
+        return TowerSingleton.money;
+    }
+
+    public static void updateScoreMoney() {
+        if(i == 100) {
+            TowerSingleton.score += 5;
+            TowerSingleton.money += 5;
+            i = 0;
+            System.out.println(TowerSingleton.money);
+        }
+        else {
+            i++;
+        }
+        
+    }
+
+    
+
+    
+    
     
 }

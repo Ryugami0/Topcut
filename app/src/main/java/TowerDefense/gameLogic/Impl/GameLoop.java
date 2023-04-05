@@ -1,11 +1,8 @@
 package TowerDefense.gameLogic.Impl;
-import java.lang.System;
+import TowerDefense.Entities.Impl.TowerSingleton;
 import TowerDefense.Game.Game;
 
 public class GameLoop extends Thread{
-
-    private double previousTime = System.currentTimeMillis();
-    private final double FIXED_TIME = 1/60;
 
     private Game game;
 
@@ -20,16 +17,13 @@ public class GameLoop extends Thread{
         
         while (true) {
             //System.out.println("running");
-            double currentTime = System.currentTimeMillis();
-            double timeDifference = currentTime - previousTime;
-            update(timeDifference);
+            update();
             game.getGamePanel().repaint();
             //System.out.println("repainted");
-            previousTime = currentTime;
         }
     }
 
-    private void update(double timeDifference) {
+    private void update() {
         game.getGamePanel().update();
 
         try {
