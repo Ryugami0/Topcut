@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
@@ -16,6 +17,7 @@ public class MovingEntity implements Entity{
     private int speed;
     private int hp;
     private int damage;
+    private MovingEntity target;
     private BufferedImage sprite;
     private int currentsprite=0;
 
@@ -68,9 +70,33 @@ public class MovingEntity implements Entity{
         }
     }
 
+    public void attack(MovingEntity target){
+        //loop sprite
+        this.target = target;
+        this.target.incomeDamage(this.damage);
+    }
+
+    public MovingEntity getTarget(LinkedList<MovingEntity> enemies){
+            return enemies.getFirst();
+    }
+
+    public int getRowPosition(LinkedList<MovingEntity> entities){
+        return entities.indexOf(this);
+    }
+
+    public void removeIfDead(LinkedList<MovingEntity> entities){
+        if(this.getHp() <= 0){
+            entities.remove(entities.indexOf(this));
+        }
+    }
+
     public void draw(Graphics g){
         g.drawImage(this.sprite, this.getPosition().x, this.getPosition().y, null);
         //System.out.println("MovingEntity drawed");
+    }
+
+    public Rectangle getHitbox(){
+        return this.hitbox;
     }
 
     @Override

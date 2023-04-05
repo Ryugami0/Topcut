@@ -1,13 +1,6 @@
 package TowerDefense.Game;
-<<<<<<< HEAD
-=======
 
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
->>>>>>> a64da7964edadbfae6ca2e33e4bbf87b4a4af7fd
 import javax.swing.JFrame;
 
 public class GameWindow {
