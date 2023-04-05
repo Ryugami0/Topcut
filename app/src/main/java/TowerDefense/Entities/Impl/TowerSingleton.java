@@ -61,8 +61,8 @@ public class TowerSingleton implements Entity{
 	}
 
     public void queueEnemy(){
-        if(this.enemies.size()<1){
-            MovingEntity enemy = new MovingEntity(new Point(500 ,500), -1 , 10, 10);
+        if(this.enemies.size()<6){
+            MovingEntity enemy = new MovingEntity(new Point(700 ,500), -1 , 10, 10);
             this.waveQueue.add(enemy);
             //System.out.println("queued creature\n " + waveQueue.size());
         }
@@ -70,6 +70,19 @@ public class TowerSingleton implements Entity{
 
     public void summonEnemy(){
         this.enemies.add(this.waveQueue.poll());
+    }
+
+    public void removeDeads(){
+        for(int i = 0; i < this.entities.size(); i++){
+            if(entities.get(i).getHp() <= 0){
+                entities.remove(i);
+            }
+        }
+        for(int i = 0; i < this.enemies.size(); i++){
+            if(this.enemies.get(i).getHp() <= 0){
+                enemies.remove(i);
+            }
+        }
     }
 
     public void AI(){
@@ -134,12 +147,7 @@ public class TowerSingleton implements Entity{
         if(this.waveQueue.size()>0){
             this.summonEnemy();
         }
-        for(MovingEntity entity: this.entities){
-            entity.removeIfDead(entities);
-        }
-        for(MovingEntity enemy: this.enemies){
-             enemy.removeIfDead(this.enemies);
-        }
+        removeDeads();
         TowerSingleton.updateScoreMoney();
 
        // System.out.println("positions updated");

@@ -83,12 +83,6 @@ public class MovingEntity implements Entity{
         return entities.indexOf(this);
     }
 
-    public void removeIfDead(LinkedList<MovingEntity> entities){
-        if(this.getHp() <= 0){
-            entities.remove(entities.indexOf(this));
-        }
-    }
-
     public void draw(Graphics g){
         g.drawImage(this.sprite, this.getPosition().x, this.getPosition().y, null);
         //System.out.println("MovingEntity drawed");
