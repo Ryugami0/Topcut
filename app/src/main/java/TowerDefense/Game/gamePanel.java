@@ -6,6 +6,8 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JPopupMenu.Separator;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 import TowerDefense.Entities.Impl.TowerSingleton;
@@ -76,7 +78,6 @@ public class GamePanel extends JPanel {
 
         this.add(saveScore);
         this.add(nameScore);
-
         JLabel money = new JLabel();
         money.setText(String.valueOf(TowerSingleton.getInstance().getMoney()));
         this.add(money);

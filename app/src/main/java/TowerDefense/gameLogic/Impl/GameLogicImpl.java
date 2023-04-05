@@ -15,8 +15,8 @@ public class GameLogicImpl implements GameLogic{
         return entityPositions;
     }
 
-    public void checkCollision(){
-        
+    public static boolean checkCollision(MovingEntity a, MovingEntity b){
+        return a.getHitbox().intersects(b.getHitbox());
     }
 
 }
