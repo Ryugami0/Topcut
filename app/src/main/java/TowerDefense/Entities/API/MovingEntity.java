@@ -18,7 +18,8 @@ public class MovingEntity implements Entity{
     private int damage;
     private MovingEntity target;
     private BufferedImage sprite;
-    private int currentsprite=0;
+    private int currentSpriteWalk=0;
+    private int currentSpriteAttack=0;
     private long lastTime=System.currentTimeMillis();
     private String nameEntity;
 
@@ -30,28 +31,48 @@ public class MovingEntity implements Entity{
         this.hp = hp;
         this.damage = damage;
         this.nameEntity=nameEntity;
-        this.updateSprite();
+        this.updateSprite("Walk");
     }
 
     public void updatePosition() {
         this.position.setLocation(this.position.getX() + this.speed, this.position.getY());
         this.hitbox.setLocation((int)this.hitbox.getX() + this.speed, (int)this.hitbox.getY());
+        this.updateSprite("Walk");
         if(lastTime+250<System.currentTimeMillis()){
             lastTime=System.currentTimeMillis();
-            this.updateSprite();
+
         }
     }
 
-    private void updateSprite() {
-        try {
-            currentsprite++;
-            this.sprite= ImageIO.read(getClass().getResource("../../Assets/"+nameEntity+"/Walk/"+currentsprite+".png"));
-            if(currentsprite==8){
-                currentsprite=0;
+    public void updateSprite(String activity) {
+        int currentSprite=0;
+
+        if(lastTime+125<System.currentTimeMillis()){
+            lastTime=System.currentTimeMillis();
+            
+            try {
+
+                if(activity=="Walk"){
+                    if(currentSpriteWalk==8){
+                        currentSpriteWalk=0;
+                    }
+                    currentSpriteWalk++;
+                    currentSprite=this.currentSpriteWalk;
+                }else if(activity=="Attack"){
+                    if(currentSpriteAttack==30){
+                        currentSpriteAttack=0;
+                    }
+                    currentSpriteAttack++;
+                    currentSprite=this.currentSpriteAttack;
+                }
+    
+                this.sprite= ImageIO.read(getClass().getResource("../../Assets/"+nameEntity+"/"+activity+"/"+currentSprite+".png"));
+                
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                System.out.println("error loading image " + e.getMessage());
             }
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            System.out.println("error loading image " + e.getMessage());
+
         }
     }
 

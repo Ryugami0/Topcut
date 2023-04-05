@@ -12,11 +12,14 @@ import javax.swing.Timer;
 
 import TowerDefense.Entities.Impl.TowerSingleton;
 
+import java.awt.Desktop;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -34,25 +37,41 @@ public class GamePanel extends JPanel {
         }catch(Exception e){
             System.out.println("error loading background " + e.getMessage());
         }
-        JButton summon = new JButton("summon");
+        JButton summonBarbarian = new JButton("Summon Barbarian");
+        JButton summon2=new JButton("Summon Knight");
         JTextField text = new JTextField("0");
         text.setEditable(false);
-        Timer stopwatch = new Timer(1000, new MyTimerListener(summon));
+        Timer stopwatch = new Timer(1000, new MyTimerListener(summonBarbarian));
         stopwatch.setRepeats(false);
 
-        this.add(summon);
+        this.add(summonBarbarian);
+        this.add(summon2);
         this.add(text);
 
-        summon.addActionListener(new ActionListener() {
+        summonBarbarian.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
                 tower.queueCreature(10, 1);
                 text.setText(tower.getSummonQueueSize());
                 //System.out.println("button clicked");
-                summon.setEnabled(false);
-                //aggiungere un deelay di tempo in cui il bottone è disabilitato
+                summonBarbarian.setEnabled(false);
+                //Deelay di tempo in cui il bottone è disabilitato
                 stopwatch.start();
             }
+        });
+
+        summon2.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Desktop.getDesktop().browse(new URI("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
+                } catch (IOException | URISyntaxException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+            }
+            
         });
 
         Path saveFile = Paths.get(".").toAbsolutePath().resolve("./Assets/SaveFile.txt");

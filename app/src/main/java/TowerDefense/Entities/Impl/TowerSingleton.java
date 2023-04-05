@@ -97,6 +97,7 @@ public class TowerSingleton implements Entity{
                 if(enemies.size() != 0){
                     if(GameLogicImpl.checkCollision(entity, entity.getTarget(enemies))){
                         entity.attack(entity.getTarget(enemies));
+                        entity.updateSprite("Attack");
                     }else{
                         entity.updatePosition();
                     }
