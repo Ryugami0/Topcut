@@ -19,49 +19,35 @@ public class MovingEntity implements Entity{
     private MovingEntity target;
     private BufferedImage sprite;
     private int currentsprite=0;
+    private long lastTime=System.currentTimeMillis();
+    private String nameEntity;
 
-    public MovingEntity(Point startPoint, int speed, int hp, int damage){
+    public MovingEntity(Point startPoint, int speed, int hp, int damage, String nameEntity){
         this.position = new Point(startPoint);
         this.hitbox = new Rectangle(startPoint);
         this.hitbox.setSize(50, 60);
         this.speed = speed;
         this.hp = hp;
         this.damage = damage;
+        this.nameEntity=nameEntity;
         this.updateSprite();
     }
 
     public void updatePosition() {
         this.position.setLocation(this.position.getX() + this.speed, this.position.getY());
         this.hitbox.setLocation((int)this.hitbox.getX() + this.speed, (int)this.hitbox.getY());
-        this.updateSprite();
+        if(lastTime+250<System.currentTimeMillis()){
+            lastTime=System.currentTimeMillis();
+            this.updateSprite();
+        }
     }
 
     private void updateSprite() {
         try {
-            if(currentsprite==1){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/2.png"));
-                currentsprite++;
-            }else if(currentsprite==2){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/3.png"));
-                currentsprite++;
-            }else if(currentsprite==3){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/4.png"));
-                currentsprite++;
-            }else if(currentsprite==4){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/5.png"));
-                currentsprite++;
-            }else if(currentsprite==5){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/6.png"));
-                currentsprite++;
-            }else if(currentsprite==6){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/7.png"));
-                currentsprite++;
-            }else if(currentsprite==7){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/8.png"));
-                currentsprite++;
-            }else if(currentsprite==8||currentsprite==0){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/1.png"));
-                currentsprite=1;
+            currentsprite++;
+            this.sprite= ImageIO.read(getClass().getResource("../../Assets/"+nameEntity+"/Walk/"+currentsprite+".png"));
+            if(currentsprite==8){
+                currentsprite=0;
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block
