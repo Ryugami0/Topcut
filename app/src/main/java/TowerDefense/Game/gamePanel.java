@@ -3,6 +3,7 @@ package TowerDefense.Game;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JPopupMenu.Separator;
@@ -11,13 +12,10 @@ import javax.swing.Timer;
 
 import TowerDefense.Entities.Impl.TowerSingleton;
 
-import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -80,6 +78,9 @@ public class GamePanel extends JPanel {
 
         this.add(saveScore);
         this.add(nameScore);
+        JLabel money = new JLabel();
+        money.setText(String.valueOf(TowerSingleton.getInstance().getMoney()));
+        this.add(money);
     }
 
     static class MyTimerListener implements ActionListener {

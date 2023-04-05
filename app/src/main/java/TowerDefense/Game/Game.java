@@ -7,7 +7,7 @@ public class Game {
 	public Game() {
         
         this.gamePanel = new GamePanel();
-        GameWindow gameWindow = new GameWindow(gamePanel);
+        GameWindow gameWindow = new GameWindow(gamePanel); 
         
     }
 
