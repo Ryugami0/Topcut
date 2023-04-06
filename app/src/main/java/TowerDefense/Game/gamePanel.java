@@ -38,14 +38,15 @@ public class GamePanel extends JPanel {
             System.out.println("error loading background " + e.getMessage());
         }
         JButton summonBarbarian = new JButton("Summon Barbarian");
-        JButton summon2=new JButton("Summon Knight");
+        JButton summonKnight=new JButton("Summon Knight");
         JTextField text = new JTextField("0");
         text.setEditable(false);
-        Timer stopwatch = new Timer(1000, new MyTimerListener(summonBarbarian));
-        stopwatch.setRepeats(false);
+        
+        Timer timer = new Timer(1000, new MyTimerListener(summonBarbarian, summonKnight));
+        timer.setRepeats(false);
 
         this.add(summonBarbarian);
-        this.add(summon2);
+        this.add(summonKnight);
         this.add(text);
 
         summonBarbarian.addActionListener(new ActionListener() {
@@ -53,23 +54,27 @@ public class GamePanel extends JPanel {
             public void actionPerformed(ActionEvent e){
                 tower.queueCreature(10, 1);
                 text.setText(tower.getSummonQueueSize());
-                //System.out.println("button clicked");
+
                 summonBarbarian.setEnabled(false);
+                summonKnight.setEnabled(false);
+
                 //Deelay di tempo in cui il bottone è disabilitato
-                stopwatch.start();
+                timer.start();
             }
         });
 
-        summon2.addActionListener(new ActionListener() {
+        summonKnight.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    Desktop.getDesktop().browse(new URI("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
-                } catch (IOException | URISyntaxException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
+                tower.queueCreature(10, 2);
+                text.setText(tower.getSummonQueueSize());
+
+                summonBarbarian.setEnabled(false);
+                summonKnight.setEnabled(false);
+
+                //Deelay di tempo in cui il bottone è disabilitato
+                timer.start();
             }
             
         });
@@ -103,15 +108,18 @@ public class GamePanel extends JPanel {
     }
 
     static class MyTimerListener implements ActionListener {
-        JComponent target;
+        JComponent Barbarian;
+        JComponent Knight;
 
-        public MyTimerListener(JComponent target) {
-            this.target = target;
+        public MyTimerListener(JComponent Barbarian, JComponent Knight) {
+            this.Barbarian=Barbarian;
+            this.Knight=Knight;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            target.setEnabled(true);
+            Barbarian.setEnabled(true);
+            Knight.setEnabled(true);
         }
 
     }

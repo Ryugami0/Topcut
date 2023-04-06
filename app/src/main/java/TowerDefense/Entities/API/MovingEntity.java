@@ -26,7 +26,7 @@ public class MovingEntity implements Entity{
     public MovingEntity(Point startPoint, int speed, int hp, int damage, String nameEntity){
         this.position = new Point(startPoint);
         this.hitbox = new Rectangle(startPoint);
-        this.hitbox.setSize(50, 60);
+        this.hitbox.setSize(50, 150);
         this.speed = speed;
         this.hp = hp;
         this.damage = damage;
@@ -53,13 +53,13 @@ public class MovingEntity implements Entity{
             try {
 
                 if(activity=="Walk"){
-                    if(currentSpriteWalk==8){
+                    if((this.nameEntity=="Barbarian"&&currentSpriteWalk==8)||(this.nameEntity=="Knight"&&currentSpriteWalk==8)||(this.nameEntity=="Goblin"&&currentSpriteWalk==6)){
                         currentSpriteWalk=0;
                     }
                     currentSpriteWalk++;
                     currentSprite=this.currentSpriteWalk;
                 }else if(activity=="Attack"){
-                    if(currentSpriteAttack==30){
+                    if((this.nameEntity=="Barbarian"&&currentSpriteAttack==30)||(this.nameEntity=="Knight"&&currentSpriteAttack==9)||(this.nameEntity=="Goblin"&&currentSpriteAttack==7)){
                         currentSpriteAttack=0;
                     }
                     currentSpriteAttack++;
