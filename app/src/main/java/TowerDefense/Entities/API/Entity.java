@@ -1,6 +1,7 @@
 package TowerDefense.Entities.API;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 
 public interface Entity {
 
@@ -9,5 +10,5 @@ public interface Entity {
     public int getHp();
     public int getDamage();
     public void incomeDamage(int value);
-    
+    public Rectangle getHitbox();
 }

@@ -16,7 +16,7 @@ public class MovingEntity implements Entity{
     private int speed;
     private int hp;
     private int damage;
-    private MovingEntity target;
+    private Entity target;
     private BufferedImage sprite;
     private int currentSpriteWalk=0;
     private int currentSpriteAttack=0;
@@ -76,7 +76,7 @@ public class MovingEntity implements Entity{
         }
     }
 
-    public void attack(MovingEntity target){
+    public void attack(Entity target){
         //loop sprite
         this.target = target;
         this.target.incomeDamage(this.damage);
