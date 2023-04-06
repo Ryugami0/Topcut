@@ -3,6 +3,8 @@ package TowerDefense.gameLogic.Impl;
 import java.util.HashMap;
 import java.util.Map;
 import java.awt.Point;
+
+import TowerDefense.Entities.API.Entity;
 import TowerDefense.Entities.API.MovingEntity;
 import TowerDefense.gameLogic.API.GameLogic;
 
@@ -15,7 +17,7 @@ public class GameLogicImpl implements GameLogic{
         return entityPositions;
     }
 
-    public static boolean checkCollision(MovingEntity a, MovingEntity b){
+    public static boolean checkCollision(MovingEntity a, Entity b){
         return a.getHitbox().intersects(b.getHitbox());
     }
 
