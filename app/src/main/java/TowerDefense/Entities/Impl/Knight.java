@@ -7,7 +7,7 @@ import TowerDefense.Entities.API.MovingEntity;
 public class Knight extends MovingEntity{
 
     public Knight() {
-        super(new Point(), 0, 0, 0);
+        super(new Point(), 0, 0, 0, "Knight");
     }
 
     }

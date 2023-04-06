@@ -50,7 +50,7 @@ public class TowerSingleton implements Entity{
 
     public void queueCreature(int cost, int type) {
         if(this.summonQueue.size()<5){
-            MovingEntity entity = new MovingEntity(new Point(50,500), 1, 20, 10);
+            MovingEntity entity = new Barbarian();
             this.summonQueue.add(entity);
             //System.out.println("queued creature\n " + summonQueue.size());
         }
@@ -62,7 +62,7 @@ public class TowerSingleton implements Entity{
 
     public void queueEnemy(){
         if(this.enemies.size()<6){
-            MovingEntity enemy = new MovingEntity(new Point(700 ,500), -1 , 10, 10);
+            MovingEntity enemy = new Goblin();
             this.waveQueue.add(enemy);
             //System.out.println("queued creature\n " + waveQueue.size());
         }
@@ -97,6 +97,7 @@ public class TowerSingleton implements Entity{
                 if(enemies.size() != 0){
                     if(GameLogicImpl.checkCollision(entity, entity.getTarget(enemies))){
                         entity.attack(entity.getTarget(enemies));
+                        entity.updateSprite("Attack");
                     }else{
                         entity.updatePosition();
                     }

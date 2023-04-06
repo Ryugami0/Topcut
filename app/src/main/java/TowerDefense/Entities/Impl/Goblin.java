@@ -1,13 +1,14 @@
 package TowerDefense.Entities.Impl;
 
 import java.awt.Point;
+import java.awt.Toolkit;
 
 import TowerDefense.Entities.API.MovingEntity;
 
 public class Goblin extends MovingEntity{
 
     public Goblin() {
-        super(new Point(), 0, 0, 0);
+        super(new Point((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth()/1.3)-50 ,500), -1 , 2500, 10,"Goblin");
     }
 
 }
