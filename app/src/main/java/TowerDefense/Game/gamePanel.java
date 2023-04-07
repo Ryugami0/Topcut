@@ -64,12 +64,14 @@ public class GamePanel extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
+
+                //tower.queueEnemy();
+                /*try {
                     Desktop.getDesktop().browse(new URI("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
                 } catch (IOException | URISyntaxException e1) {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
-                }
+                }*/
             }
             
         });

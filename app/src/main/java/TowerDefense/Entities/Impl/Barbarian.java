@@ -6,7 +6,7 @@ import TowerDefense.Entities.API.MovingEntity;
 public class Barbarian extends MovingEntity{
 
     public Barbarian() {
-        super(new Point(50,500), 3, 5000, 50, "Barbarian");
+        super(new Point(50,500), 1, 5000, 15, "Barbarian");
     }
 
 }

@@ -15,12 +15,13 @@ public class GameLoop extends Thread{
     @Override
     public void run() {
         
-        while (true) {
+        while (TowerSingleton.getInstance().getHp() >= 0) {
             //System.out.println("running");
             update();
             game.getGamePanel().repaint();
             //System.out.println("repainted");
         }
+        System.out.print("end game");
     }
 
     private void update() {
