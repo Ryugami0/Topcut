@@ -6,8 +6,6 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JPopupMenu.Separator;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 import TowerDefense.Entities.Impl.TowerSingleton;
