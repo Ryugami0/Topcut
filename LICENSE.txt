@@ -1,0 +1,51 @@
+Licenza per il Progetto OOP22-towerdefense
+
+Realizzato da
+Badioli Filippo      filippo.badioli@studio.unibo.it
+Udrea Denispetru     denispetru.udrea@studio.unibo.it
+Minoccari Giovanni   giovanni.minoccari@studio.unibo.it
+Petrassi Francesco   francesco.petrassi2@studio.unibo.it
+
+L'autorizzazione è concessa, a titolo gratuito, a chiunque ottenga una copia di questo progetto e di tutti i file compresi, senza limitazioni di alcun genere.
+Questo documento garantisce quindi a chiunque la possibilità di utilizzo, copia, modifica, pubblicazione e distribuzione.
+
+Di seguito sono riportate tutte le principali fonti utilizzate nella realizzazione del progetto
+
+Musica
+Adventure by Alexander Nakarada | https://www.serpentsoundstudios.com
+Music promoted by https://www.free-stock-music.com
+Creative Commons / Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+War-of-Ages by mlqh
+https://github.com/mlqh/War-of-Ages
+
+Sprite
+https://lionheart963.itch.io/goblin-sprite
+
+---------------------------------------------------------------------------------
+
+License for the OOP22-towerdefense Project
+
+Realized by
+Badioli Filippo      filippo.badioli@studio.unibo.it
+Udrea Denispetru     denispetru.udrea@studio.unibo.it
+Minoccari Giovanni   giovanni.minoccari@studio.unibo.it
+Petrassi Francesco   francesco.petrassi2@studio.unibo.it
+
+Permission is granted, free of charge, to anyone who obtains a copy of this project and all files included, without limitation of any kind.
+This document therefore guarantees anyone the possibility of using, copying, modifying, publishing and distributing it.
+
+Below are all the major sources used in the realization of the project
+
+Music
+Adventure by Alexander Nakarada | https://www.serpentsoundstudios.com
+Music promoted by https://www.free-stock-music.com
+Creative Commons / Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+War-of-Ages by mlqh
+https://github.com/mlqh/War-of-Ages
+
+Sprite
+https://lionheart963.itch.io/goblin-sprite

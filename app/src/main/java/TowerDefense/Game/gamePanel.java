@@ -1,6 +1,11 @@
 package TowerDefense.Game;
 
 import javax.imageio.ImageIO;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -29,8 +34,21 @@ public class GamePanel extends JPanel {
 
     TowerSingleton tower;
     BufferedImage background;
+
+    static AudioInputStream audioStream;
+    static Clip music;
      
     public GamePanel() {
+
+        try {
+            audioStream = AudioSystem.getAudioInputStream(this.getClass().getResource("../Music/alexander-nakarada-adventure.wav"));
+            music = AudioSystem.getClip();
+            music.open(audioStream);
+        } catch (Exception e) {     
+        }
+        music.setFramePosition(0);
+        music.start();
+
         this.tower = TowerSingleton.getInstance();
         try{
             this.background = ImageIO.read(this.getClass().getResource("../Assets/Backgrounds/Game.jpg"));
