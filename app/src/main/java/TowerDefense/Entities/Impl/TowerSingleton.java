@@ -17,7 +17,7 @@ public class TowerSingleton implements Entity{
 
     private static int hp;
     private static Point position;
-    private static Rectangle hitbox = new Rectangle(50, 500, 100, 100);
+    private static Rectangle hitbox;
     private static TowerSingleton instance = null;
     private static int damage;
     private static int speed;
@@ -25,7 +25,7 @@ public class TowerSingleton implements Entity{
     private static int money;
     private static int i = 0;
 
-    private WaveManager wavemanager;
+    private static WaveManager waveManager;
     private LinkedList<MovingEntity> enemies = new LinkedList<MovingEntity>();
 	private Queue<MovingEntity> waveQueue = new LinkedList<MovingEntity>();
 
@@ -38,7 +38,8 @@ public class TowerSingleton implements Entity{
         TowerSingleton.damage = 0;
         TowerSingleton.score = 0;
         TowerSingleton.money = 0;
-
+        TowerSingleton.hitbox = new Rectangle(50, 500, 100, 100);
+        TowerSingleton.waveManager = new WaveManager();
     }
 
     public static TowerSingleton getInstance() {
@@ -49,27 +50,23 @@ public class TowerSingleton implements Entity{
     }
 
     public void queueCreature(int cost, int type) {
-        if(this.summonQueue.size()<5){
             MovingEntity entity = new Barbarian();
             this.summonQueue.add(entity);
             //System.out.println("queued creature\n " + summonQueue.size());
-        }
     }
 
     public void summonEntity() {
-		this.entities.add(this.summonQueue.poll());
+		    this.entities.add(this.summonQueue.poll());
 	}
 
     public void queueEnemy(){
-        if(this.enemies.size()<6){
-            MovingEntity enemy = new Goblin();
-            this.waveQueue.add(enemy);
+        MovingEntity enemy = new Goblin();
+        this.waveQueue.add(enemy);
             //System.out.println("queued creature\n " + waveQueue.size());
-        }
     }
 
     public void summonEnemy(){
-        this.enemies.add(this.waveQueue.poll());
+            this.enemies.add(this.waveQueue.poll());
     }
 
     public void removeDeads(){
@@ -96,6 +93,8 @@ public class TowerSingleton implements Entity{
                 ally = this.entities.get( i - 1);
                 if(!GameLogicImpl.checkCollision(entity, ally)){
                     entity.updatePosition();
+                }else{
+                    entity.updateSprite("Walk");
                 }
             }else{
                 if(enemies.size() > 0){
@@ -118,6 +117,8 @@ public class TowerSingleton implements Entity{
                 }else{
                     if(entity.getPosition().getX() < 500){
                         entity.updatePosition();
+                    }else{
+                        entity.updateSprite("Walk");
                     }
                 }
             }
@@ -161,13 +162,14 @@ public class TowerSingleton implements Entity{
     }
     
     public void update(){
-        queueEnemy();
+        TowerSingleton.getWaveManager().spawnnWave();
         removeDeads();
         this.AI();
-        if(this.summonQueue.size()>0 && this.entities.size() < 10){
+        if(this.summonQueue.size() > 0 && this.entities.size() < 10){
             this.summonEntity();
         }
-        if(this.waveQueue.size()>0 && this.enemies.size() <10){
+        if(this.waveQueue.size() > 0 && this.enemies.size() < 10){
+            System.out.println("summonEnemy()\n");
             this.summonEnemy();
         }
         TowerSingleton.updateScoreMoney();
@@ -218,6 +220,14 @@ public class TowerSingleton implements Entity{
     @Override
     public Rectangle getHitbox() {
         return TowerSingleton.hitbox;
+    }
+
+    public int getEntitiesNumber(){
+        return this.entities.size();
+    }
+
+    public static WaveManager getWaveManager(){
+        return TowerSingleton.waveManager;
     }
 
     public static void updateScoreMoney() {
