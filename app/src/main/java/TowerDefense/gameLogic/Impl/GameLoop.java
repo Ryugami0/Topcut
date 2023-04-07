@@ -1,5 +1,4 @@
 package TowerDefense.gameLogic.Impl;
-import TowerDefense.Entities.Impl.TowerSingleton;
 import TowerDefense.Game.Game;
 
 public class GameLoop extends Thread{

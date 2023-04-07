@@ -15,6 +15,17 @@ CAPITOLO 1
         -Se i punti salute della base scendono a zero la partita finisce
         -Una volta finita la partita all'utente sarà possibile effettuare un salvataggio del proprio punteggio
         -Una classifica dei punteggi migliori può essere consultata dal menù iniziale
+
+
+
+
+
+
+
+        Credits:
+
+        -Enemy sprites: https://luizmelo.itch.io/monsters-creatures-fantasy
+        
         
 
 

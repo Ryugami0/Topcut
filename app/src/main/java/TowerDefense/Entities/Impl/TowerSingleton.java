@@ -2,15 +2,18 @@ package TowerDefense.Entities.Impl;
 
 import TowerDefense.Entities.API.Entity;
 import TowerDefense.Entities.API.MovingEntity;
-import TowerDefense.gameLogic.API.GameLogic;
 import TowerDefense.gameLogic.Impl.GameLogicImpl;
 import TowerDefense.gameLogic.Impl.WaveManager;
 
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
+
+import javax.imageio.ImageIO;
 
 
 public class TowerSingleton implements Entity{
@@ -24,21 +27,28 @@ public class TowerSingleton implements Entity{
     private static int score;
     private static int money;
     private static int i = 0;
+    private BufferedImage sprite;
 
-    private WaveManager wavemanager;
-    private LinkedList<MovingEntity> enemies = new LinkedList<MovingEntity>();
-	private Queue<MovingEntity> waveQueue = new LinkedList<MovingEntity>();
+    private static WaveManager wavemanager;
+    private static LinkedList<MovingEntity> enemies = new LinkedList<MovingEntity>();
+	private static Queue<MovingEntity> waveQueue = new LinkedList<MovingEntity>();
 
-    private LinkedList<MovingEntity> entities = new LinkedList<MovingEntity>();
-	private Queue<MovingEntity> summonQueue = new LinkedList<MovingEntity>();
+    private static LinkedList<MovingEntity> entities = new LinkedList<MovingEntity>();
+	private static Queue<MovingEntity> summonQueue = new LinkedList<MovingEntity>();
 
     private TowerSingleton() {
         TowerSingleton.hp = 1000;
         TowerSingleton.speed = 0;
         TowerSingleton.damage = 0;
         TowerSingleton.score = 0;
-        TowerSingleton.money = 0;
+        TowerSingleton.money = 100;
 
+        try {
+            this.sprite= ImageIO.read(getClass().getResource("../../Assets/Tower/1.png"));
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public static TowerSingleton getInstance() {
@@ -50,43 +60,48 @@ public class TowerSingleton implements Entity{
 
     public void queueCreature(int cost, int type) {
         if(this.summonQueue.size()<5){
-            MovingEntity entity = new MovingEntity(new Point(50,500), 1, 20, 10);
+            MovingEntity entity;
+            if(type==1){
+                entity = new Barbarian();
+            }else /*if(type==2)*/{
+                entity = new Knight();
+            }
             this.summonQueue.add(entity);
             //System.out.println("queued creature\n " + summonQueue.size());
         }
     }
 
     public void summonEntity() {
-		this.entities.add(this.summonQueue.poll());
+		TowerSingleton.entities.add(TowerSingleton.summonQueue.poll());
 	}
 
     public void queueEnemy(){
         if(this.enemies.size()<6){
-            MovingEntity enemy = new MovingEntity(new Point(700 ,500), -1 , 10, 10);
+            MovingEntity enemy = new Goblin();
             this.waveQueue.add(enemy);
             //System.out.println("queued creature\n " + waveQueue.size());
         }
     }
 
     public void summonEnemy(){
-        this.enemies.add(this.waveQueue.poll());
+        TowerSingleton.enemies.add(TowerSingleton.waveQueue.poll());
     }
 
     public void removeDeads(){
-        for(int i = 0; i < this.entities.size(); i++){
+        for(int i = 0; i < TowerSingleton.entities.size(); i++){
             if(entities.get(i).getHp() <= 0){
                 entities.remove(i);
             }
         }
-        for(int i = 0; i < this.enemies.size(); i++){
-            if(this.enemies.get(i).getHp() <= 0){
+        for(int i = 0; i < TowerSingleton.enemies.size(); i++){
+            if(TowerSingleton.enemies.get(i).getHp() <= 0){
                 enemies.remove(i);
             }
         }
     }
 
     public void AI(){
-        for(MovingEntity entity: this.entities){
+        for(MovingEntity entity: TowerSingleton.entities){
             if(entity.getRowPosition(entities) != 0){
                 if(GameLogicImpl.checkCollision(entity, entities.get(entities.indexOf(entity) - 1))){
 
@@ -96,6 +111,7 @@ public class TowerSingleton implements Entity{
             }else{
                 if(enemies.size() != 0){
                     if(GameLogicImpl.checkCollision(entity, entity.getTarget(enemies))){
+                        entity.updateSprite("Attack");
                         entity.attack(entity.getTarget(enemies));
                     }else{
                         entity.updatePosition();
@@ -105,7 +121,7 @@ public class TowerSingleton implements Entity{
                 }
             }
         }
-        for(MovingEntity entity: this.enemies){
+        for(MovingEntity entity: TowerSingleton.enemies){
             if(entity.getRowPosition(enemies) != 0){
                 if(GameLogicImpl.checkCollision(entity, enemies.get(enemies.indexOf(entity) - 1))){
 
@@ -115,6 +131,7 @@ public class TowerSingleton implements Entity{
             }else{
                 if(entities.size() != 0){
                     if(GameLogicImpl.checkCollision(entity, entity.getTarget(entities))){
+                        entity.updateSprite("Attack");
                         entity.attack(entity.getTarget(entities));
                     }else{
                         entity.updatePosition();
@@ -127,24 +144,26 @@ public class TowerSingleton implements Entity{
     }
 
     public void draw(Graphics g){
-        for(MovingEntity entity : this.entities){
+        for(MovingEntity entity : TowerSingleton.entities){
             //System.out.println("calling Entity to draw");
             entity.draw(g);
         }
-        for(MovingEntity enemy : this.enemies){
+        for(MovingEntity enemy : TowerSingleton.enemies){
             //System.out.println("calling Entity to draw");
             enemy.draw(g);
         }
+
+        g.drawImage(this.sprite, 50, 400, null);
     }
     
     public void update(){
         queueEnemy();
         this.AI();
-        if(this.summonQueue.size()>0){
+        if(TowerSingleton.summonQueue.size()>0){
             this.summonEntity();
         }
   
-        if(this.waveQueue.size()>0){
+        if(TowerSingleton.waveQueue.size()>0){
             this.summonEnemy();
         }
         removeDeads();
@@ -154,11 +173,11 @@ public class TowerSingleton implements Entity{
     }
 
     public Queue<MovingEntity> getSummonQueue(){
-        return this.summonQueue;
+        return TowerSingleton.summonQueue;
     }
 
     public String getSummonQueueSize(){
-        String a = Integer.toString(this.summonQueue.size());
+        String a = Integer.toString(TowerSingleton.summonQueue.size());
         return a;
     }
 
@@ -205,10 +224,4 @@ public class TowerSingleton implements Entity{
         }
         
     }
-
-    
-
-    
-    
-    
 }

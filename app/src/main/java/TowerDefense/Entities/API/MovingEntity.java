@@ -18,55 +18,60 @@ public class MovingEntity implements Entity{
     private int damage;
     private MovingEntity target;
     private BufferedImage sprite;
-    private int currentsprite=0;
+    private int currentSpriteWalk=0;
+    private int currentSpriteAttack=0;
+    private long lastTime=System.currentTimeMillis();
+    private String nameEntity;
 
-    public MovingEntity(Point startPoint, int speed, int hp, int damage){
+    public MovingEntity(Point startPoint, int speed, int hp, int damage, String nameEntity){
         this.position = new Point(startPoint);
         this.hitbox = new Rectangle(startPoint);
-        this.hitbox.setSize(50, 60);
+        this.hitbox.setSize(50, 150);
         this.speed = speed;
         this.hp = hp;
         this.damage = damage;
-        this.updateSprite();
+        this.nameEntity=nameEntity;
+        this.updateSprite("Walk");
     }
 
     public void updatePosition() {
         this.position.setLocation(this.position.getX() + this.speed, this.position.getY());
         this.hitbox.setLocation((int)this.hitbox.getX() + this.speed, (int)this.hitbox.getY());
-        this.updateSprite();
+        this.updateSprite("Walk");
+        if(lastTime+250<System.currentTimeMillis()){
+            lastTime=System.currentTimeMillis();
+
+        }
     }
 
-    private void updateSprite() {
-        try {
-            if(currentsprite==1){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/2.png"));
-                currentsprite++;
-            }else if(currentsprite==2){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/3.png"));
-                currentsprite++;
-            }else if(currentsprite==3){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/4.png"));
-                currentsprite++;
-            }else if(currentsprite==4){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/5.png"));
-                currentsprite++;
-            }else if(currentsprite==5){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/6.png"));
-                currentsprite++;
-            }else if(currentsprite==6){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/7.png"));
-                currentsprite++;
-            }else if(currentsprite==7){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/8.png"));
-                currentsprite++;
-            }else if(currentsprite==8||currentsprite==0){
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/Barbarian/Walk/1.png"));
-                currentsprite=1;
+    public void updateSprite(String activity) {
+        int currentSprite=0;
+
+        if(lastTime+125<System.currentTimeMillis()){
+            lastTime=System.currentTimeMillis();
+            
+            try {
+
+                if(activity=="Walk"){
+                    if((this.nameEntity=="Barbarian"&&currentSpriteWalk==8)||(this.nameEntity=="Knight"&&currentSpriteWalk==8)||(this.nameEntity=="Goblin"&&currentSpriteWalk==6)){
+                        currentSpriteWalk=0;
+                    }
+                    currentSpriteWalk++;
+                    currentSprite=this.currentSpriteWalk;
+                }else if(activity=="Attack"){
+                    if((this.nameEntity=="Barbarian"&&currentSpriteAttack==30)||(this.nameEntity=="Knight"&&currentSpriteAttack==9)||(this.nameEntity=="Goblin"&&currentSpriteAttack==7)){
+                        currentSpriteAttack=0;
+                    }
+                    currentSpriteAttack++;
+                    currentSprite=this.currentSpriteAttack;
+                }
+    
+                this.sprite= ImageIO.read(getClass().getResource("../../Assets/"+nameEntity+"/"+activity+"/"+currentSprite+".png"));
+                
+            } catch (IOException e) {
+                System.out.println("error loading image " + e.getMessage());
             }
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            System.out.println("error loading image " + e.getMessage());
-        }
+        } 
     }
 
     public void attack(MovingEntity target){
