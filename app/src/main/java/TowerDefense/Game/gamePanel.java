@@ -84,7 +84,6 @@ public class GamePanel extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
                 tower.queueCreature(10, 2);
                 text.setText(tower.getSummonQueueSize());
 
@@ -93,18 +92,7 @@ public class GamePanel extends JPanel {
 
                 //Deelay di tempo in cui il bottone è disabilitato
                 timer.start();
-=======
-
-                //tower.queueEnemy();
-                /*try {
-                    Desktop.getDesktop().browse(new URI("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
-                } catch (IOException | URISyntaxException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }*/
->>>>>>> 6f5802c199c37afbc47ba813ce73fc92690fd9bf
-            }
-            
+            }           
         });
 
         Path saveFile = Paths.get(".").toAbsolutePath().resolve("./Assets/SaveFile.txt");

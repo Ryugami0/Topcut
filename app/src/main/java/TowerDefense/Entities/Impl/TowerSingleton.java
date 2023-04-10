@@ -46,10 +46,8 @@ public class TowerSingleton implements Entity{
         try {
             this.sprite= ImageIO.read(getClass().getResource("../../Assets/Tower/1.png"));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        TowerSingleton.money = 0;
         TowerSingleton.hitbox = new Rectangle(50, 500, 100, 100);
         TowerSingleton.waveManager = new WaveManager();
     }
@@ -84,7 +82,7 @@ public class TowerSingleton implements Entity{
 
     public void queueEnemy(){
         MovingEntity enemy = new Goblin();
-        this.waveQueue.add(enemy);
+        TowerSingleton.waveQueue.add(enemy);
             //System.out.println("queued creature\n " + waveQueue.size());
     }
 
@@ -106,17 +104,13 @@ public class TowerSingleton implements Entity{
     }
 
     public void AI(){
-        for(MovingEntity entity: TowerSingleton.entities){
-            if(entity.getRowPosition(entities) != 0){
-                if(GameLogicImpl.checkCollision(entity, entities.get(entities.indexOf(entity) - 1))){
-
         MovingEntity entity;
         Entity target;
         MovingEntity ally;
-        for(int i = 0; i< this.entities.size(); i++){
-            entity = this.entities.get(i);
+        for(int i = 0; i< TowerSingleton.entities.size(); i++){
+            entity = TowerSingleton.entities.get(i);
             if(i != 0){
-                ally = this.entities.get( i - 1);
+                ally = TowerSingleton.entities.get( i - 1);
                 if(!GameLogicImpl.checkCollision(entity, ally)){
                     entity.updatePosition();
                 }else{
@@ -124,7 +118,7 @@ public class TowerSingleton implements Entity{
                 }
             }else{
                 if(enemies.size() > 0){
-                    target = this.enemies.getFirst();
+                    target = TowerSingleton.enemies.getFirst();
                     if(entity.getPosition().getX() < 500){
                         if(GameLogicImpl.checkCollision(entity, target)){
                             entity.attack(target);
@@ -146,19 +140,20 @@ public class TowerSingleton implements Entity{
                     }else{
                         entity.updateSprite("Walk");
                     }
+                            
                 }
             }
         }
-        for(int i = 0; i< this.enemies.size(); i++){
-            entity = this.enemies.get(i);
+        for(int i = 0; i< TowerSingleton.enemies.size(); i++){
+            entity = TowerSingleton.enemies.get(i);
             if(i != 0){
-                ally = this.enemies.get( i - 1);
+                ally = TowerSingleton.enemies.get( i - 1);
                 if(!GameLogicImpl.checkCollision(entity, ally)){
                     entity.updatePosition();
                 }
             }else{
                 if(entities.size() > 0){
-                    target = this.entities.getFirst();
+                    target = TowerSingleton.entities.getFirst();
                     if(GameLogicImpl.checkCollision(entity, target)){
                         entity.attack(target);
                         entity.updateSprite("Attack");
@@ -171,29 +166,7 @@ public class TowerSingleton implements Entity{
                 }
             }
         }
-        for(MovingEntity entity: TowerSingleton.enemies){
-            if(entity.getRowPosition(enemies) != 0){
-                if(GameLogicImpl.checkCollision(entity, enemies.get(enemies.indexOf(entity) - 1))){
-
-                }else{
-                    entity.updatePosition();
-                }
-            }else{
-                if(entities.size() != 0){
-                    if(GameLogicImpl.checkCollision(entity, entity.getTarget(entities))){
-                        entity.updateSprite("Attack");
-                        entity.attack(entity.getTarget(entities));
-                    target = TowerSingleton.getInstance();
-                    if(GameLogicImpl.checkCollision(entity, target)){
-                        entity.attack(target);
-                        entity.updateSprite("Attack");
-                    }else{
-                        entity.updatePosition();
-                    }
-                }
-            }
-        }
-    }
+}
 
     public void draw(Graphics g){
         for(MovingEntity entity : TowerSingleton.entities){
@@ -209,7 +182,7 @@ public class TowerSingleton implements Entity{
     }
     
     public void update(){
-        TowerSingleton.getWaveManager().spawnnWave();
+        TowerSingleton.getWaveManager().spawnWave();
         removeDeads();
         this.AI();
         if(TowerSingleton.summonQueue.size()>0){
@@ -270,7 +243,7 @@ public class TowerSingleton implements Entity{
     }
 
     public int getEntitiesNumber(){
-        return this.entities.size();
+        return TowerSingleton.entities.size();
     }
 
     public static WaveManager getWaveManager(){
@@ -282,7 +255,6 @@ public class TowerSingleton implements Entity{
             TowerSingleton.score += 5;
             TowerSingleton.money += 5;
             i = 0;
-            System.out.println(TowerSingleton.money);
         }
         else {
             i++;
