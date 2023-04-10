@@ -22,9 +22,6 @@ CAPITOLO 1
 
 
 
-        Credits:
-
-        -Enemy sprites: https://luizmelo.itch.io/monsters-creatures-fantasy
         
         
 

@@ -32,6 +32,7 @@ public class GamePanel extends JPanel {
 
     TowerSingleton tower;
     BufferedImage background;
+    JLabel money;
 
     static AudioInputStream audioStream;
     static Clip music;
@@ -118,7 +119,7 @@ public class GamePanel extends JPanel {
 
         this.add(saveScore);
         this.add(nameScore);
-        JLabel money = new JLabel();
+        this.money = new JLabel();
         money.setText(String.valueOf(TowerSingleton.getInstance().getMoney()));
         this.add(money);
     }
@@ -142,6 +143,7 @@ public class GamePanel extends JPanel {
     
     public void update(){
         this.tower.update();
+        this.money.setText(String.valueOf(TowerSingleton.getInstance().getMoney()));
     }
         
     public void paintComponent(Graphics g) {

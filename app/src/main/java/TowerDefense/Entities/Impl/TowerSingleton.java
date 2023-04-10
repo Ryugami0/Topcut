@@ -59,14 +59,18 @@ public class TowerSingleton implements Entity{
     }
 
     public void queueCreature(int cost, int type) {
-        if(this.summonQueue.size()<5){
+        if(TowerSingleton.summonQueue.size()<5){
             MovingEntity entity;
             if(type==1){
                 entity = new Barbarian();
             }else /*if(type==2)*/{
                 entity = new Knight();
             }
-            this.summonQueue.add(entity);
+            if(entity.getCost() <= TowerSingleton.getMoney())  {
+                TowerSingleton.summonQueue.add(entity);
+                TowerSingleton.money -= entity.getCost();
+            }
+            
             //System.out.println("queued creature\n " + summonQueue.size());
         }
     }
@@ -208,7 +212,7 @@ public class TowerSingleton implements Entity{
         return TowerSingleton.score;
     }
 
-    public int getMoney() {
+    public static int getMoney() {
         return TowerSingleton.money;
     }
 
