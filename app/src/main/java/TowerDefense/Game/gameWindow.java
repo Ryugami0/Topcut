@@ -6,7 +6,7 @@ import TowerDefense.Constants;
 
 public class GameWindow {
 
-     private JFrame jFrame;
+    private JFrame jFrame;
 
     public GameWindow(GamePanel gamePanel) {
         
@@ -15,9 +15,5 @@ public class GameWindow {
         jFrame.setSize((int)Constants.width, (int)Constants.height);
         jFrame.add(gamePanel);
         jFrame.setVisible(true);
-    }
-   
-    
-
-    
+    }   
 }

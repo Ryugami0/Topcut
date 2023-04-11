@@ -22,7 +22,6 @@ public abstract class MovingEntity implements Entity{
     private int currentSpriteAttack=0;
     private long lastTime=System.currentTimeMillis();
     private String nameEntity;
-    private int cost;
 
     public MovingEntity(Point startPoint, int speed, int hp, int damage, String nameEntity, int cost){
         this.position = new Point(startPoint);
@@ -33,7 +32,6 @@ public abstract class MovingEntity implements Entity{
         this.damage = damage;
         this.nameEntity=nameEntity;
         this.updateSprite("Walk");
-        this.cost = cost;
     }
 
     public void updatePosition() {
@@ -122,10 +120,5 @@ public abstract class MovingEntity implements Entity{
     @Override
     public void incomeDamage(int value) {
         this.hp -= value;
-    }
-
-    public int getCost() {
-        return this.cost;
-    }
-    
+    }    
 }

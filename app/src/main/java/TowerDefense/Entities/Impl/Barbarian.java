@@ -5,8 +5,14 @@ import TowerDefense.Entities.API.MovingEntity;
 
 public class Barbarian extends MovingEntity{
 
+    static int cost = 40;
+
     public Barbarian() {
-        super(new Point(50,500), 1, 5000, 10, "Barbarian", 40);
+        super(new Point(50,500), 1, 8000, 8, "Barbarian", cost);
+    }
+
+    public static int getCost() {
+        return cost;
     }
 
 }

@@ -9,7 +9,6 @@ public class GameLoop extends Thread{
     public GameLoop(Game game) {
         this.game = game;
         this.run();
-        
     }
     
     @Override
