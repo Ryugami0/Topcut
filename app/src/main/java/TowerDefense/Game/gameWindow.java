@@ -8,7 +8,7 @@ public class GameWindow {
 
     private JFrame jFrame;
 
-    public GameWindow(GamePanel gamePanel) {
+    public GameWindow(gamepanel gamePanel) {
         
         jFrame = new JFrame("Tower Defense");
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

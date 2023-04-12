@@ -15,7 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class GamePanel extends JPanel {
+public class gamepanel extends JPanel {
 
     private TowerSingleton tower;
     private BufferedImage background;
@@ -24,7 +24,7 @@ public class GamePanel extends JPanel {
     private static AudioInputStream audioStream;
     private static Clip music;
      
-    public GamePanel() {
+    public gamepanel() {
 
         try {
             audioStream = AudioSystem.getAudioInputStream(this.getClass().getResource("../Music/alexander-nakarada-adventure.wav"));
@@ -139,6 +139,7 @@ public class GamePanel extends JPanel {
         g.setColor(Color.RED);
         g.fillRect(50, 600, 100, 20);
         g.setColor(Color.GREEN);
-        g.fillRect(50, 600, 100*(tower.getHp()/tower.getMaxHp()), 20);
+        System.out.println(tower.getHp()/tower.getMaxHp());
+        g.fillRect(50, 600, (int) (100 * ((float)tower.getHp()/(float)tower.getMaxHp())), 20);
     } 
 }

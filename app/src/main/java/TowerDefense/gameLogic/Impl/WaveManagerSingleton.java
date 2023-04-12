@@ -38,7 +38,7 @@ public class WaveManagerSingleton {
                 tower.queueEnemy();
                 start = now;
             }
-            if(counter > 4) {
+            if(counter > 2) {
                 this.waveSize++;
                 this.timerWaves *= 1.2;
                 this.counter = 0;

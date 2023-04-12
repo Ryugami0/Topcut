@@ -31,7 +31,7 @@ public class TowerSingleton implements Entity{
 	private Queue<MovingEntity> summonQueue = new LinkedList<MovingEntity>();
 
     private TowerSingleton() {
-        this.hp = 1000;
+        this.hp = 50000;
         this.speed = 0;
         this.damage = 0;
         this.score = 0;
@@ -92,8 +92,9 @@ public class TowerSingleton implements Entity{
         }
         for(int i = 0; i < this.enemies.size(); i++){
             if(this.enemies.get(i).getHp() <= 0){
-                enemies.remove(i);
+                this.enemies.remove(i);
                 this.addKillMoney();
+                System.out.println("goblin dead");
             }
         }
     }
@@ -145,6 +146,8 @@ public class TowerSingleton implements Entity{
                 ally = this.enemies.get( i - 1);
                 if(!GameLogicImpl.checkCollision(entity, ally)){
                     entity.updatePosition();
+                }else{
+                    entity.updateSprite("Walk");
                 }
             }else{
                 if(entities.size() > 0){
@@ -157,7 +160,13 @@ public class TowerSingleton implements Entity{
                         entity.updatePosition();
                     }
                 }else{
-                    entity.updatePosition();
+                    target = TowerSingleton.getInstance();
+                    if(GameLogicImpl.checkCollision(entity, target)){
+                        entity.attack(target);
+                        entity.updateSprite("Attack");
+                    }else{
+                        entity.updatePosition();
+                    }
                 }
             }
         }
