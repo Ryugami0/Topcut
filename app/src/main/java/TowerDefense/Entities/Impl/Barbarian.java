@@ -8,7 +8,7 @@ public class Barbarian extends MovingEntity{
     static int cost = 40;
 
     public Barbarian() {
-        super(new Point(50,500), 1, 8000, 8, "Barbarian", cost);
+        super(new Point(50,500), 1, 4500, 15, "Barbarian", cost);
     }
 
     public static int getCost() {

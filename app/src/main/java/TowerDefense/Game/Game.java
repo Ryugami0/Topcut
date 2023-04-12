@@ -2,16 +2,16 @@ package TowerDefense.Game;
 
 public class Game {
 
-    private GamePanel gamePanel;
+    private gamepanel gamePanel;
     
 	public Game() {
         
-        this.gamePanel = new GamePanel();
+        this.gamePanel = new gamepanel();
         GameWindow gameWindow = new GameWindow(gamePanel); 
         
     }
 
-    public GamePanel getGamePanel() {
+    public gamepanel getGamePanel() {
         return this.gamePanel;
     }
 }
