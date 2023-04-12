@@ -1,4 +1,4 @@
-package TowerDefense.Entities.API;
+package TowerDefense.entities.api;
 
 import java.awt.Graphics;
 import java.awt.Point;

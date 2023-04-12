@@ -1,10 +1,9 @@
-package TowerDefense.Entities.Impl;
+package TowerDefense.entities.impl;
 
 import java.awt.Point;
 
 import TowerDefense.Constants;
-
-import TowerDefense.Entities.API.MovingEntity;
+import TowerDefense.entities.api.MovingEntity;
 
 public class Goblin extends MovingEntity{
 

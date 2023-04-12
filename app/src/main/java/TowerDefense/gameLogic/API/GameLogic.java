@@ -1,4 +1,4 @@
-package TowerDefense.gameLogic.API;
+package TowerDefense.gameLogic.api;
 
 public interface GameLogic {
 

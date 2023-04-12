@@ -1,7 +1,9 @@
-package TowerDefense.Entities.Impl;
+package TowerDefense.entities.impl;
 
-import TowerDefense.Entities.API.*;
-import TowerDefense.gameLogic.Impl.*;
+
+import TowerDefense.entities.api.*;
+import TowerDefense.gameLogic.impl.*;
+
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;

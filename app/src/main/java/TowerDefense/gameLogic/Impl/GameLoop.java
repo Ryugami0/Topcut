@@ -1,6 +1,8 @@
-package TowerDefense.gameLogic.Impl;
-import TowerDefense.Entities.Impl.TowerSingleton;
-import TowerDefense.Game.Game;
+package TowerDefense.gameLogic.impl;
+import TowerDefense.entities.impl.TowerSingleton;
+import TowerDefense.game.impl.EndPanel;
+import TowerDefense.game.impl.Game;
+import TowerDefense.game.impl.GamePanel;
 
 public class GameLoop extends Thread{
 
@@ -20,7 +22,8 @@ public class GameLoop extends Thread{
             game.getGamePanel().repaint();
             //System.out.println("repainted");
         }
-        System.out.print("end game");
+        Game.setGamePanel(new EndPanel());
+        GamePanel.stopMusic();
     }
 
     private void update() {
