@@ -47,4 +47,8 @@ public class WaveManagerSingleton {
             }
         }
     }
+
+    public void reset() {
+        instance = null;
+    }
 }

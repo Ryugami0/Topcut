@@ -16,9 +16,16 @@ import TowerDefense.game.api.Panel;
 
 public class EndPanel extends Panel{
 
+    private static Path saveFile;
+
     public EndPanel() {
 
-        Path saveFile = Paths.get("").toAbsolutePath().resolve("app/src/main/java/TowerDefense/Assets/SaveFile.txt");
+
+        JButton playAgain = new JButton("Play again");
+        playAgain.addActionListener((arg) -> Game.setGamePanel(new MenuPanel()));
+        this.add(playAgain);
+
+        saveFile = Paths.get("").toAbsolutePath().resolve("app/src/main/java/TowerDefense/Assets/SaveFile.txt");
         JButton saveScore = new JButton("Save Score");
         JTextField nameScore = new JTextField("             ");
         TowerSingleton tower = TowerSingleton.getInstance();

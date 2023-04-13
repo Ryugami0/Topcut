@@ -34,8 +34,9 @@ public class GamePanel extends Panel{
         } catch (Exception e) { 
             System.out.println(e);    
         }
-    
-        this.tower = TowerSingleton.getInstance();
+
+        tower = TowerSingleton.getInstance();
+        tower.resetGame();
         
         try{
             this.background = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/Game.jpg"));
