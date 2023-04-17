@@ -21,9 +21,9 @@ public class EndPanel extends Panel{
     public EndPanel() {
 
 
-        JButton playAgain = new JButton("Play again");
-        playAgain.addActionListener((arg) -> Game.setGamePanel(new MenuPanel()));
-        this.add(playAgain);
+        JButton Exit = new JButton("Exit");
+        Exit.addActionListener((arg) -> System.exit(0));
+        this.add(Exit);
 
         saveFile = Paths.get("").toAbsolutePath().resolve("app/src/main/java/TowerDefense/Assets/SaveFile.txt");
         JButton saveScore = new JButton("Save Score");
@@ -40,9 +40,10 @@ public class EndPanel extends Panel{
                         nameScore.getText() +
                         String.valueOf(tower.getScore()), 
                         StandardCharsets.UTF_8);
-                    } catch (IOException e) {
+                } catch (IOException e) {
                     e.printStackTrace();
-                    }
+                }
+                saveScore.setEnabled(false);
             }
             
         });

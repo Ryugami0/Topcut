@@ -264,12 +264,6 @@ public class TowerSingleton implements Entity{
     public int getMaxHp() {
         return this.maxHp;
     }
-
-    public void resetGame() {
-        WaveManagerSingleton.getInstance().reset();
-        instance = null;
-        getInstance();
-    }
 }
 
 

@@ -15,7 +15,7 @@ import java.awt.image.BufferedImage;
 
 public class GamePanel extends Panel{
 
-    private TowerSingleton tower;
+    private TowerSingleton tower = TowerSingleton.getInstance();;
     private BufferedImage background;
     private JLabel money;
     private JLabel score;
@@ -34,9 +34,6 @@ public class GamePanel extends Panel{
         } catch (Exception e) { 
             System.out.println(e);    
         }
-
-        tower = TowerSingleton.getInstance();
-        tower.resetGame();
         
         try{
             this.background = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/Game.jpg"));
@@ -135,7 +132,7 @@ public class GamePanel extends Panel{
         g.setColor(Color.RED);
         g.fillRect(50, 600, 100, 20);
         g.setColor(Color.GREEN);
-        g.fillRect(50, 600, 100*(tower.getHp()/tower.getMaxHp()), 20);
+        g.fillRect(50, 600, (int)(100*((float)tower.getHp()/(float)tower.getMaxHp())), 20);
     } 
     
     public static void stopMusic() {

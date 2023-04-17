@@ -16,10 +16,10 @@ public class WaveManagerSingleton {
     private WaveManagerSingleton() {
         this.tower = TowerSingleton.getInstance();
         this.start = System.currentTimeMillis();
+        this.waveSize = random.nextInt(2) + 2;
         for(int i = 0; i < waveSize; i++){
             tower.queueEnemy();
         }
-        this.waveSize = random.nextInt(2) + 2;
         this.counter = 0;
         this.timerWaves = 10000;
     }
@@ -46,9 +46,5 @@ public class WaveManagerSingleton {
                 counter++;
             }
         }
-    }
-
-    public void reset() {
-        instance = null;
     }
 }
