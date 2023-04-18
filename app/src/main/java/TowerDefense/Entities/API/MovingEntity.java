@@ -18,9 +18,9 @@ public abstract class MovingEntity implements Entity{
     private int damage;
     private Entity target;
     private BufferedImage sprite;
-    private int currentSpriteWalk=0;
-    private int currentSpriteAttack=0;
-    private long lastTime=System.currentTimeMillis();
+    private int currentSpriteWalk = 0;
+    private int currentSpriteAttack = 0;
+    private long lastTime = System.currentTimeMillis();
     private String nameEntity;
 
     public MovingEntity(Point startPoint, int speed, int hp, int damage, String nameEntity, int cost){
@@ -51,7 +51,6 @@ public abstract class MovingEntity implements Entity{
             lastTime=System.currentTimeMillis();
             
             try {
-
                 if(activity=="Walk"){
                     if((this.nameEntity=="Barbarian"&&currentSpriteWalk==8)||(this.nameEntity=="Knight"&&currentSpriteWalk==8)||(this.nameEntity=="Goblin"&&currentSpriteWalk==6)){
                         currentSpriteWalk=0;
@@ -65,17 +64,14 @@ public abstract class MovingEntity implements Entity{
                     currentSpriteAttack++;
                     currentSprite=this.currentSpriteAttack;
                 }
-    
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/"+nameEntity+"/"+activity+"/"+currentSprite+".png"));
-                
+                this.sprite= ImageIO.read(getClass().getResource("../../Assets/"+nameEntity+"/"+activity+"/"+currentSprite+".png"));  
             } catch (IOException e) {
                 System.out.println("error loading image " + e.getMessage());
             }
         } 
     }
 
-    public void attack(Entity target){
-        //loop sprite
+    public void attack(Entity target) {
         this.target = target;
         this.target.incomeDamage(this.damage);
     }
@@ -90,7 +86,6 @@ public abstract class MovingEntity implements Entity{
 
     public void draw(Graphics g){
         g.drawImage(this.sprite, this.getPosition().x, this.getPosition().y, null);
-        //System.out.println("MovingEntity drawed");
     }
 
     public Rectangle getHitbox(){

@@ -14,8 +14,8 @@ public class MenuPanel extends Panel{
 
         JButton startGame = new JButton("Start game");
         startGame.addActionListener((arg) -> Game.setGamePanel(new GamePanel()));
-        JButton bestScores = new JButton("Best Scores");
 
+        JButton bestScores = new JButton("Best Scores");
         bestScores.addActionListener((arg) -> {
             try {
                 Desktop.getDesktop().open(Paths.get("").toAbsolutePath().resolve("app/src/main/java/TowerDefense/Assets/SaveFile.txt").toFile());
@@ -24,9 +24,12 @@ public class MenuPanel extends Panel{
             }
         });
 
+        JButton rules = new JButton("Rules");
+        rules.addActionListener((arg) -> Game.setGamePanel(new RulePanel())); 
+
         this.add(startGame);
         this.add(bestScores);
-
+        this.add(rules);
     }
 
     
