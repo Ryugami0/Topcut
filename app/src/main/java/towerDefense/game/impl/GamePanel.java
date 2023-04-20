@@ -1,11 +1,11 @@
-package TowerDefense.game.impl;
+package towerDefense.game.impl;
 
 import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
 import javax.swing.*;
 
-import TowerDefense.entities.impl.*;
-import TowerDefense.game.api.Panel;
+import towerDefense.entities.impl.*;
+import towerDefense.game.api.Panel;
 
 import java.awt.Color;
 import java.awt.Graphics;

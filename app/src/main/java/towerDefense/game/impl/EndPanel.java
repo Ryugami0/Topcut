@@ -1,4 +1,4 @@
-package TowerDefense.game.impl;
+package towerDefense.game.impl;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,8 +11,8 @@ import java.nio.file.Paths;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import TowerDefense.entities.impl.TowerSingleton;
-import TowerDefense.game.api.Panel;
+import towerDefense.entities.impl.TowerSingleton;
+import towerDefense.game.api.Panel;
 
 public class EndPanel extends Panel{
 

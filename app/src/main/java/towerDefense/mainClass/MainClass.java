@@ -1,7 +1,7 @@
-package TowerDefense.mainClass;
+package towerDefense.mainClass;
 
-import TowerDefense.game.impl.Game;
-import TowerDefense.gameLogic.impl.GameLoop;
+import towerDefense.game.impl.Game;
+import towerDefense.gameLogic.impl.GameLoop;
 
 public class MainClass {
     public static void main(String[] args) {

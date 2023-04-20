@@ -1,6 +1,6 @@
-package TowerDefense.game.impl;
+package towerDefense.game.impl;
 
-import TowerDefense.game.api.Panel;
+import towerDefense.game.api.Panel;
 
 public class Game {
 

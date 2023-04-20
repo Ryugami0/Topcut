@@ -1,4 +1,4 @@
-package TowerDefense.game.api;
+package towerDefense.game.api;
 
 import javax.swing.JPanel;
 

@@ -1,8 +1,8 @@
-package TowerDefense.entities.impl;
+package towerDefense.entities.impl;
 
 
-import TowerDefense.entities.api.*;
-import TowerDefense.gameLogic.impl.*;
+import towerDefense.entities.api.*;
+import towerDefense.gameLogic.impl.*;
 
 import java.awt.Graphics;
 import java.awt.Point;
@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 import javax.imageio.ImageIO;
-import TowerDefense.gameLogic.impl.AI;;
+import towerDefense.gameLogic.impl.AI;;
 
 
 public class TowerSingleton implements Entity{

@@ -1,4 +1,4 @@
-package TowerDefense.entities.api;
+package towerDefense.entities.api;
 
 import java.awt.Point;
 import java.awt.Rectangle;

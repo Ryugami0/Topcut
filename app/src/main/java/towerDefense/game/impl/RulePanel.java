@@ -1,10 +1,10 @@
-package TowerDefense.game.impl;
+package towerDefense.game.impl;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
-import TowerDefense.game.api.Panel;
+import towerDefense.game.api.Panel;
 
 public class RulePanel extends Panel{
 

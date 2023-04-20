@@ -1,8 +1,8 @@
-package TowerDefense.entities.impl;
+package towerDefense.entities.impl;
 
 import java.awt.Point;
 
-import TowerDefense.entities.api.MovingEntity;
+import towerDefense.entities.api.MovingEntity;
 
 public class Knight extends MovingEntity{
 

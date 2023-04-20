@@ -1,8 +1,8 @@
-package TowerDefense.gameLogic.impl;
+package towerDefense.gameLogic.impl;
 
-import TowerDefense.entities.api.Entity;
-import TowerDefense.entities.api.MovingEntity;
-import TowerDefense.entities.impl.TowerSingleton;
+import towerDefense.entities.api.Entity;
+import towerDefense.entities.api.MovingEntity;
+import towerDefense.entities.impl.TowerSingleton;
 
 public class AI {
 

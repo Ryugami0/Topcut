@@ -1,4 +1,4 @@
-package TowerDefense;
+package towerDefense;
 
 import java.awt.Toolkit;
 

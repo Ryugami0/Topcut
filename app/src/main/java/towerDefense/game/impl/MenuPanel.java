@@ -1,7 +1,7 @@
-package TowerDefense.game.impl;
+package towerDefense.game.impl;
 
 import javax.swing.JButton;
-import TowerDefense.game.api.Panel;
+import towerDefense.game.api.Panel;
 
 import java.awt.Desktop;
 import java.io.IOException;

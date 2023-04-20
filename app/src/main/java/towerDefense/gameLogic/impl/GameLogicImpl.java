@@ -1,12 +1,12 @@
-package TowerDefense.gameLogic.impl;
+package towerDefense.gameLogic.impl;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.awt.Point;
 
-import TowerDefense.entities.api.Entity;
-import TowerDefense.entities.api.MovingEntity;
-import TowerDefense.gameLogic.api.GameLogic;
+import towerDefense.entities.api.Entity;
+import towerDefense.entities.api.MovingEntity;
+import towerDefense.gameLogic.api.GameLogic;
 
 public class GameLogicImpl implements GameLogic{
     

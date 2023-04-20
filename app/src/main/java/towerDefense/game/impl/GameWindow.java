@@ -1,9 +1,9 @@
-package TowerDefense.game.impl;
+package towerDefense.game.impl;
 
 import javax.swing.JFrame;
 
-import TowerDefense.Constants;
-import TowerDefense.game.api.Panel;
+import towerDefense.Constants;
+import towerDefense.game.api.Panel;
 
 public class GameWindow {
 

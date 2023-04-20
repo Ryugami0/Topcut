@@ -1,7 +1,7 @@
-package TowerDefense.gameLogic.impl;
+package towerDefense.gameLogic.impl;
 import java.util.Random;
 
-import TowerDefense.entities.impl.TowerSingleton;
+import towerDefense.entities.impl.TowerSingleton;
 
 public class WaveManagerSingleton {
     long start;
