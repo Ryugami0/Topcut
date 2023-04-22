@@ -181,7 +181,7 @@ public class TowerSingleton implements Entity{
     }
 
     private void addKillMoney() {
-        this.money += 10;
+        this.money += 20;
     }
 
     public int getMaxHp() {
