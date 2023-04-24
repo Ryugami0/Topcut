@@ -23,7 +23,8 @@ public class GameLoop extends Thread{
             //System.out.println("repainted");
         }
         Game.setGamePanel(new EndPanel());
-        GamePanel.stopMusic();
+        GamePanel gamePanel=new GamePanel();
+        gamePanel.stopMusic();
     }
 
     private void update() {

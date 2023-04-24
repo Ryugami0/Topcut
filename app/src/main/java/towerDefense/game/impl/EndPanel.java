@@ -20,6 +20,8 @@ public class EndPanel extends Panel{
 
     public EndPanel() {
 
+        super.startMusic("GameOver");
+        super.startMusic("EndPanel");
 
         JButton Exit = new JButton("Exit");
         Exit.addActionListener((arg) -> System.exit(0));

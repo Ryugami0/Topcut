@@ -19,21 +19,10 @@ public class GamePanel extends Panel{
     private BufferedImage background;
     private JLabel money;
     private JLabel score;
-
-    private static AudioInputStream audioStream;
-    private static Clip music;
      
     public GamePanel() {
 
-        try {
-            audioStream = AudioSystem.getAudioInputStream(this.getClass().getResource("../../music/alexander-nakarada-adventure.wav"));
-            music = AudioSystem.getClip();
-            music.open(audioStream);
-            music.setFramePosition(0);
-            music.start();
-        } catch (Exception e) { 
-            System.out.println(e);    
-        }
+        super.startMusic("GamePanel");
         
         try{
             this.background = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/Game.jpg"));
@@ -81,8 +70,8 @@ public class GamePanel extends Panel{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                Game.setGamePanel(new EndPanel());
                 stopMusic();
+                Game.setGamePanel(new EndPanel());
             }
             
         });
@@ -135,7 +124,7 @@ public class GamePanel extends Panel{
         g.fillRect(50, 600, (int)(100*((float)tower.getHp()/(float)tower.getMaxHp())), 20);
     } 
     
-    public static void stopMusic() {
-        music.stop();
+    public void stopMusic() {
+        super.stopMusic();
     }
 }
