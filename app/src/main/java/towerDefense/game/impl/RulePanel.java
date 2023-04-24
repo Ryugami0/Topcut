@@ -12,6 +12,8 @@ public class RulePanel extends Panel{
 
     public RulePanel() {
 
+        super.startMusic("RulePanel");
+
         try{
             this.background = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/Rules.jpg"));
         }catch(Exception e){
@@ -19,7 +21,11 @@ public class RulePanel extends Panel{
         }
 
         JButton goBack = new JButton("Go Back");
-        goBack.addActionListener((arg) -> Game.setGamePanel(new MenuPanel()));
+        goBack.addActionListener((arg) -> {
+            stopMusic();
+            super.startMusic("Button");
+            Game.setGamePanel(new MenuPanel());
+        });
 
         this.add(goBack);
     }
@@ -29,4 +35,8 @@ public class RulePanel extends Panel{
         g.drawImage(background, 0, 0, null);
     }
     
+    public void stopMusic() {
+        super.stopMusic();
+    }
+
 }
