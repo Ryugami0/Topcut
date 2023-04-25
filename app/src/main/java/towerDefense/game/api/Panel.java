@@ -2,6 +2,8 @@ package towerDefense.game.api;
 
 import javax.swing.JPanel;
 
+import towerDefense.Constants;
+
 public abstract class Panel extends JPanel {
 
     Music music =new Music();
@@ -11,18 +13,17 @@ public abstract class Panel extends JPanel {
         
     }
 
-    public void startMusic(String typeOfSound){
-        if(typeOfSound=="MenuPanel" || typeOfSound=="RulePanel"){
+    public void startSound(String typeOfSound){
+        if(typeOfSound==Constants.menuPanel || typeOfSound==Constants.rulePanel){
             music.startMusic("alexander-nakarada-adventure");
-        }else if(typeOfSound=="GamePanel"){
+        }else if(typeOfSound==Constants.gamePanel){
             music.startMusic("WereBackToFight");
-        }else if(typeOfSound=="EndPanel"){
+        }else if(typeOfSound==Constants.endPanel){
             music.startMusic("Snowfall");
-        }else if(typeOfSound=="Button"){
+        }else if(typeOfSound==Constants.buttonSFX){
             SFX.startSFX("ButtonSound");
-        }else if(typeOfSound=="GameOver"){
+        }else if(typeOfSound==Constants.gameOverSFX){
             SFX.startSFX("mixkit-funny-fail-low-tone-2876");
-            //https://mixkit.co/free-sound-effects/game-over/
         }
     }
 

@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+
+import towerDefense.Constants;
 import towerDefense.game.api.Panel;
 
 public class RulePanel extends Panel{
@@ -12,7 +14,7 @@ public class RulePanel extends Panel{
 
     public RulePanel() {
 
-        super.startMusic("RulePanel");
+        super.startSound(Constants.rulePanel);
 
         try{
             this.background = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/Rules.jpg"));
@@ -23,8 +25,8 @@ public class RulePanel extends Panel{
         JButton goBack = new JButton("Go Back");
         goBack.addActionListener((arg) -> {
             stopMusic();
-            super.startMusic("Button");
-            Game.setGamePanel(new MenuPanel());
+            super.startSound(Constants.buttonSFX);
+            Game.setCurrentPanel(new MenuPanel());
         });
 
         this.add(goBack);

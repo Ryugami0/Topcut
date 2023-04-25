@@ -4,22 +4,22 @@ import towerDefense.game.api.Panel;
 
 public class Game {
 
-    private static Panel panel;
+    private static Panel currentPanel;
     private static GameWindow gameWindow;
     
 	public Game() {
         
-        panel = new MenuPanel();
-        gameWindow = new GameWindow(panel); 
+        currentPanel = new MenuPanel();
+        gameWindow = new GameWindow(currentPanel); 
         
     }
 
-    public Panel getGamePanel() {
-        return panel;
+    public Panel getCurrentPanel() {
+        return currentPanel;
     }
 
-    public static void setGamePanel(Panel panel1) {
-        panel = panel1;
-        gameWindow.changeWindow(panel1);
+    public static void setCurrentPanel(Panel panel) {
+        currentPanel = panel;
+        gameWindow.changeWindow(panel);
     }
 }
