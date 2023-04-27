@@ -26,7 +26,7 @@ public abstract class MovingEntity implements Entity{
     public MovingEntity(Point startPoint, int speed, int hp, int damage, String nameEntity, int cost){
         this.position = new Point(startPoint);
         this.hitbox = new Rectangle(startPoint);
-        this.hitbox.setSize(50, 150);
+        this.hitbox.setSize(80, 80);
         this.speed = speed;
         this.hp = hp;
         this.damage = damage;
@@ -64,7 +64,7 @@ public abstract class MovingEntity implements Entity{
                     currentSpriteAttack++;
                     currentSprite=this.currentSpriteAttack;
                 }
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/"+nameEntity+"/"+activity+"/"+currentSprite+".png"));  
+                this.sprite = ImageIO.read(getClass().getResource("../../Assets/"+nameEntity+"/"+activity+"/"+currentSprite+"/"+currentSprite+".png"));  
             } catch (IOException e) {
                 System.out.println("error loading image " + e.getMessage());
             }
@@ -86,6 +86,7 @@ public abstract class MovingEntity implements Entity{
 
     public void draw(Graphics g){
         g.drawImage(this.sprite, this.getPosition().x, this.getPosition().y, null);
+        g.drawRect((int)this.getHitbox().getX(), (int)this.getHitbox().getY(), (int)this.getHitbox().getWidth(), (int)this.getHitbox().getHeight());
     }
 
     public Rectangle getHitbox(){

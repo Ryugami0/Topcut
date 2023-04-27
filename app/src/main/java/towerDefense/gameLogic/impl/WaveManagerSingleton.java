@@ -18,7 +18,7 @@ public class WaveManagerSingleton {
         this.start = System.currentTimeMillis();
         this.waveSize = random.nextInt(2) + 2;
         for(int i = 0; i < waveSize; i++){
-            tower.queueEnemy();
+            tower.summonEnemy();
         }
         this.counter = 0;
         this.timerWaves = 10000;
@@ -35,7 +35,7 @@ public class WaveManagerSingleton {
         long now = System.currentTimeMillis();
         if((now - start) >= timerWaves){
             for(int i = 0; i < waveSize; i++){
-                tower.queueEnemy();
+                tower.summonEnemy();
                 start = now;
             }
             if(counter > 2) {

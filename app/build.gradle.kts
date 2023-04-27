@@ -28,7 +28,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("TowerDefense.MainClass.MainClass")
+    mainClass.set("towerDefense.mainClass.MainClass")
 }
 
 tasks.named<Test>("test") {

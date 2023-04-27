@@ -8,7 +8,7 @@ import towerDefense.entities.api.MovingEntity;
 public class Goblin extends MovingEntity{
 
     public Goblin() {
-        super(new Point((int)Constants.width-50 ,430), -2 , 2500, 8,"Goblin", 0);
+        super(new Point((int)Constants.width-50 ,500), -2 , 2500, 8,"Goblin", 0);
     }
 
 }

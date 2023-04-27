@@ -41,8 +41,7 @@ public class GamePanel extends Panel{
         summonBarbarian.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                tower.queueCreature(Barbarian.getCost(), 1);
-
+                tower.summonEntity(Barbarian.getCost(), 1);
                 summonBarbarian.setEnabled(false);
                 summonKnight.setEnabled(false);
 
@@ -55,7 +54,7 @@ public class GamePanel extends Panel{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                tower.queueCreature(Knight.getCost(), 2);
+                tower.summonEntity(Knight.getCost(), 2);
 
                 summonBarbarian.setEnabled(false);
                 summonKnight.setEnabled(false);
