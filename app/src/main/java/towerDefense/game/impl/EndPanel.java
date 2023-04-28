@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+import towerDefense.Constants;
 import towerDefense.entities.impl.TowerSingleton;
 import towerDefense.game.api.Panel;
 
@@ -20,11 +21,11 @@ public class EndPanel extends Panel{
 
     public EndPanel() {
 
-        super.startMusic("GameOver");
-        super.startMusic("EndPanel");
+        super.startSound(Constants.gameOverSFX);
+        super.startSound(Constants.endPanel);
 
         JButton Exit = new JButton("Exit");
-        Exit.addActionListener((arg) -> System.exit(0));
+        Exit.addActionListener((arg) ->System.exit(0));
         this.add(Exit);
 
         saveFile = Paths.get("").toAbsolutePath().resolve("app/src/main/java/TowerDefense/Assets/SaveFile.txt");

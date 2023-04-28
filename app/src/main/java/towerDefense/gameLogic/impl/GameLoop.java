@@ -19,16 +19,14 @@ public class GameLoop extends Thread{
         while (TowerSingleton.getInstance().getHp() >= 0) {
             //System.out.println("running");
             update();
-            game.getGamePanel().repaint();
+            game.getCurrentPanel().repaint();
             //System.out.println("repainted");
         }
-        Game.setGamePanel(new EndPanel());
-        GamePanel gamePanel=new GamePanel();
-        gamePanel.stopMusic();
+        Game.setCurrentPanel(new EndPanel());
     }
 
     private void update() {
-        game.getGamePanel().update();
+        game.getCurrentPanel().update();
 
         try {
             GameLoop.sleep((long)(10));

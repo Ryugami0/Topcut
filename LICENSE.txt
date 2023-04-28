@@ -26,11 +26,15 @@ Musica
 	"Snowfall" by Scott Buckley
 	https://soundcloud.com/scottbuckley/snowfall-cc-by
 
+SFX
+	GAME OVER
+	https://mixkit.co/free-sound-effects/game-over/
+
 War-of-Ages by mlqh
-https://github.com/mlqh/War-of-Ages
+	https://github.com/mlqh/War-of-Ages
 
 Sprite
-https://lionheart963.itch.io/goblin-sprite
+	https://lionheart963.itch.io/goblin-sprite
 
 ---------------------------------------------------------------------------------
 
@@ -62,8 +66,12 @@ Music
 	"Snowfall" by Scott Buckley
 	https://soundcloud.com/scottbuckley/snowfall-cc-by
 
+SFX
+	GAME OVER
+	https://mixkit.co/free-sound-effects/game-over/
+
 War-of-Ages by mlqh
-https://github.com/mlqh/War-of-Ages
+	https://github.com/mlqh/War-of-Ages
 
 Sprite
-https://lionheart963.itch.io/goblin-sprite
+	https://lionheart963.itch.io/goblin-sprite

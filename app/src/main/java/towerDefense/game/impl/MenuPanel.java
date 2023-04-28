@@ -2,6 +2,7 @@ package towerDefense.game.impl;
 
 import javax.swing.JButton;
 
+import towerDefense.Constants;
 import towerDefense.game.api.Panel;
 
 import java.awt.Desktop;
@@ -13,19 +14,19 @@ public class MenuPanel extends Panel{
 
     public MenuPanel() {
 
-        super.startMusic("MenuPanel");
+        super.startSound(Constants.menuPanel);
 
         JButton startGame = new JButton("Start game");
         startGame.addActionListener((arg) -> {
             stopMusic();
-            super.startMusic("Button");
-            Game.setGamePanel(new GamePanel());
+            super.startSound(Constants.buttonSFX);
+            Game.setCurrentPanel(new GamePanel());
         });
 
         JButton bestScores = new JButton("Best Scores");
         bestScores.addActionListener((arg) -> {
             try {
-                super.startMusic("Button");
+                super.startSound(Constants.buttonSFX);
                 Desktop.getDesktop().open(Paths.get("").toAbsolutePath().resolve("app/src/main/java/TowerDefense/Assets/SaveFile.txt").toFile());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -35,8 +36,8 @@ public class MenuPanel extends Panel{
         JButton rules = new JButton("Rules");
         rules.addActionListener((arg) -> {
             stopMusic();
-            super.startMusic("Button");
-            Game.setGamePanel(new RulePanel());
+            super.startSound(Constants.buttonSFX);
+            Game.setCurrentPanel(new RulePanel());
         }); 
 
         this.add(startGame);

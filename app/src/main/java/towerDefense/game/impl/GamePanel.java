@@ -5,6 +5,7 @@ import javax.sound.sampled.*;
 import javax.swing.*;
 import javax.swing.event.AncestorListener;
 
+import towerDefense.Constants;
 import towerDefense.entities.impl.*;
 import towerDefense.game.api.Panel;
 
@@ -24,7 +25,7 @@ public class GamePanel extends Panel{
      
     public GamePanel() {
 
-        super.startMusic("GamePanel");
+        super.startSound(Constants.gamePanel);
         
         try{
             this.background = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/Game.jpg"));
@@ -106,7 +107,7 @@ public class GamePanel extends Panel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 stopMusic();
-                Game.setGamePanel(new EndPanel());
+                Game.setCurrentPanel(new EndPanel());
             }
             
         });
