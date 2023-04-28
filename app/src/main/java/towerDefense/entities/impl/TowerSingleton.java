@@ -10,7 +10,6 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Queue;
 import javax.imageio.ImageIO;
 import towerDefense.gameLogic.impl.AI;;
 
@@ -32,6 +31,7 @@ public class TowerSingleton implements Entity{
 	//private Queue<MovingEntity> waveQueue = new LinkedList<MovingEntity>();
     private LinkedList<MovingEntity> entities = new LinkedList<MovingEntity>();
 	//private Queue<MovingEntity> summonQueue = new LinkedList<MovingEntity>();
+    private Turret turret;
     private AI ai = new AI();
 
     private TowerSingleton() {
@@ -77,14 +77,20 @@ public class TowerSingleton implements Entity{
 		MovingEntity entity;
             if(type==1){
                 entity = new Barbarian();
-            }else /*if(type==2)*/{
+            }else if(type==2){
                 entity = new Knight();
+            }else /*if(type == 3) */{
+                entity = new Archer();
             }
             if(cost <= this.getMoney())  {
                 this.entities.add(entity);
                 this.money -= cost;
             } 
 	}
+
+    public void buildTurret(int cost, int type){
+        this.turret = new Turret();
+    }
 
     /*public void queueEnemy(){
         MovingEntity enemy = new Goblin();
@@ -107,6 +113,9 @@ public class TowerSingleton implements Entity{
                 this.addKillMoney();
             }
         }
+        if(this.turret != null && this.turret.getHp() <= 0){
+            this.turret = null;
+        }
     }
 
     public void draw(Graphics g){
@@ -116,9 +125,12 @@ public class TowerSingleton implements Entity{
         for(MovingEntity enemy : this.enemies){
             enemy.draw(g);
         }
+        if(this.turret != null){
+            this.turret.draw(g);
+        }
 
         g.drawImage(this.sprite, (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
-        g.drawRect((int)this.getHitbox().getX(), (int)this.getHitbox().getY(), (int)this.getHitbox().getWidth(), (int)this.getHitbox().getHeight());
+        //g.drawRect((int)this.getHitbox().getX(), (int)this.getHitbox().getY(), (int)this.getHitbox().getWidth(), (int)this.getHitbox().getHeight());
     }
     
     public void update(){
@@ -205,6 +217,10 @@ public class TowerSingleton implements Entity{
 
     public LinkedList<MovingEntity> getEnemies() {
         return this.enemies;
+    }
+
+    public Turret getTurret(){
+        return this.turret;
     }
 }
 
