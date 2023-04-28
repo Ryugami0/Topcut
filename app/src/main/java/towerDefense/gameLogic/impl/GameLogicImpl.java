@@ -6,6 +6,7 @@ import java.awt.Point;
 
 import towerDefense.entities.api.Entity;
 import towerDefense.entities.api.MovingEntity;
+import towerDefense.entities.api.RangedEntity;
 import towerDefense.gameLogic.api.GameLogic;
 
 public class GameLogicImpl implements GameLogic{
@@ -19,6 +20,10 @@ public class GameLogicImpl implements GameLogic{
 
     public static boolean checkCollision(MovingEntity a, Entity b){
         return a.getHitbox().intersects(b.getHitbox());
+    }
+
+    public static boolean checkRange(RangedEntity a, Entity b){
+        return a.getRangeBox().intersects(b.getHitbox());
     }
 
 }

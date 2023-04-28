@@ -26,7 +26,7 @@ public abstract class MovingEntity implements Entity{
     public MovingEntity(Point startPoint, int speed, int hp, int damage, String nameEntity, int cost){
         this.position = new Point(startPoint);
         this.hitbox = new Rectangle(startPoint);
-        this.hitbox.setSize(50, 150);
+        this.hitbox.setSize(80, 80);
         this.speed = speed;
         this.hp = hp;
         this.damage = damage;
@@ -51,20 +51,32 @@ public abstract class MovingEntity implements Entity{
             lastTime=System.currentTimeMillis();
             
             try {
-                if(activity=="Walk"){
-                    if((this.nameEntity=="Barbarian"&&currentSpriteWalk==8)||(this.nameEntity=="Knight"&&currentSpriteWalk==8)||(this.nameEntity=="Goblin"&&currentSpriteWalk==6)){
-                        currentSpriteWalk=0;
+                if(this.nameEntity == "Turret"){
+                    if(activity=="Attack"){
+                        if(this.currentSpriteAttack==6){
+                            currentSpriteAttack=0;
+                        }
+                        currentSpriteAttack++;
+                        currentSprite = this.currentSpriteAttack;
+                    }else{
+                        currentSprite = 1;
                     }
-                    currentSpriteWalk++;
-                    currentSprite=this.currentSpriteWalk;
-                }else if(activity=="Attack"){
-                    if((this.nameEntity=="Barbarian"&&currentSpriteAttack==30)||(this.nameEntity=="Knight"&&currentSpriteAttack==9)||(this.nameEntity=="Goblin"&&currentSpriteAttack==7)){
-                        currentSpriteAttack=0;
+                }else{
+                    if(activity=="Walk"){
+                        if((this.nameEntity=="Barbarian"&&currentSpriteWalk==8)||(this.nameEntity=="Knight"&&currentSpriteWalk==8)||(this.nameEntity=="Goblin"&&currentSpriteWalk==6)||(this.nameEntity=="Archer"&&currentSpriteWalk==8)){
+                            currentSpriteWalk=0;
+                        }
+                        currentSpriteWalk++;
+                        currentSprite=this.currentSpriteWalk;
+                    }else if(activity=="Attack"){
+                        if((this.nameEntity=="Barbarian"|| this.nameEntity == "Archer" &&currentSpriteAttack==30)||(this.nameEntity=="Knight"&&currentSpriteAttack==9)||(this.nameEntity=="Goblin"&&currentSpriteAttack==7)||(this.nameEntity=="Archer"&&currentSpriteAttack==17)){
+                            currentSpriteAttack=0;
+                        }
+                        currentSpriteAttack++;
+                        currentSprite=this.currentSpriteAttack;
                     }
-                    currentSpriteAttack++;
-                    currentSprite=this.currentSpriteAttack;
                 }
-                this.sprite= ImageIO.read(getClass().getResource("../../Assets/"+nameEntity+"/"+activity+"/"+currentSprite+".png"));  
+                this.sprite = ImageIO.read(getClass().getResource("../../Assets/"+nameEntity+"/"+activity+"/"+currentSprite+"/"+currentSprite+".png"));  
             } catch (IOException e) {
                 System.out.println("error loading image " + e.getMessage());
             }
@@ -86,10 +98,19 @@ public abstract class MovingEntity implements Entity{
 
     public void draw(Graphics g){
         g.drawImage(this.sprite, this.getPosition().x, this.getPosition().y, null);
+        //g.drawRect((int)this.getHitbox().getX(), (int)this.getHitbox().getY(), (int)this.getHitbox().getWidth(), (int)this.getHitbox().getHeight());
     }
 
     public Rectangle getHitbox(){
         return this.hitbox;
+    }
+
+    public BufferedImage getSprite(){
+        return this.sprite;
+    }
+
+    public String getNameEntity(){
+        return this.nameEntity;
     }
 
     @Override
@@ -115,5 +136,9 @@ public abstract class MovingEntity implements Entity{
     @Override
     public void incomeDamage(int value) {
         this.hp -= value;
-    }    
+    }  
+    
+    public void resizeHitbox(int x, int y){
+        this.hitbox.setSize(x, y);
+    }
 }
