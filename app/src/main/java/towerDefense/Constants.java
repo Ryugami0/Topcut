@@ -1,12 +1,10 @@
 package towerDefense;
 
-import java.awt.Toolkit;
-
 public interface Constants {
     
     //Grandezza schermo
-    double width=Toolkit.getDefaultToolkit().getScreenSize().getWidth()/1.6;
-    double height=Toolkit.getDefaultToolkit().getScreenSize().getHeight()/1.6;
+    double width=Calc.calcWidth();
+    double height=Calc.calcHeight();
 
     //Stringhe suoni
     String menuPanel="MenuPanel";
@@ -15,4 +13,17 @@ public interface Constants {
     String endPanel="EndPanel";
     String buttonSFX="ButtonSFX";
     String gameOverSFX="GameOverSFX";
+
+    //Stringhe nomi entità
+    String barbarian="Barbarian";
+    String knight="Knight";
+    String goblin="Goblin";
+    String archer="Archer";
+    String turret="Turret";
+    String arrow="Arrow";
+    String boulder="Boulder";
+
+    //Stringhe attività
+    String walk= "Walk";
+    String attack = "Attack";
 }

@@ -9,6 +9,9 @@ import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
+import towerDefense.Constants;
+import towerDefense.game.api.Sfx;
+
 public abstract class MovingEntity implements Entity{
 
     private Point position; //upper left position of the hitbox
@@ -21,6 +24,7 @@ public abstract class MovingEntity implements Entity{
     private int currentSpriteWalk = 0;
     private int currentSpriteAttack = 0;
     private long lastTime = System.currentTimeMillis();
+    private long lastTimeAttack=lastTime;
     private String nameEntity;
 
     public MovingEntity(Point startPoint, int speed, int hp, int damage, String nameEntity, int cost){
@@ -31,13 +35,13 @@ public abstract class MovingEntity implements Entity{
         this.hp = hp;
         this.damage = damage;
         this.nameEntity=nameEntity;
-        this.updateSprite("Walk");
+        this.updateSprite(Constants.walk);
     }
 
     public void updatePosition() {
         this.position.setLocation(this.position.getX() + this.speed, this.position.getY());
         this.hitbox.setLocation((int)this.hitbox.getX() + this.speed, (int)this.hitbox.getY());
-        this.updateSprite("Walk");
+        this.updateSprite(Constants.walk);
         if(lastTime+250<System.currentTimeMillis()){
             lastTime=System.currentTimeMillis();
 
@@ -51,30 +55,26 @@ public abstract class MovingEntity implements Entity{
             lastTime=System.currentTimeMillis();
             
             try {
-                if(this.nameEntity == "Turret"){
-                    if(activity=="Attack"){
-                        if(this.currentSpriteAttack==6){
-                            currentSpriteAttack=0;
-                        }
-                        currentSpriteAttack++;
-                        currentSprite = this.currentSpriteAttack;
-                    }else{
-                        currentSprite = 1;
+                if(activity==Constants.walk){
+                    if((this.nameEntity==Constants.barbarian&&currentSpriteWalk==8)||
+                            (this.nameEntity==Constants.knight&&currentSpriteWalk==8)||
+                                (this.nameEntity==Constants.goblin&&currentSpriteWalk==6)||
+                                    (this.nameEntity==Constants.archer&&currentSpriteWalk==8)||
+                                        (this.nameEntity==Constants.turret&&currentSpriteWalk==1)){
+                        currentSpriteWalk=0;
                     }
-                }else{
-                    if(activity=="Walk"){
-                        if((this.nameEntity=="Barbarian"&&currentSpriteWalk==8)||(this.nameEntity=="Knight"&&currentSpriteWalk==8)||(this.nameEntity=="Goblin"&&currentSpriteWalk==6)||(this.nameEntity=="Archer"&&currentSpriteWalk==8)){
-                            currentSpriteWalk=0;
-                        }
-                        currentSpriteWalk++;
-                        currentSprite=this.currentSpriteWalk;
-                    }else if(activity=="Attack"){
-                        if((this.nameEntity=="Barbarian"|| this.nameEntity == "Archer" &&currentSpriteAttack==30)||(this.nameEntity=="Knight"&&currentSpriteAttack==9)||(this.nameEntity=="Goblin"&&currentSpriteAttack==7)||(this.nameEntity=="Archer"&&currentSpriteAttack==17)){
-                            currentSpriteAttack=0;
-                        }
-                        currentSpriteAttack++;
-                        currentSprite=this.currentSpriteAttack;
+                    currentSpriteWalk++;
+                    currentSprite=this.currentSpriteWalk;
+                }else if(activity==Constants.attack){
+                    if((this.nameEntity==Constants.barbarian && currentSpriteAttack==30)||
+                            (this.nameEntity==Constants.knight&&currentSpriteAttack==9)||
+                                    (this.nameEntity==Constants.goblin&&currentSpriteAttack==7)||
+                                        (this.nameEntity==Constants.archer&&currentSpriteAttack==17)||
+                                            (this.nameEntity == Constants.turret && this.currentSpriteAttack==6)){
+                        currentSpriteAttack=0;
                     }
+                    currentSpriteAttack++;
+                    currentSprite=this.currentSpriteAttack;
                 }
                 this.sprite = ImageIO.read(getClass().getResource("../../Assets/"+nameEntity+"/"+activity+"/"+currentSprite+"/"+currentSprite+".png"));  
             } catch (IOException e) {
@@ -86,6 +86,20 @@ public abstract class MovingEntity implements Entity{
     public void attack(Entity target) {
         this.target = target;
         this.target.incomeDamage(this.damage);
+
+        if(lastTimeAttack+1500<System.currentTimeMillis()){
+            lastTimeAttack=System.currentTimeMillis();
+
+            Sfx SFX=new Sfx();
+            if(nameEntity==Constants.barbarian || nameEntity==Constants.knight){
+                SFX.startSFX("HitSword");
+            }else{
+                SFX.startSFX("Hit");
+            }
+            
+
+        }
+
     }
 
     public MovingEntity getTarget(LinkedList<MovingEntity> enemies){
@@ -98,7 +112,6 @@ public abstract class MovingEntity implements Entity{
 
     public void draw(Graphics g){
         g.drawImage(this.sprite, this.getPosition().x, this.getPosition().y, null);
-        //g.drawRect((int)this.getHitbox().getX(), (int)this.getHitbox().getY(), (int)this.getHitbox().getWidth(), (int)this.getHitbox().getHeight());
     }
 
     public Rectangle getHitbox(){

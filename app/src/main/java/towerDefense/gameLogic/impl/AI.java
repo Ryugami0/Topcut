@@ -1,5 +1,6 @@
 package towerDefense.gameLogic.impl;
 
+import towerDefense.Constants;
 import towerDefense.entities.api.Entity;
 import towerDefense.entities.api.MovingEntity;
 import towerDefense.entities.api.Projectile;
@@ -17,13 +18,13 @@ public class AI {
         MovingEntity ally;
         for(int i = 0; i< tower.getEntitiesNumber(); i++){
             entity = tower.getEntities().get(i);
-            if(entity.getNameEntity() != "Archer"){ 
+            if(entity.getNameEntity() != Constants.archer){ 
                 if(i != 0){
                     ally = tower.getEntities().get( i - 1);
                     if(!GameLogicImpl.checkCollision(entity, ally)){
                         entity.updatePosition();
                     }else{
-                        entity.updateSprite("Walk");
+                        entity.updateSprite(Constants.walk);
                     }
                 }else{
                     if(tower.getEnemies().size() > 0){
@@ -31,23 +32,23 @@ public class AI {
                         if(entity.getPosition().getX() < 800){
                             if(GameLogicImpl.checkCollision(entity, target)){
                                 entity.attack(target);
-                                entity.updateSprite("Attack");
+                                entity.updateSprite(Constants.attack);
                             }else{
                                 entity.updatePosition();
                             }
                         }else{
                             if(GameLogicImpl.checkCollision(entity, target)){
                                 entity.attack(target);
-                                entity.updateSprite("Attack");
+                                entity.updateSprite(Constants.attack);
                             }else{
-                                entity.updateSprite("Walk");
+                                entity.updateSprite(Constants.walk);
                             }
                         }
                     }else{
                         if(entity.getPosition().getX() < 800){
                             entity.updatePosition();
                         }else{
-                            entity.updateSprite("Walk");
+                            entity.updateSprite(Constants.walk);
                         }
                                 
                     }
@@ -60,7 +61,7 @@ public class AI {
                         target = tower.getEnemies().getFirst();
                         if(GameLogicImpl.checkRange(ranged, target)){
                             ranged.attack(target);
-                            ranged.updateSprite("Attack");
+                            ranged.updateSprite(Constants.attack);
                             if(!GameLogicImpl.checkCollision(ranged, ally)){
                                 ranged.updatePosition();
                                 ranged.updateRangeBox();
@@ -69,18 +70,18 @@ public class AI {
                             if(!GameLogicImpl.checkCollision(ranged, ally)){
                                 ranged.updatePosition();
                                 ranged.updateRangeBox();
-                                ranged.updateSprite("Walk");
+                                ranged.updateSprite(Constants.walk);
                             }else{
-                                ranged.updateSprite("Walk");
+                                ranged.updateSprite(Constants.walk);
                             }
                         }
                     }else{
                         if(!GameLogicImpl.checkCollision(ranged, ally)){
                             ranged.updatePosition();
                             ranged.updateRangeBox();
-                            ranged.updateSprite("Walk");
+                            ranged.updateSprite(Constants.walk);
                         }else{
-                            ranged.updateSprite("Walk");
+                            ranged.updateSprite(Constants.walk);
                         }
                     }
                     
@@ -90,31 +91,31 @@ public class AI {
                         if(ranged.getPosition().getX() < 800){
                             if(GameLogicImpl.checkRange(ranged, target)){
                                 ranged.attack(target);
-                                ranged.updateSprite("Attack");
+                                ranged.updateSprite(Constants.attack);
                                 if(!GameLogicImpl.checkCollision(ranged, target)){
                                     ranged.updatePosition();
                                     ranged.updateRangeBox();
                                 }
                             }else{
-                                ranged.updateSprite("Walk");
+                                ranged.updateSprite(Constants.walk);
                                 ranged.updatePosition();
                                 ranged.updateRangeBox();
                             }
                         }else{
                             if(GameLogicImpl.checkRange(ranged, target)){
                                 ranged.attack(target);
-                                ranged.updateSprite("Attack");
+                                ranged.updateSprite(Constants.attack);
                             }else{
-                                ranged.updateSprite("Walk");
+                                ranged.updateSprite(Constants.walk);
                             }
                         }
                     }else{
                         if(ranged.getPosition().getX() < 800){
-                            ranged.updateSprite("Walk");
+                            ranged.updateSprite(Constants.walk);
                             ranged.updatePosition();
                             ranged.updateRangeBox();
                         }else{
-                            ranged.updateSprite("Walk");
+                            ranged.updateSprite(Constants.walk);
                         }
                                 
                     }
@@ -146,14 +147,14 @@ public class AI {
                 if(!GameLogicImpl.checkCollision(entity, ally)){
                     entity.updatePosition();
                 }else{
-                    entity.updateSprite("Walk");
+                    entity.updateSprite(Constants.walk);
                 }
             }else{
                 if(tower.getEntitiesNumber() > 0){
                     target = tower.getEntities().getFirst();
                     if(GameLogicImpl.checkCollision(entity, target)){
                         entity.attack(target);
-                        entity.updateSprite("Attack");
+                        entity.updateSprite(Constants.attack);
                         entity.attack(entity.getTarget(tower.getEntities()));
                     }else{
                         entity.updatePosition();
@@ -166,7 +167,7 @@ public class AI {
                     }
                     if(GameLogicImpl.checkCollision(entity, target)){
                         entity.attack(target);
-                        entity.updateSprite("Attack");
+                        entity.updateSprite(Constants.attack);
                     }else{
                         entity.updatePosition();
                     }
@@ -181,12 +182,12 @@ public class AI {
                 target = tower.getEnemies().getFirst();
                 if(GameLogicImpl.checkRange(turret, target)){
                     turret.attack(target);
-                    turret.updateSprite("Attack");
+                    turret.updateSprite(Constants.attack);
                 }else{
-                    turret.updateSprite("Walk");
+                    turret.updateSprite(Constants.walk);
                 }
             }else{
-               turret.updateSprite("Walk");
+               turret.updateSprite(Constants.walk);
             }
             for(Projectile arrow : turret.getProjectiles()){
                 if(tower.getEnemies().size()>0){
