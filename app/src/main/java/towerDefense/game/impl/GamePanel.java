@@ -1,20 +1,15 @@
 package towerDefense.game.impl;
 
 import javax.imageio.ImageIO;
-import javax.sound.sampled.*;
 import javax.swing.*;
-import javax.swing.event.AncestorListener;
-
 import towerDefense.Constants;
 import towerDefense.entities.impl.*;
 import towerDefense.game.api.Panel;
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.util.EventListener;
 
 public class GamePanel extends Panel{
 

@@ -2,7 +2,6 @@ package towerDefense.gameLogic.impl;
 import towerDefense.entities.impl.TowerSingleton;
 import towerDefense.game.impl.EndPanel;
 import towerDefense.game.impl.Game;
-import towerDefense.game.impl.GamePanel;
 
 public class GameLoop extends Thread{
 
