@@ -7,6 +7,8 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
+import towerDefense.Constants;
+
 public class Projectile {
     private Rectangle hitbox;
     private Point position;
@@ -19,7 +21,7 @@ public class Projectile {
         this.damage = damage;
         this.position = position;
         this.initialPos = position;
-        if(type == "Arrow"){
+        if(type == Constants.arrow){
             this.speed = 4;
             this.hitbox = new Rectangle(this.position);
             this.hitbox.setSize(10, 5);
@@ -28,7 +30,7 @@ public class Projectile {
             }catch(Exception e){
                 e.printStackTrace();
             }
-        }else if(type == "Boulder"){
+        }else if(type == Constants.boulder){
             this.speed = 4;
             this.hitbox = new Rectangle(this.position);
             this.hitbox.setSize(15, 15);

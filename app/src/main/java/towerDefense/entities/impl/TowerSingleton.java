@@ -2,6 +2,7 @@ package towerDefense.entities.impl;
 
 
 import towerDefense.entities.api.*;
+import towerDefense.game.api.Sfx;
 import towerDefense.gameLogic.impl.*;
 
 import java.awt.Graphics;
@@ -33,6 +34,7 @@ public class TowerSingleton implements Entity{
 	//private Queue<MovingEntity> summonQueue = new LinkedList<MovingEntity>();
     private Turret turret;
     private AI ai = new AI();
+    private long lastTime = System.currentTimeMillis();
 
     private TowerSingleton() {
         this.hp = 50000;
@@ -167,6 +169,13 @@ public class TowerSingleton implements Entity{
 
     @Override
     public void incomeDamage(int value) {
+        if(lastTime+1500<System.currentTimeMillis()){
+            lastTime=System.currentTimeMillis();
+
+            Sfx SFX=new Sfx();
+            SFX.startSFX("HitOnTower");
+
+        }
         this.hp -= value;
     }
 

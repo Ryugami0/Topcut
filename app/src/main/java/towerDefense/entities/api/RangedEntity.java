@@ -5,6 +5,8 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
+import towerDefense.Constants;
+
 public class RangedEntity extends MovingEntity{
 
     private Rectangle rangeBox;
@@ -20,10 +22,10 @@ public class RangedEntity extends MovingEntity{
         this.rangeBox = new Rectangle(startPoint);
         this.rangeBox.setSize(400, 80);
         this.currentTime = lastTime + 6000;
-        if(nameEntity == "Archer"){
-            this.projectileType = "Arrow";
-        }else if(nameEntity == "Turret"){
-            this.projectileType = "Boulder";
+        if(nameEntity == Constants.archer){
+            this.projectileType = Constants.arrow;
+        }else if(nameEntity == Constants.turret){
+            this.projectileType = Constants.boulder;
         }
     }
 
@@ -45,7 +47,7 @@ public class RangedEntity extends MovingEntity{
         if(this.projectiles.size() < 5 ){
             Point projPos;
             if(!started){
-                if(this.projectileType == "Boulder"){
+                if(this.projectileType == Constants.boulder){
                     projPos = new Point(this.getPosition().x , this.getPosition().y + 20);
                 }else{
                     projPos = new Point(this.getPosition().x +30 , this.getPosition().y + 60);
@@ -56,7 +58,7 @@ public class RangedEntity extends MovingEntity{
                 this.started = true;
             }else{
                 if((currentTime - lastTime) > 1000){
-                    if(this.projectileType == "Boulder"){
+                    if(this.projectileType == Constants.boulder){
                         projPos = new Point(this.getPosition().x , this.getPosition().y + 20);
                     }else{
                         projPos = new Point(this.getPosition().x +30 , this.getPosition().y + 60);

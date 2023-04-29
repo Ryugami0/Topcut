@@ -30,9 +30,9 @@ public class GamePanel extends Panel{
         JButton summonBarbarian = new JButton("Summon Barbarian" + " $" + Barbarian.getCost());
         JButton summonKnight=new JButton("Summon Knight"  + " $" + Knight.getCost());
         JButton summonArcher = new JButton("Summon Archer" + " $" + Archer.getCost());
-        JButton buildTurret = new JButton("Summon Archer" + " $" + Archer.getCost());
+        JButton buildTurret = new JButton("Build Turret" + " $" + Archer.getCost());
         
-        Timer timer = new Timer(1000, new MyTimerListener(summonBarbarian, summonKnight, summonArcher));
+        Timer timer = new Timer(1000, new MyTimerListener(summonBarbarian, summonKnight, summonArcher, buildTurret));
         timer.setRepeats(false);
 
         this.add(summonBarbarian);
@@ -47,6 +47,7 @@ public class GamePanel extends Panel{
                 summonBarbarian.setEnabled(false);
                 summonKnight.setEnabled(false);
                 summonArcher.setEnabled(false);
+                buildTurret.setEnabled(false);
 
                 //Delay di tempo in cui il bottone è disabilitato
                 timer.start();
@@ -62,6 +63,7 @@ public class GamePanel extends Panel{
                 summonBarbarian.setEnabled(false);
                 summonKnight.setEnabled(false);
                 summonArcher.setEnabled(false);
+                buildTurret.setEnabled(false);
 
                 //Delay di tempo in cui il bottone è disabilitato
                 timer.start();
@@ -77,6 +79,7 @@ public class GamePanel extends Panel{
                 summonBarbarian.setEnabled(false);
                 summonKnight.setEnabled(false);
                 summonArcher.setEnabled(false);
+                buildTurret.setEnabled(false);
 
                 //Delay di tempo in cui il bottone è disabilitato
                 timer.start();
@@ -90,7 +93,13 @@ public class GamePanel extends Panel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 tower.buildTurret(Turret.getCost(), 4);
+                
+                summonBarbarian.setEnabled(false);
+                summonKnight.setEnabled(false);
+                summonArcher.setEnabled(false);
                 buildTurret.setEnabled(false);
+                buildTurret.setVisible(false);
+                
                 //Delay di tempo in cui il bottone è disabilitato
                 timer.start();
             }           
@@ -118,21 +127,24 @@ public class GamePanel extends Panel{
     }
 
     static class MyTimerListener implements ActionListener {
-        JComponent Barbarian;
-        JComponent Knight;
-        JComponent Archer;
+        JComponent barbarian;
+        JComponent knight;
+        JComponent archer;
+        JComponent turret;
 
-        public MyTimerListener(JComponent Barbarian, JComponent Knight, JComponent Archer) {
-            this.Barbarian=Barbarian;
-            this.Knight=Knight;
-            this.Archer=Archer;
+        public MyTimerListener(JComponent barbarian, JComponent knight, JComponent archer, JComponent turret) {
+            this.barbarian=barbarian;
+            this.knight=knight;
+            this.archer=archer;
+            this.turret=turret;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Barbarian.setEnabled(true);
-            Knight.setEnabled(true);
-            Archer.setEnabled(true);
+            barbarian.setEnabled(true);
+            knight.setEnabled(true);
+            archer.setEnabled(true);
+            turret.setEnabled(true);
         }
 
     }
