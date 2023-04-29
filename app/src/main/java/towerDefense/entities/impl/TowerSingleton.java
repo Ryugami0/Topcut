@@ -11,6 +11,8 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.Random;
+
 import javax.imageio.ImageIO;
 import towerDefense.gameLogic.impl.AI;;
 
@@ -100,7 +102,15 @@ public class TowerSingleton implements Entity{
     }*/
 
     public void summonEnemy(){
-        this.enemies.add(new Goblin());
+        Random random = new Random();
+        int seed = random.nextInt(100) + 1;
+        if(seed < 70) {
+            this.enemies.add(new Goblin());
+        }
+        else {
+            this.enemies.add(new Wizard());
+        }
+        
     }
 
     public void removeDeads(){

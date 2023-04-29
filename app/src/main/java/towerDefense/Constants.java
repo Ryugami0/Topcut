@@ -18,6 +18,7 @@ public interface Constants {
     String barbarian="Barbarian";
     String knight="Knight";
     String goblin="Goblin";
+    String wizard="Wizard";
     String archer="Archer";
     String turret="Turret";
     String arrow="Arrow";

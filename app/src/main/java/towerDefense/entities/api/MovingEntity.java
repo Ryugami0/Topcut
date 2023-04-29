@@ -60,7 +60,8 @@ public abstract class MovingEntity implements Entity{
                             (this.nameEntity==Constants.knight&&currentSpriteWalk==8)||
                                 (this.nameEntity==Constants.goblin&&currentSpriteWalk==6)||
                                     (this.nameEntity==Constants.archer&&currentSpriteWalk==8)||
-                                        (this.nameEntity==Constants.turret&&currentSpriteWalk==1)){
+                                        (this.nameEntity==Constants.turret&&currentSpriteWalk==1)||
+                                            (this.nameEntity==Constants.wizard&&currentSpriteWalk==6)){
                         currentSpriteWalk=0;
                     }
                     currentSpriteWalk++;
@@ -70,7 +71,8 @@ public abstract class MovingEntity implements Entity{
                             (this.nameEntity==Constants.knight&&currentSpriteAttack==9)||
                                     (this.nameEntity==Constants.goblin&&currentSpriteAttack==7)||
                                         (this.nameEntity==Constants.archer&&currentSpriteAttack==17)||
-                                            (this.nameEntity == Constants.turret && this.currentSpriteAttack==6)){
+                                            (this.nameEntity == Constants.turret && this.currentSpriteAttack==6)||
+                                                (this.nameEntity == Constants.turret && this.currentSpriteAttack==10)){
                         currentSpriteAttack=0;
                     }
                     currentSpriteAttack++;
