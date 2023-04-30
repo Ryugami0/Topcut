@@ -120,7 +120,8 @@ public class AI {
                                 
                     }
                 }
-                for(Projectile arrow : ranged.getProjectiles()){
+                for(int j = 0; j < ranged.getProjectiles().size(); j ++){
+                    Projectile arrow = ranged.getProjectiles().get(j);
                     if(tower.getEnemies().size()>0){
                         target = tower.getEnemies().getFirst();
                         arrow.move(target);
