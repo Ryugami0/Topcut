@@ -72,7 +72,7 @@ public abstract class MovingEntity implements Entity{
                                     (this.nameEntity==Constants.goblin&&currentSpriteAttack==7)||
                                         (this.nameEntity==Constants.archer&&currentSpriteAttack==17)||
                                             (this.nameEntity == Constants.turret && this.currentSpriteAttack==6)||
-                                                (this.nameEntity == Constants.turret && this.currentSpriteAttack==10)){
+                                                (this.nameEntity == Constants.wizard && this.currentSpriteAttack==10)){
                         currentSpriteAttack=0;
                     }
                     currentSpriteAttack++;
