@@ -56,7 +56,7 @@ public class GamePanel extends Panel{
             public void actionPerformed(ActionEvent e){
                 tower.summonEntity(Barbarian.getCost(), 1);
                 if(fMove.isActive()) {
-                    tower.summonEntity(Barbarian.getCost(), 1);
+                    tower.summonfreeEntity(1);
                 }
                 disableButtons();
                 //Delay di tempo in cui il bottone è disabilitato
@@ -70,7 +70,7 @@ public class GamePanel extends Panel{
             public void actionPerformed(ActionEvent e) {
                 tower.summonEntity(Knight.getCost(), 2);
                 if(fMove.isActive()) {
-                    tower.summonEntity(Knight.getCost(), 2);
+                    tower.summonfreeEntity(2);
                 }
                 disableButtons();
                 //Delay di tempo in cui il bottone è disabilitato
@@ -84,7 +84,7 @@ public class GamePanel extends Panel{
             public void actionPerformed(ActionEvent e) {
                 tower.summonEntity(Archer.getCost(), 3);
                 if(fMove.isActive()) {
-                    tower.summonEntity(Archer.getCost(), 3);
+                    tower.summonfreeEntity(3);
                 }
                 disableButtons();
                 //Delay di tempo in cui il bottone è disabilitato
@@ -113,6 +113,7 @@ public class GamePanel extends Panel{
             public void actionPerformed(ActionEvent e) {
                 if(tower.getMoney() >= finalMoveCost) {
                     fMove.trigger();
+                    finalMove.setEnabled(false);
                     timer2.start();
                 }
             }

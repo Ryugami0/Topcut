@@ -92,6 +92,18 @@ public class TowerSingleton implements Entity{
             } 
 	}
 
+    public void summonfreeEntity(int type) {
+		MovingEntity entity;
+            if(type==1){
+                entity = new Barbarian();
+            }else if(type==2){
+                entity = new Knight();
+            }else /*if(type == 3) */{
+                entity = new Archer();
+            }
+            this.entities.add(entity); 
+	}
+
     public void buildTurret(int cost, int type){
         this.turret = new Turret();
     }
