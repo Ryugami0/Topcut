@@ -6,11 +6,9 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.LinkedList;
-
 import javax.imageio.ImageIO;
-
 import towerDefense.Constants;
-import towerDefense.game.api.Sfx;
+import towerDefense.game.impl.Sfx;
 
 public abstract class MovingEntity implements Entity{
 
@@ -44,7 +42,6 @@ public abstract class MovingEntity implements Entity{
         this.updateSprite(Constants.walk);
         if(lastTime+250<System.currentTimeMillis()){
             lastTime=System.currentTimeMillis();
-
         }
     }
 
@@ -98,10 +95,7 @@ public abstract class MovingEntity implements Entity{
             }else{
                 SFX.startSFX("Hit");
             }
-            
-
         }
-
     }
 
     public MovingEntity getTarget(LinkedList<MovingEntity> enemies){

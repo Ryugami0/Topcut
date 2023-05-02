@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.LinkedList;
-
 import towerDefense.Constants;
 
 public class RangedEntity extends MovingEntity{
@@ -15,7 +14,6 @@ public class RangedEntity extends MovingEntity{
     private String projectileType;
     private LinkedList<Projectile> projectiles = new LinkedList<Projectile>();
     private boolean started = false;
-
 
     public RangedEntity(Point startPoint, int speed, int hp, int damage, String nameEntity, int cost) {
         super(startPoint, speed, hp, damage, nameEntity, cost);
@@ -32,10 +30,6 @@ public class RangedEntity extends MovingEntity{
     @Override
     public void draw(Graphics g){
         g.drawImage(super.getSprite(), this.getPosition().x, this.getPosition().y, null);
-        //g.setColor(Color.RED);
-        //g.drawRect((int)this.getRangeBox().getX(), (int)this.getRangeBox().getY(), (int)this.getRangeBox().getWidth(), (int)this.getRangeBox().getHeight());
-        //g.setColor(Color.BLACK);
-        //g.drawRect((int)this.getHitbox().getX(), (int)this.getHitbox().getY(), (int)this.getHitbox().getWidth(), (int)this.getHitbox().getHeight());
         for(Projectile arrow : this. projectiles){
             arrow.draw(g);
         }
@@ -75,7 +69,6 @@ public class RangedEntity extends MovingEntity{
         this.rangeBox.setLocation((int)this.rangeBox.getX() + super.getSpeed(), (int)this.rangeBox.getY());
         if(lastTime+250<System.currentTimeMillis()){
             lastTime=System.currentTimeMillis();
-
         }
     }
 

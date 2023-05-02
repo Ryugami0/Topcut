@@ -3,13 +3,11 @@ package towerDefense.gameLogic.impl;
 import java.util.HashMap;
 import java.util.Map;
 import java.awt.Point;
-
 import towerDefense.entities.api.Entity;
 import towerDefense.entities.api.MovingEntity;
 import towerDefense.entities.api.RangedEntity;
-import towerDefense.gameLogic.api.GameLogic;
 
-public class GameLogicImpl implements GameLogic{
+public class GameLogicImpl{
     
     private static Map<MovingEntity, Point> entityPositions = new HashMap<>();
     

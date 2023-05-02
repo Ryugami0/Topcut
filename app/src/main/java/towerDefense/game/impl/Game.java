@@ -7,11 +7,9 @@ public class Game {
     private static Panel currentPanel;
     private static GameWindow gameWindow;
     
-	public Game() {
-        
+	public Game() {   
         currentPanel = new MenuPanel();
-        gameWindow = new GameWindow(currentPanel); 
-        
+        gameWindow = new GameWindow(currentPanel);     
     }
 
     public Panel getCurrentPanel() {

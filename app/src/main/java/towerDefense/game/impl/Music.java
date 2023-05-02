@@ -1,4 +1,4 @@
-package towerDefense.game.api;
+package towerDefense.game.impl;
 
 import javax.sound.sampled.*;
 

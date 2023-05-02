@@ -18,8 +18,7 @@ public class FinalMove{
             @Override
             public void run() {
                 isActive = false;
-            }
-            
+            }    
         }, 15000);    
     }
         

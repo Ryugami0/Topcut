@@ -3,6 +3,8 @@ package towerDefense.game.api;
 import javax.swing.JPanel;
 
 import towerDefense.Constants;
+import towerDefense.game.impl.Music;
+import towerDefense.game.impl.Sfx;
 
 public abstract class Panel extends JPanel {
 

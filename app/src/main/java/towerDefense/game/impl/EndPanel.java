@@ -33,26 +33,20 @@ public class EndPanel extends Panel{
         JTextField nameScore = new JTextField("             ");
         TowerSingleton tower = TowerSingleton.getInstance();
 
-        saveScore.addActionListener((ActionListener) new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                try {
-                    Files.writeString(saveFile, Files.readString(saveFile) + 
-                        "\n" + 
-                        nameScore.getText() +
-                        String.valueOf(tower.getScore()), 
-                        StandardCharsets.UTF_8);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                saveScore.setEnabled(false);
+        saveScore.addActionListener((arg) -> {
+            try {
+                Files.writeString(saveFile, Files.readString(saveFile) + 
+                    "\n" + 
+                    nameScore.getText() +
+                    String.valueOf(tower.getScore()), 
+                    StandardCharsets.UTF_8);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            
+            saveScore.setEnabled(false);
         });
 
         this.add(saveScore);
         this.add(nameScore);
-    }
-    
+    }  
 }

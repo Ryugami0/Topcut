@@ -51,60 +51,38 @@ public class GamePanel extends Panel{
         this.add(summonArcher);
         this.add(buildTurret);
 
-        summonBarbarian.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e){
-                tower.summonEntity(Barbarian.getCost(), 1);
+        summonBarbarian.addActionListener((arg) -> {
+            tower.summonEntity(Barbarian.getCost(), 1);
                 if(fMove.isActive()) {
                     tower.summonfreeEntity(1);
                 }
                 disableButtons();
-                //Delay di tempo in cui il bottone è disabilitato
                 timer.start();
-            }
-        });
+        }); 
 
-        summonKnight.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tower.summonEntity(Knight.getCost(), 2);
+        summonKnight.addActionListener((arg) -> {
+            tower.summonEntity(Knight.getCost(), 2);
                 if(fMove.isActive()) {
                     tower.summonfreeEntity(2);
                 }
                 disableButtons();
-                //Delay di tempo in cui il bottone è disabilitato
                 timer.start();
-            }           
         });
 
-        summonArcher.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tower.summonEntity(Archer.getCost(), 3);
+        summonArcher.addActionListener((arg) ->  {
+            tower.summonEntity(Archer.getCost(), 3);
                 if(fMove.isActive()) {
                     tower.summonfreeEntity(3);
                 }
                 disableButtons();
-                //Delay di tempo in cui il bottone è disabilitato
                 timer.start();
-            }           
-        });
-
+            });
         
-
-        buildTurret.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tower.buildTurret(Turret.getCost(), 4);
-                disableButtons();
-                buildTurret.setVisible(false);
-                
-                //Delay di tempo in cui il bottone è disabilitato
-                timer.start();
-            }           
+        buildTurret.addActionListener((arg) -> {
+            tower.buildTurret(Turret.getCost(), 4);
+            disableButtons();
+            buildTurret.setVisible(false);
+            timer.start();
         });
 
         this.add(finalMove);
@@ -122,14 +100,9 @@ public class GamePanel extends Panel{
         finalMove.addActionListener(finalMoveListener);
 
         JButton surrender = new JButton("Surrender");
-        surrender.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                stopMusic();
-                Game.setCurrentPanel(new EndPanel());
-            }
-            
+        surrender.addActionListener((arg) -> {
+            stopMusic();
+            Game.setCurrentPanel(new EndPanel());
         });
         this.add(surrender);
 
@@ -191,10 +164,6 @@ public class GamePanel extends Panel{
         g.fillRect(50, 600, (int)(100*((float)tower.getHp()/(float)tower.getMaxHp())), 20);
     } 
     
-    public void stopMusic() {
-        super.stopMusic();
-    }
-
     private void disableButtons() {
         summonBarbarian.setEnabled(false);
         summonKnight.setEnabled(false);
