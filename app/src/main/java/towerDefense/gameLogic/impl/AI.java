@@ -120,7 +120,8 @@ public class AI {
                                 
                     }
                 }
-                for(Projectile arrow : ranged.getProjectiles()){
+                for(int j = 0; j < ranged.getProjectiles().size(); j ++){
+                    Projectile arrow = ranged.getProjectiles().get(j);
                     if(tower.getEnemies().size()>0){
                         target = tower.getEnemies().getFirst();
                         arrow.move(target);
@@ -189,7 +190,9 @@ public class AI {
             }else{
                turret.updateSprite(Constants.walk);
             }
-            for(Projectile arrow : turret.getProjectiles()){
+            //for(Projectile arrow : turret.getProjectiles()){
+            for(int i = 0; i < turret.getProjectiles().size(); i ++){
+                Projectile arrow = turret.getProjectiles().get(i);
                 if(tower.getEnemies().size()>0){
                     target = tower.getEnemies().getFirst();
                     arrow.move(target);
