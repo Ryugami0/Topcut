@@ -1,11 +1,11 @@
 package towerDefense.mainClass;
 
-import towerDefense.game.impl.Game;
+import towerDefense.game.impl.GameImpl;
 import towerDefense.gameLogic.impl.GameLoop;
 
 public class MainClass {
     public static void main(String[] args) {
-        Game game = new Game();
+        GameImpl game = new GameImpl();
         new GameLoop(game);
     }
 }

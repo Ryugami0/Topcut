@@ -4,7 +4,6 @@ package towerDefense.entities.impl;
 import towerDefense.entities.api.*;
 import towerDefense.game.impl.Sfx;
 import towerDefense.gameLogic.impl.*;
-
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -12,10 +11,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Random;
-
 import javax.imageio.ImageIO;
 import towerDefense.gameLogic.impl.AI;;
-
 
 public class TowerSingleton implements Entity{
 
@@ -60,8 +57,17 @@ public class TowerSingleton implements Entity{
         return instance;
     }
 
-    public void summonEntity(int cost, int type) {
-		MovingEntity entity;
+    /**
+     * 
+     * @param cost
+     *          the cost of the summoned unit
+     * @param type
+     *          the type of the summoned unit
+     * 
+     * Adds to the entities list the type of unit requested and then subtracts its cost to the total money
+     */
+    public void summonEntity(final int cost, final int type) {
+		final MovingEntity entity;
             if(type==1){
                 entity = new Barbarian();
             }else if(type==2){
@@ -75,14 +81,32 @@ public class TowerSingleton implements Entity{
             } 
 	}
 
-    public void summonfreeEntity(int type) {
+    /**
+     * 
+     * @param type
+     *          the type of the summoned unit
+     * 
+     * Summons a unit with zero cost
+     */
+    public void summonfreeEntity(final int type) {
 		summonEntity(type, 0); 
 	}
 
-    public void buildTurret(int cost, int type){
+    /**
+     * 
+     * @param cost
+     *          the cost of the turret
+     * 
+     * Builds a new Turret and then subtracts the cost from the total money
+     */
+    public void buildTurret(final int cost){
         this.turret = new Turret();
+        this.money -= cost;
     }
 
+    /**
+     * Summons an enemy with a random chance of being different ones
+     */
     public void summonEnemy(){
         Random random = new Random();
         int seed = random.nextInt(100) + 1;
@@ -94,6 +118,9 @@ public class TowerSingleton implements Entity{
         }    
     }
 
+    /**
+     * Removes all dead entities from the entities lists
+     */
     public void removeDeads(){
         for(int i = 0; i < this.entities.size(); i++){
             if(entities.get(i).getHp() <= 0){
@@ -111,6 +138,12 @@ public class TowerSingleton implements Entity{
         }
     }
 
+    /**
+     * 
+     * @param g
+     * 
+     * Calls for the graphic methods to draw them on screen
+     */
     public void draw(Graphics g){
         for(MovingEntity entity : this.entities){
             entity.draw(g);
@@ -125,6 +158,9 @@ public class TowerSingleton implements Entity{
         g.drawImage(this.sprite, (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
     }
     
+    /**
+     * Updates the state of the game
+     */
     public void update(){
         this.getWaveManager().spawnWave();
         removeDeads();
@@ -150,8 +186,13 @@ public class TowerSingleton implements Entity{
        return this.damage;
     }
 
-    @Override
-    public void incomeDamage(int value) {
+    /**
+     * @param value 
+     *          amount of incoming damage
+     * 
+     * If an hit occurred subtracts the amount of damage to the tower current hp
+     */
+    public void incomeDamage(final int value) {
         if(lastTime+1500<System.currentTimeMillis()){
             lastTime=System.currentTimeMillis();
 
@@ -183,6 +224,9 @@ public class TowerSingleton implements Entity{
         return WaveManagerSingleton.getInstance();
     }
 
+    /**
+     * Updates the score and money values
+     */
     public void updateScoreMoney() {
         if(i == 100) {
             this.score += 5;

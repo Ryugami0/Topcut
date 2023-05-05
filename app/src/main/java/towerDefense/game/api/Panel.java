@@ -11,10 +11,18 @@ public abstract class Panel extends JPanel {
     Music music =new Music();
     Sfx SFX=new Sfx();
 
+    /**
+     * Updates the current state of the panel
+     */
     public void update() {
         
     }
 
+    /**
+     * Starts a new soundtrack on the current panel
+     * @param typeOfSound
+     *              declares which sound is going to be played
+     */
     public void startSound(String typeOfSound){
         if(typeOfSound==Constants.menuPanel || typeOfSound==Constants.rulePanel){
             music.startMusic("alexander-nakarada-adventure");
@@ -29,8 +37,10 @@ public abstract class Panel extends JPanel {
         }
     }
 
+    /**
+     * Stops the music from the current panel
+     */
     public void stopMusic(){
         music.stopMusic();
-    }
-    
+    }    
 }

@@ -1,13 +1,13 @@
 package towerDefense.gameLogic.impl;
 import towerDefense.entities.impl.TowerSingleton;
 import towerDefense.game.impl.EndPanel;
-import towerDefense.game.impl.Game;
+import towerDefense.game.impl.GameImpl;
 
 public class GameLoop extends Thread{
 
-    private Game game;
+    private GameImpl game;
 
-    public GameLoop(Game game) {
+    public GameLoop(GameImpl game) {
         this.game = game;
         this.run();
     }
@@ -21,7 +21,7 @@ public class GameLoop extends Thread{
             game.getCurrentPanel().repaint();
             //System.out.println("repainted");
         }
-        Game.setCurrentPanel(new EndPanel());
+        GameImpl.setCurrentPanel(new EndPanel());
     }
 
     private void update() {
