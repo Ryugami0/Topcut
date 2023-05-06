@@ -26,7 +26,7 @@ public class RulePanel extends Panel{
         goBack.addActionListener((arg) -> {
             stopMusic();
             super.startSound(Constants.buttonSFX);
-            Game.setCurrentPanel(new MenuPanel());
+            GameImpl.setCurrentPanel(new MenuPanel());
         });
 
         this.add(goBack);

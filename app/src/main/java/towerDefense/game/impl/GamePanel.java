@@ -34,16 +34,16 @@ public class GamePanel extends Panel{
         }catch(Exception e){
             System.out.println("error loading background " + e.getMessage());
         }
-        JButton summonBarbarian = new JButton("Summon Barbarian $" + Barbarian.getCost());
-        JButton summonKnight=new JButton("Summon Knight $" + Knight.getCost());
-        JButton summonArcher = new JButton("Summon Archer $" + Archer.getCost());
-        JButton buildTurret = new JButton("Build Turret $" + Archer.getCost());
-        JButton finalMove = new JButton("Double allies $" + finalMoveCost);
+        final JButton summonBarbarian = new JButton("Summon Barbarian $" + Barbarian.getCost());
+        final JButton summonKnight=new JButton("Summon Knight $" + Knight.getCost());
+        final JButton summonArcher = new JButton("Summon Archer $" + Archer.getCost());
+        final JButton buildTurret = new JButton("Build Turret $" + Archer.getCost());
+        final JButton finalMove = new JButton("Double allies $" + finalMoveCost);
         
-        Timer timer = new Timer(1000, new MyTimerListener(summonBarbarian, summonKnight, summonArcher, buildTurret));
+        final Timer timer = new Timer(1000, new MyTimerListener(summonBarbarian, summonKnight, summonArcher, buildTurret));
         timer.setRepeats(false);
 
-        Timer timer2 = new Timer(20000, finalMoveListener);
+        final Timer timer2 = new Timer(20000, finalMoveListener);
         timer2.setRepeats(false);
 
         this.add(summonBarbarian);
@@ -79,7 +79,7 @@ public class GamePanel extends Panel{
             });
         
         buildTurret.addActionListener((arg) -> {
-            tower.buildTurret(Turret.getCost(), 4);
+            tower.buildTurret(Turret.getCost());
             disableButtons();
             buildTurret.setVisible(false);
             timer.start();
@@ -102,7 +102,7 @@ public class GamePanel extends Panel{
         JButton surrender = new JButton("Surrender");
         surrender.addActionListener((arg) -> {
             stopMusic();
-            Game.setCurrentPanel(new EndPanel());
+            GameImpl.setCurrentPanel(new EndPanel());
         });
         this.add(surrender);
 
@@ -143,6 +143,7 @@ public class GamePanel extends Panel{
 
     }
     
+    @Override
     public void update(){
         this.tower.update();
         this.money.setText("$" + String.valueOf(tower.getMoney()));
@@ -170,5 +171,4 @@ public class GamePanel extends Panel{
         summonArcher.setEnabled(false);
         buildTurret.setEnabled(false);
     }
-
 }

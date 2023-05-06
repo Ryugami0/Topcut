@@ -1,7 +1,5 @@
 package towerDefense.game.impl;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -19,6 +17,10 @@ public class EndPanel extends Panel{
 
     private static Path saveFile;
 
+    /**
+     * Panel called at the end of the game
+     * Used to save the score of the current game and/or exit the application 
+     */
     public EndPanel() {
 
         super.startSound(Constants.gameOverSFX);

@@ -20,7 +20,7 @@ public class MenuPanel extends Panel{
         startGame.addActionListener((arg) -> {
             stopMusic();
             super.startSound(Constants.buttonSFX);
-            Game.setCurrentPanel(new GamePanel());
+            GameImpl.setCurrentPanel(new GamePanel());
         });
 
         JButton bestScores = new JButton("Best Scores");
@@ -37,7 +37,7 @@ public class MenuPanel extends Panel{
         rules.addActionListener((arg) -> {
             stopMusic();
             super.startSound(Constants.buttonSFX);
-            Game.setCurrentPanel(new RulePanel());
+            GameImpl.setCurrentPanel(new RulePanel());
         }); 
 
         this.add(startGame);
