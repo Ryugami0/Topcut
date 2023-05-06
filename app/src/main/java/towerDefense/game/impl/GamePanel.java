@@ -15,6 +15,7 @@ public class GamePanel extends Panel{
 
     private TowerSingleton tower = TowerSingleton.getInstance();;
     private BufferedImage background;
+    private BufferedImage castle;
     private JLabel money;
     private JLabel score;
     private JButton summonBarbarian;
@@ -31,13 +32,14 @@ public class GamePanel extends Panel{
         
         try{
             this.background = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/Game.jpg"));
+            this.castle = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/castle.png"));
         }catch(Exception e){
             System.out.println("error loading background " + e.getMessage());
         }
         final JButton summonBarbarian = new JButton("Summon Barbarian $" + Barbarian.getCost());
         final JButton summonKnight=new JButton("Summon Knight $" + Knight.getCost());
         final JButton summonArcher = new JButton("Summon Archer $" + Archer.getCost());
-        final JButton buildTurret = new JButton("Build Turret $" + Archer.getCost());
+        final JButton buildTurret = new JButton("Build Turret $" + Turret.getCost());
         final JButton finalMove = new JButton("Double allies $" + finalMoveCost);
         
         final Timer timer = new Timer(1000, new MyTimerListener(summonBarbarian, summonKnight, summonArcher, buildTurret));
@@ -79,9 +81,10 @@ public class GamePanel extends Panel{
             });
         
         buildTurret.addActionListener((arg) -> {
-            tower.buildTurret(Turret.getCost());
+            if( tower.buildTurret(Turret.getCost()) ){
+                buildTurret.setVisible(false);
+            }
             disableButtons();
-            buildTurret.setVisible(false);
             timer.start();
         });
 
@@ -151,9 +154,9 @@ public class GamePanel extends Panel{
     }
         
     public void paintComponent(Graphics g) {
-            //System.out.println("paintCompontent");
             super.paintComponent(g);
             g.drawImage(background, 0, 0, null);
+            g.drawImage(castle,-180,430,null);
             tower.draw(g);
             this.drawHealtBar(g);
         }

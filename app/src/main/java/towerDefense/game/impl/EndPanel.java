@@ -12,10 +12,16 @@ import javax.swing.JTextField;
 import towerDefense.Constants;
 import towerDefense.entities.impl.TowerSingleton;
 import towerDefense.game.api.Panel;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+
+import java.awt.Graphics;
 
 public class EndPanel extends Panel{
 
     private static Path saveFile;
+    private BufferedImage background;
+    private BufferedImage castle;
 
     /**
      * Panel called at the end of the game
@@ -25,6 +31,13 @@ public class EndPanel extends Panel{
 
         super.startSound(Constants.gameOverSFX);
         super.startSound(Constants.endPanel);
+
+        try {
+            this.castle = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/castle2.png"));
+            this.background = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/End.png"));
+        } catch (IOException e) {
+            System.out.println("error loading background " + e.getMessage());
+        }
 
         JButton Exit = new JButton("Exit");
         Exit.addActionListener((arg) ->System.exit(0));
@@ -51,4 +64,10 @@ public class EndPanel extends Panel{
         this.add(saveScore);
         this.add(nameScore);
     }  
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(background, 0, 0, null);
+        g.drawImage(castle,(int)(Constants.width-265),295,null);
+    }
 }

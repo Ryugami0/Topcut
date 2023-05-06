@@ -2,11 +2,11 @@ package towerDefense;
 
 public interface Constants {
     
-    //Grandezza schermo
+    //Screen size
     double width=Calc.calcWidth();
     double height=Calc.calcHeight();
 
-    //Stringhe suoni
+    //Sound strings
     String menuPanel="MenuPanel";
     String rulePanel="RulePanel";
     String gamePanel="GamePanel";
@@ -14,7 +14,7 @@ public interface Constants {
     String buttonSFX="ButtonSFX";
     String gameOverSFX="GameOverSFX";
 
-    //Stringhe nomi entità
+    //Entity name strings
     String barbarian="Barbarian";
     String knight="Knight";
     String goblin="Goblin";
@@ -24,7 +24,7 @@ public interface Constants {
     String arrow="Arrow";
     String boulder="Boulder";
 
-    //Stringhe attività
+    //Activity strings
     String walk= "Walk";
     String attack = "Attack";
 }

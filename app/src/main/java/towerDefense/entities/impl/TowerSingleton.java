@@ -99,9 +99,14 @@ public class TowerSingleton implements Entity{
      * 
      * Builds a new Turret and then subtracts the cost from the total money
      */
-    public void buildTurret(final int cost){
-        this.turret = new Turret();
-        this.money -= cost;
+    public boolean buildTurret(final int cost){
+        if(cost <= this.getMoney())  {
+            this.turret = new Turret();
+            this.money -= cost;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
