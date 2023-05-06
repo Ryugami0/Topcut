@@ -3,6 +3,8 @@ package towerDefense.game.impl;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import towerDefense.entities.impl.TowerSingleton;
+
 public class FinalMove{
 
     private boolean isActive = false;
@@ -14,6 +16,7 @@ public class FinalMove{
 
     public void trigger() {
         isActive = true;
+        TowerSingleton.getInstance().removeMoney(80);
         timer.schedule(new TimerTask() {
             @Override
             public void run() {

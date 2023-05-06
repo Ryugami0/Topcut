@@ -76,7 +76,7 @@ public class TowerSingleton implements Entity{
 	}
 
     public void summonfreeEntity(int type) {
-		summonEntity(type, 0); 
+		summonEntity(0, type); 
 	}
 
     public void buildTurret(int cost, int type){
@@ -212,6 +212,10 @@ public class TowerSingleton implements Entity{
 
     public Turret getTurret(){
         return this.turret;
+    }
+
+    public void removeMoney(int amount) {
+        this.money -= amount;
     }
 }
 
