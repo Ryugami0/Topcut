@@ -7,7 +7,7 @@ import towerDefense.entities.api.RangedEntity;
 
 public class Archer extends RangedEntity{
      
-    static int cost = 5;
+    static int cost = 50;
 
     public Archer() {
         super(new Point(50, 500), 2, 1500, 500, Constants.archer, cost);
