@@ -8,7 +8,7 @@ import towerDefense.entities.api.MovingEntity;
 public class Wizard extends MovingEntity{
 
     public Wizard() {
-        super(new Point((int)Constants.width-50 ,500), -2 , 1500, 16,Constants.wizard, 0);
+        super(new Point((int)Constants.width ,510), -2 , 1500, 16,Constants.wizard, 0);
     }
 
 }

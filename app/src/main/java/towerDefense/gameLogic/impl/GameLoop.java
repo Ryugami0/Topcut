@@ -16,10 +16,8 @@ public class GameLoop extends Thread{
     public void run() {
         
         while (TowerSingleton.getInstance().getHp() >= 0) {
-            //System.out.println("running");
             update();
             game.getCurrentPanel().repaint();
-            //System.out.println("repainted");
         }
         GameImpl.setCurrentPanel(new EndPanel());
     }

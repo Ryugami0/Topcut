@@ -6,15 +6,28 @@ import towerDefense.Constants;
 import towerDefense.game.api.Panel;
 
 import java.awt.Desktop;
+import java.awt.Graphics;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 
 
 public class MenuPanel extends Panel{
 
+    private BufferedImage background;
+    private BufferedImage castle;
+
     public MenuPanel() {
 
         super.startSound(Constants.menuPanel);
+
+        try {
+            this.castle = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/castle2.png"));
+            this.background = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/Menu.png"));
+        } catch (IOException e) {
+            System.out.println("error loading background " + e.getMessage());
+        }
 
         JButton startGame = new JButton("Start game");
         startGame.addActionListener((arg) -> {
@@ -49,4 +62,9 @@ public class MenuPanel extends Panel{
         super.stopMusic();
     }
     
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(background, 0, 0, null);
+        g.drawImage(castle,(int)(Constants.width-265),295,null);
+    }
 }
