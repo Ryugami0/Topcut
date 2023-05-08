@@ -9,6 +9,12 @@ public class GameWindow {
 
     private JFrame jFrame;
 
+    /**
+     * Creates a new game window and sets up the frames
+     * 
+     * @param gamePanel
+     *          current panel to be shown
+     */
     public GameWindow(Panel gamePanel) {
         
         jFrame = new JFrame("Tower Defense");
@@ -18,6 +24,12 @@ public class GameWindow {
         jFrame.setVisible(true);
     }   
 
+    /**
+     * Changes the window to another panel
+     * 
+     * @param gamePanel
+     *          panel that is going to be shown
+     */
     public void changeWindow(Panel gamePanel) {
         jFrame.dispose();
         jFrame.setVisible(false);

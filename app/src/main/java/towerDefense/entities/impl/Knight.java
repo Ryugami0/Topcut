@@ -9,6 +9,9 @@ public class Knight extends MovingEntity{
 
     private static int cost = 60;
 
+    /**
+     * Creates a new Knight entity
+     */
     public Knight() {
         super(new Point(50,500), 3, 2000, 35,Constants.knight, 60);
     }

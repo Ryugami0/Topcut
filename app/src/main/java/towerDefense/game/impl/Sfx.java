@@ -9,10 +9,13 @@ public class Sfx {
     
     public void startSFX(String sfx){
         try {
+            //Takes the input track
             audioStream = AudioSystem.getAudioInputStream(this.getClass().getResource("../../music/SFX/"+sfx+".wav"));
             SFX = AudioSystem.getClip();
             SFX.open(audioStream);
             SFX.setFramePosition(0);
+
+            //Plays the sound once
             SFX.start();
         } catch (Exception e) { 
             System.out.println(e);    

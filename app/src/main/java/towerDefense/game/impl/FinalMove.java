@@ -18,7 +18,7 @@ public class FinalMove{
     }
 
     /**
-     * On call switches isActive state to true for {@value}DELAY milliseconds
+     * On call switches isActive state to true for a fixed amount of time
      */
     public void trigger() {
         isActive = true;

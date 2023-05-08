@@ -50,6 +50,10 @@ public class TowerSingleton implements Entity{
         this.hitbox = new Rectangle((int)this.position.getX(), (int)this.position.getY(), 100, 200);
     }
 
+    /**
+     * 
+     * @return an instance of the class, obtainable only by this method
+     */
     public static TowerSingleton getInstance() {
         if(instance == null) {
             instance = new TowerSingleton(); 
@@ -58,13 +62,11 @@ public class TowerSingleton implements Entity{
     }
 
     /**
-     * 
+     * Adds to the entities list the type of unit requested and then subtracts its cost to the total money
      * @param cost
      *          the cost of the summoned unit
      * @param type
      *          the type of the summoned unit
-     * 
-     * Adds to the entities list the type of unit requested and then subtracts its cost to the total money
      */
     public void summonEntity(final int cost, final int type) {
 		final MovingEntity entity;
@@ -82,26 +84,27 @@ public class TowerSingleton implements Entity{
 	}
 
     /**
-     * 
+     * Summons a unit with zero cost
      * @param type
      *          the type of the summoned unit
-     * 
-     * Summons a unit with zero cost
      */
     public void summonfreeEntity(final int type) {
 		summonEntity(0, type); 
 	}
 
     /**
-     * 
+     * Builds a new Turret and then subtracts the cost from the total money
      * @param cost
      *          the cost of the turret
-     * 
-     * Builds a new Turret and then subtracts the cost from the total money
      */
-    public void buildTurret(final int cost){
-        this.turret = new Turret();
-        this.money -= cost;
+    public boolean buildTurret(final int cost){
+        if(cost <= this.getMoney())  {
+            this.turret = new Turret();
+            this.money -= cost;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -139,10 +142,9 @@ public class TowerSingleton implements Entity{
     }
 
     /**
-     * 
-     * @param g
-     * 
      * Calls for the graphic methods to draw them on screen
+     * @param g
+     *        graphic object used to draw all components
      */
     public void draw(Graphics g){
         for(MovingEntity entity : this.entities){
@@ -168,29 +170,42 @@ public class TowerSingleton implements Entity{
         this.updateScoreMoney();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public int getHp() {
         return this.hp;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public Point getPosition() {
         return this.position;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getSpeed() {
         return this.speed;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getDamage() {
        return this.damage;
     }
 
     /**
+     * If an hit occurred subtracts the amount of damage to the tower current hp
      * @param value 
      *          amount of incoming damage
-     * 
-     * If an hit occurred subtracts the amount of damage to the tower current hp
      */
     public void incomeDamage(final int value) {
         if(lastTime+1500<System.currentTimeMillis()){
@@ -203,23 +218,41 @@ public class TowerSingleton implements Entity{
         this.hp -= value;
     }
 
+    /**
+     * @return
+     *      the total score obtained
+     */
     public int getScore() {
         return this.score;
     }
 
+    /**
+     * @return 
+     *      the current amount of money
+     */
     public int getMoney() {
         return this.money;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Rectangle getHitbox() {
         return this.hitbox;
     }
 
+    /**
+     * @return 
+     *      the current number of entities
+     */
     public int getEntitiesNumber(){
         return this.entities.size();
     }
 
+    /**
+     * @return an instance of WaveManager
+     */
     public WaveManagerSingleton getWaveManager(){
         return WaveManagerSingleton.getInstance();
     }
@@ -242,22 +275,43 @@ public class TowerSingleton implements Entity{
         this.money += 20;
     }
 
+    /**
+     * @return
+     *      the max HP value of the Tower
+     */
     public int getMaxHp() {
         return this.maxHp;
     }
 
+    /**
+     * @return 
+     *      a list of all the entities
+     */
     public LinkedList<MovingEntity> getEntities() {
         return this.entities;
     }
 
+    /**
+     * @return
+     *      a list of all the enemies
+     */
     public LinkedList<MovingEntity> getEnemies() {
         return this.enemies;
     }
 
+    /**
+     * @return
+     *       the turret associated with this tower
+     */
     public Turret getTurret(){
         return this.turret;
     }
 
+    /**
+     * Removes money from the current total
+     * @param amount
+     *          amount of money to subtract
+     */
     public void removeMoney(int amount) {
         this.money -= amount;
     }

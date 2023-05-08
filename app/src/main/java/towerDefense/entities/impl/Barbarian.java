@@ -8,10 +8,16 @@ public class Barbarian extends MovingEntity{
 
     static int cost = 40;
 
+    /**
+     * Creates a new Barbarian entity
+     */
     public Barbarian() {
         super(new Point(50,500), 1, 4000, 25, Constants.barbarian, cost);
     }
 
+    /**
+     * @return the cost of the unit
+     */
     public static int getCost() {
         return cost;
     }

@@ -8,6 +8,9 @@ public class GameImpl implements Game{
     private static Panel currentPanel;
     private static GameWindow gameWindow;
     
+    /**
+     * Creates a new Game and sets its window and panel
+     */
 	public GameImpl() {   
         currentPanel = new MenuPanel();
         gameWindow = new GameWindow(currentPanel);     

@@ -15,6 +15,7 @@ public class GamePanel extends Panel{
 
     private TowerSingleton tower = TowerSingleton.getInstance();;
     private BufferedImage background;
+    private BufferedImage castle;
     private JLabel money;
     private JLabel score;
     private JButton summonBarbarian;
@@ -24,20 +25,24 @@ public class GamePanel extends Panel{
     private FinalMove fMove = new FinalMove();
     private ActionListener finalMoveListener;
     private final int finalMoveCost = 80;
-     
+    
+    /**
+     * Creates a new Game Panel, setting up its background image and all of its components
+     */
     public GamePanel() {
 
         super.startSound(Constants.gamePanel);
         
         try{
             this.background = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/Game.jpg"));
+            this.castle = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/castle.png"));
         }catch(Exception e){
             System.out.println("error loading background " + e.getMessage());
         }
         final JButton summonBarbarian = new JButton("Summon Barbarian $" + Barbarian.getCost());
         final JButton summonKnight=new JButton("Summon Knight $" + Knight.getCost());
         final JButton summonArcher = new JButton("Summon Archer $" + Archer.getCost());
-        final JButton buildTurret = new JButton("Build Turret $" + Archer.getCost());
+        final JButton buildTurret = new JButton("Build Turret $" + Turret.getCost());
         final JButton finalMove = new JButton("Double allies $" + finalMoveCost);
         
         final Timer timer = new Timer(1000, new MyTimerListener(summonBarbarian, summonKnight, summonArcher, buildTurret));
@@ -79,9 +84,10 @@ public class GamePanel extends Panel{
             });
         
         buildTurret.addActionListener((arg) -> {
-            tower.buildTurret(Turret.getCost());
+            if( tower.buildTurret(Turret.getCost()) ){
+                buildTurret.setVisible(false);
+            }
             disableButtons();
-            buildTurret.setVisible(false);
             timer.start();
         });
 
@@ -120,13 +126,13 @@ public class GamePanel extends Panel{
         this.buildTurret = buildTurret;
     }
 
-    static class MyTimerListener implements ActionListener {
+    private static class MyTimerListener implements ActionListener {
         JComponent barbarian;
         JComponent knight;
         JComponent archer;
         JComponent turret;
 
-        public MyTimerListener(JComponent barbarian, JComponent knight, JComponent archer, JComponent turret) {
+        private MyTimerListener(JComponent barbarian, JComponent knight, JComponent archer, JComponent turret) {
             this.barbarian=barbarian;
             this.knight=knight;
             this.archer=archer;
@@ -143,17 +149,25 @@ public class GamePanel extends Panel{
 
     }
     
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update(){
         this.tower.update();
         this.money.setText("$" + String.valueOf(tower.getMoney()));
         this.score.setText("SCORE: " + tower.getScore());
     }
-        
+   
+    /**
+     * Draws the background images along with the Tower health bar
+     * @param g 
+     *        graphic object used to draw all the components
+     */
     public void paintComponent(Graphics g) {
-            //System.out.println("paintCompontent");
             super.paintComponent(g);
             g.drawImage(background, 0, 0, null);
+            g.drawImage(castle,-180,430,null);
             tower.draw(g);
             this.drawHealtBar(g);
         }
