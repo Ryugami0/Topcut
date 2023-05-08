@@ -4,8 +4,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import towerDefense.entities.impl.TowerSingleton;
 
-import towerDefense.entities.impl.TowerSingleton;
-
 public class FinalMove{
 
     private boolean isActive = false;

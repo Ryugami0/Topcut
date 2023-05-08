@@ -15,6 +15,22 @@ public class RangedEntity extends MovingEntity{
     private LinkedList<Projectile> projectiles = new LinkedList<Projectile>();
     private boolean started = false;
 
+    /**
+     * Builds a new moving entity by setting its parameters and by uploading its sprite
+     * 
+     * @param startPoint
+     *          top-left corner of its hitbox
+     * @param speed
+     *          speed at which the entity will move
+     * @param hp
+     *          total number of HP of the unit
+     * @param damage   
+     *          damage per tick that it will deal
+     * @param nameEntity
+     *          name of that entity
+     * @param cost
+     *          money cost to summon the entity
+     */
     public RangedEntity(Point startPoint, int speed, int hp, int damage, String nameEntity, int cost) {
         super(startPoint, speed, hp, damage, nameEntity, cost);
         this.rangeBox = new Rectangle(startPoint);
@@ -27,6 +43,9 @@ public class RangedEntity extends MovingEntity{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void draw(Graphics g){
         g.drawImage(super.getSprite(), this.getPosition().x, this.getPosition().y, null);
@@ -35,6 +54,9 @@ public class RangedEntity extends MovingEntity{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void attack(Entity target){
         currentTime = System.currentTimeMillis();
@@ -65,6 +87,9 @@ public class RangedEntity extends MovingEntity{
         }
     }
 
+    /**
+     * Updates the position of the unit's range of fire
+     */
     public void updateRangeBox() {
         this.rangeBox.setLocation((int)this.rangeBox.getX() + super.getSpeed(), (int)this.rangeBox.getY());
         if(lastTime+250<System.currentTimeMillis()){
@@ -72,14 +97,24 @@ public class RangedEntity extends MovingEntity{
         }
     }
 
+    /**
+     * 
+     * @return the range at which the unit can fire, expressed by a rectangle
+     */
     public Rectangle getRangeBox(){
         return this.rangeBox;
     }
 
+    /**
+     * @return all the currently active projectiles 
+     */
     public LinkedList<Projectile> getProjectiles(){
         return this.projectiles;
     }
 
+    /**
+     * Resizes the range at which the unit can target enemies, expressed by 2 coordinates
+     */
     public void resizeRangebox(int x, int y){
         this.rangeBox.setSize(x, y);
     }
