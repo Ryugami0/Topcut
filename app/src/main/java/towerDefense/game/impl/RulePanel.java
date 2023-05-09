@@ -12,6 +12,9 @@ public class RulePanel extends Panel{
 
     private BufferedImage background;
 
+    /**
+     * Creates a new rule panel, adding its background image and all of its components
+     */
     public RulePanel() {
 
         super.startSound(Constants.rulePanel);
@@ -32,13 +35,13 @@ public class RulePanel extends Panel{
         this.add(goBack);
     }
 
+    /**
+     * Draws the background images 
+     * @param g 
+     *        graphic object used to draw all the components
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(background, 0, 0, null);
     }
-    
-    public void stopMusic() {
-        super.stopMusic();
-    }
-
 }

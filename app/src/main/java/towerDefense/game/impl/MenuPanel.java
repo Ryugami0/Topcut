@@ -18,6 +18,9 @@ public class MenuPanel extends Panel{
     private BufferedImage background;
     private BufferedImage castle;
 
+    /**
+     * Creates a new Panel used for the menu, adding the background image, the music and all of its components
+     */
     public MenuPanel() {
 
         super.startSound(Constants.menuPanel);
@@ -58,10 +61,11 @@ public class MenuPanel extends Panel{
         this.add(rules);
     }
 
-    public void stopMusic() {
-        super.stopMusic();
-    }
-    
+    /**
+     * Draws the background images 
+     * @param g 
+     *        graphic object used to draw all the components
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(background, 0, 0, null);
