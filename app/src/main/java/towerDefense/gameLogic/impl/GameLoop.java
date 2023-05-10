@@ -7,11 +7,17 @@ public class GameLoop extends Thread{
 
     private GameImpl game;
 
+    /**
+     * Builds a new gameloop
+     */
     public GameLoop(GameImpl game) {
         this.game = game;
         this.run();
     }
     
+    /**
+     * Method called to run the gameloop and update the game state
+     */
     @Override
     public void run() {
         
