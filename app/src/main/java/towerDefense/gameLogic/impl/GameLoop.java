@@ -11,6 +11,9 @@ public class GameLoop extends Thread{
     private TowerSingleton tower = TowerSingleton.getInstance();
     private GameLogicImpl gameLogicImpl = new GameLogicImpl();
 
+    /**
+     * Builds a new gameloop
+     */
     public GameLoop(GameImpl game) {
         this.game = game;
         this.run();
@@ -20,6 +23,9 @@ public class GameLoop extends Thread{
 
     }
     
+    /**
+     * Method called to run the gameloop and update the game state
+     */
     @Override
     public void run() {
         

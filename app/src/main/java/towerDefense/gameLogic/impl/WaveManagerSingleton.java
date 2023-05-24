@@ -4,20 +4,22 @@ import java.util.Random;
 import towerDefense.entities.impl.TowerSingleton;
 
 public class WaveManagerSingleton {
-    long start;
-    int waveSize;
-    Random random = new Random();
-    int counter;
-    long timerWaves;
-    TowerSingleton tower;
-    GameLogicImpl gameLogicImpl = new GameLogicImpl();
-    private static WaveManagerSingleton instance = null;
     
+    private GameLogicImpl gameLogicImpl = new GameLogicImpl();
+    private long start;
+    private int waveSize;
+    private Random random = new Random();
+    private int counter;
+    private long timerWaves;
+    private static WaveManagerSingleton instance = null;
+    private final int WAVECOUNTER = 2;
+    private final double TIMEMULTIPLIER = 1.2;
+    private final int FIRSTWAVEMIN = 2;
+    private final int FIRSTWAVERANGE = 2;
 
     private WaveManagerSingleton() {
-        this.tower = TowerSingleton.getInstance();
         this.start = System.currentTimeMillis();
-        this.waveSize = random.nextInt(2) + 2;
+        this.waveSize = random.nextInt(FIRSTWAVERANGE) + FIRSTWAVEMIN;
         for(int i = 0; i < waveSize; i++){
             gameLogicImpl.summonEnemy();
         }
@@ -25,6 +27,9 @@ public class WaveManagerSingleton {
         this.timerWaves = 10000;
     }
 
+    /**
+     * @return the only existing instance of this class
+     */
     public static WaveManagerSingleton getInstance() {
         if(instance == null) {
             instance = new WaveManagerSingleton();
@@ -32,6 +37,9 @@ public class WaveManagerSingleton {
         return instance;
     }
 
+    /**
+     * Method called to spawn a wave of enemies, once every 10000 loops
+     */
     public void spawnWave(){
         long now = System.currentTimeMillis();
         if((now - start) >= timerWaves){
@@ -39,9 +47,9 @@ public class WaveManagerSingleton {
                 gameLogicImpl.summonEnemy();
                 start = now;
             }
-            if(counter > 2) {
+            if(counter > WAVECOUNTER) {
                 this.waveSize++;
-                this.timerWaves *= 1.2;
+                this.timerWaves *= TIMEMULTIPLIER;
                 this.counter = 0;
             } else {
                 counter++;
