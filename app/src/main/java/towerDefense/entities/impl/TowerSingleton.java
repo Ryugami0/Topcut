@@ -4,15 +4,12 @@ package towerDefense.entities.impl;
 import towerDefense.entities.api.*;
 import towerDefense.game.impl.Sfx;
 import towerDefense.gameLogic.impl.*;
-import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Random;
 import javax.imageio.ImageIO;
-import towerDefense.gameLogic.impl.AI;;
 
 public class TowerSingleton implements Entity{
 
@@ -30,7 +27,6 @@ public class TowerSingleton implements Entity{
     private LinkedList<MovingEntity> enemies = new LinkedList<MovingEntity>();
     private LinkedList<MovingEntity> entities = new LinkedList<MovingEntity>();
     private Turret turret;
-    private AI ai = new AI();
     private long lastTime = System.currentTimeMillis();
 
     private TowerSingleton() {
@@ -59,38 +55,7 @@ public class TowerSingleton implements Entity{
             instance = new TowerSingleton(); 
         }
         return instance;
-    }
-
-    /**
-     * Adds to the entities list the type of unit requested and then subtracts its cost to the total money
-     * @param cost
-     *          the cost of the summoned unit
-     * @param type
-     *          the type of the summoned unit
-     */
-    public void summonEntity(final int cost, final int type) {
-		final MovingEntity entity;
-            if(type==1){
-                entity = new Barbarian();
-            }else if(type==2){
-                entity = new Knight();
-            }else {
-                entity = new Archer();
-            }
-            if(cost <= this.getMoney())  {
-                this.entities.add(entity);
-                this.money -= cost;
-            } 
-	}
-
-    /**
-     * Summons a unit with zero cost
-     * @param type
-     *          the type of the summoned unit
-     */
-    public void summonfreeEntity(final int type) {
-		summonEntity(0, type); 
-	}
+    }  
 
     /**
      * Builds a new Turret and then subtracts the cost from the total money
@@ -107,19 +72,7 @@ public class TowerSingleton implements Entity{
         }
     }
 
-    /**
-     * Summons an enemy with a random chance of being different ones
-     */
-    public void summonEnemy(){
-        Random random = new Random();
-        int seed = random.nextInt(100) + 1;
-        if(seed < 70) {
-            this.enemies.add(new Goblin());
-        }
-        else {
-            this.enemies.add(new Wizard());
-        }    
-    }
+   
 
     /**
      * Removes all dead entities from the entities lists
@@ -139,35 +92,6 @@ public class TowerSingleton implements Entity{
         if(this.turret != null && this.turret.getHp() <= 0){
             this.turret = null;
         }
-    }
-
-    /**
-     * Calls for the graphic methods to draw them on screen
-     * @param g
-     *        graphic object used to draw all components
-     */
-    public void draw(Graphics g){
-        for(MovingEntity entity : this.entities){
-            entity.draw(g);
-        }
-        for(MovingEntity enemy : this.enemies){
-            enemy.draw(g);
-        }
-        if(this.turret != null){
-            this.turret.draw(g);
-        }
-
-        g.drawImage(this.sprite, (int)this.getPosition().getX(), (int)this.getPosition().getY(), null);
-    }
-    
-    /**
-     * Updates the state of the game
-     */
-    public void update(){
-        this.getWaveManager().spawnWave();
-        removeDeads();
-        ai.useAI();
-        this.updateScoreMoney();
     }
 
     /**
@@ -314,6 +238,26 @@ public class TowerSingleton implements Entity{
      */
     public void removeMoney(int amount) {
         this.money -= amount;
+    }
+
+    /**
+     * @return
+     *      Tower's sprite
+     */
+    public BufferedImage getSprite() {
+        return this.sprite;
+    }
+
+    public void addEntity(MovingEntity entity) {
+        this.entities.add(entity);
+    }
+
+    public void setMoney(int amount) {
+        this.money = amount;
+    } 
+
+    public void addEnemy(MovingEntity enemy) {
+        this.enemies.add(enemy);
     }
 }
 

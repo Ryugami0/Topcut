@@ -13,7 +13,7 @@ public class Knight extends MovingEntity{
      * Creates a new Knight entity
      */
     public Knight() {
-        super(new Point(50,500), 3, 2000, 35,Constants.knight, 60);
+        super(new Point(50,500), 3, 2000, 30,Constants.knight, 60);
     }
 
     public static int getCost() {

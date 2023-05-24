@@ -12,7 +12,7 @@ public class Barbarian extends MovingEntity{
      * Creates a new Barbarian entity
      */
     public Barbarian() {
-        super(new Point(50,500), 1, 4000, 25, Constants.barbarian, cost);
+        super(new Point(50,500), 1, 3000, 25, Constants.barbarian, cost);
     }
 
     /**

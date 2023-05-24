@@ -9,13 +9,13 @@ import towerDefense.entities.impl.TowerSingleton;
 import towerDefense.entities.impl.Turret;
 
 public class AI {
-    GameLogicImpl gameLogicImpl = new GameLogicImpl();
-
+    
     public void useAI(){
         TowerSingleton tower = TowerSingleton.getInstance();
         MovingEntity entity;
         Entity target;
         MovingEntity ally;
+        GameLogicImpl gameLogicImpl = new GameLogicImpl();
         
         for(int i = 0; i< tower.getEntitiesNumber(); i++){
             entity = tower.getEntities().get(i);
@@ -92,6 +92,7 @@ public class AI {
     //-------------------------------
 
     public void checkAllyAhead(MovingEntity entity, MovingEntity ally){
+        GameLogicImpl gameLogicImpl = new GameLogicImpl();
         if(!gameLogicImpl.checkCollision(entity, ally)){
             entity.updatePosition();
             if(entity.getNameEntity() == Constants.archer){
@@ -103,6 +104,7 @@ public class AI {
     }
 
     public void checkEnemyAhead(MovingEntity entity, Entity target){
+        GameLogicImpl gameLogicImpl = new GameLogicImpl();
         if(gameLogicImpl.checkCollision(entity, target)){
             entity.attack(target);
             entity.updateSprite(Constants.attack);

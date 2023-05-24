@@ -5,6 +5,9 @@ import javax.swing.*;
 import towerDefense.Constants;
 import towerDefense.entities.impl.*;
 import towerDefense.game.api.Panel;
+import towerDefense.gameLogic.impl.GameLogicImpl;
+import towerDefense.gameLogic.impl.GameLoop;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -25,6 +28,8 @@ public class GamePanel extends Panel{
     private FinalMove fMove = new FinalMove();
     private ActionListener finalMoveListener;
     private final int finalMoveCost = 80;
+    private GameLoop gameLoop = new GameLoop();
+    private GameLogicImpl gameLogicImpl = new GameLogicImpl();
     
     /**
      * Creates a new Game Panel, setting up its background image and all of its components
@@ -57,27 +62,27 @@ public class GamePanel extends Panel{
         this.add(buildTurret);
 
         summonBarbarian.addActionListener((arg) -> {
-            tower.summonEntity(Barbarian.getCost(), 1);
+            gameLogicImpl.summonEntity(Barbarian.getCost(), 1);
                 if(fMove.isActive()) {
-                    tower.summonfreeEntity(1);
+                    gameLogicImpl.summonfreeEntity(1);
                 }
                 disableButtons();
                 timer.start();
         }); 
 
         summonKnight.addActionListener((arg) -> {
-            tower.summonEntity(Knight.getCost(), 2);
+            gameLogicImpl.summonEntity(Knight.getCost(), 2);
                 if(fMove.isActive()) {
-                    tower.summonfreeEntity(2);
+                    gameLogicImpl.summonfreeEntity(2);
                 }
                 disableButtons();
                 timer.start();
         });
 
         summonArcher.addActionListener((arg) ->  {
-            tower.summonEntity(Archer.getCost(), 3);
+            gameLogicImpl.summonEntity(Archer.getCost(), 3);
                 if(fMove.isActive()) {
-                    tower.summonfreeEntity(3);
+                    gameLogicImpl.summonfreeEntity(3);
                 }
                 disableButtons();
                 timer.start();
@@ -154,7 +159,6 @@ public class GamePanel extends Panel{
      */
     @Override
     public void update(){
-        this.tower.update();
         this.money.setText("$" + String.valueOf(tower.getMoney()));
         this.score.setText("SCORE: " + tower.getScore());
     }
@@ -168,7 +172,7 @@ public class GamePanel extends Panel{
             super.paintComponent(g);
             g.drawImage(background, 0, 0, null);
             g.drawImage(castle,-180,430,null);
-            tower.draw(g);
+            gameLoop.draw(g);
             this.drawHealtBar(g);
         }
 

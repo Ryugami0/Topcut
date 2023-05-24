@@ -10,6 +10,7 @@ public class WaveManagerSingleton {
     int counter;
     long timerWaves;
     TowerSingleton tower;
+    GameLogicImpl gameLogicImpl = new GameLogicImpl();
     private static WaveManagerSingleton instance = null;
     
 
@@ -18,7 +19,7 @@ public class WaveManagerSingleton {
         this.start = System.currentTimeMillis();
         this.waveSize = random.nextInt(2) + 2;
         for(int i = 0; i < waveSize; i++){
-            tower.summonEnemy();
+            gameLogicImpl.summonEnemy();
         }
         this.counter = 0;
         this.timerWaves = 10000;
@@ -35,7 +36,7 @@ public class WaveManagerSingleton {
         long now = System.currentTimeMillis();
         if((now - start) >= timerWaves){
             for(int i = 0; i < waveSize; i++){
-                tower.summonEnemy();
+                gameLogicImpl.summonEnemy();
                 start = now;
             }
             if(counter > 2) {

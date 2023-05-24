@@ -13,7 +13,6 @@ public class Sfx {
             SFX = AudioSystem.getClip();
             SFX.open(audioStream);
             SFX.setFramePosition(0);
-
             SFX.start();
         } catch (Exception e) { 
             System.out.println(e);    
