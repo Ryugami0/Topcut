@@ -1,8 +1,6 @@
 package towerDefense.gameLogic.impl;
 import java.util.Random;
 
-import towerDefense.entities.impl.TowerSingleton;
-
 public class WaveManagerSingleton {
     
     private GameLogicImpl gameLogicImpl = new GameLogicImpl();

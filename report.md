@@ -23,10 +23,32 @@ CAPITOLO 2
 
         2.1 ARCHITETTURA
 
-        L'architettura del software segue il pattern MVC.
-        La parte della "view" è affidata all'interfaccia Panel, responsabile di mostrare a schermo tutti gli avvenimenti, e di catturare gli input dell'utente.
-        Il model invece è affidato al'interfaccia GameLogic, la quale si occupa di gestire la logica di base del programma e di gestire le varie entità.
-        Il gameloop è la sezione di programma che si occupa di aggiornare ciclicamente il programma ed è la principale connessione tra view e model.
+        Come architettura per il software è stato scelto l'MVC.
+        La parte della "view" è affidata all'interfaccia Panel, responsabile di mostrare a schermo tutti gli avvenimenti e di catturare gli input dell'utente.
+        Il model invece è affidato al'interfaccia GameLogic, la quale si occupa di gestire la logica di base del programma e le varie entità.
+        Il gameloop invece è la sezione di programma che si occupa di aggiornare ciclicamente tutte le altre parti ed è la principale connessione tra view e model.
+        Se si dovesse cambiare in blocco la libreria grafica non ci sarebbero grosse ripercussioni sul programma, idem per inserire nuovi "potenziamenti".
+        Per aggiungere delle entità (in particolare per i nemici) invece andrebbe modificato l'algoritmo dello spawnmanager
+        Di seguito è riportato uno schema UML del progetto:
+
+
+
+GUIDA UTENTE
+
+        All'avvio del gioco sarà possibile scegliere tra 3 menù: "Start Game", "Best Scores" e "Rules"
+        Cliccando su "Start Same" il gioco comincerà, cliccando su "Best Scores" si aprirà un file contenente i punteggi migliori salvati mentre cliccando su "Rules" si aprirà una finestra con il regolamento del gioco (da cui è possibile tornare indietro con il pulsante "Back").
+        Una volta cominciato il gioco inizieranno ad arrivare ondate di nemici, per poterli sconfiggere bisognerà evocare alleati e/o potenziamenti tramite i pulsanti trovati in cima alla finestra di gioco, al costo di monete di gioco.
+        Attualmente le unità/potenziamenti presenti sono:
+            -Barbaro: unità lenta, con molti punti salute e un discreto attacco
+            -Cavaliere: unità veloce, con pochi punti salute ma molti danni
+            -Arcere: unità veloce, con pochissimi punti salute ma molti danni e una gittata media
+            -Torretta: cannone posto sulla cima della torre, è un'unità monouso con gittata molto ampia (se dei nemici arrivano alla torre colpiranno prima la torretta fino a distruggerla, poi la torre)
+            -Potenziamento: chiamato "Double Allies" permetterà di evocare il doppio degli alleati al costo di uno solo per un certo lasso di tempo
+        Una volta evocata un'unità bisognerà aspettare qualche secondo prima di poterne evocare un'altra
+        Il potenziamento ha invece un tempo di ricarica molto più lungo
+        La partita finirà quando i punti salute della torre scendono a zero oppure cliccando il pulsante "Surrender", a quel punto si verrà reindirizzati al menù di fine partita.
+        Da qui si potrà salvare il proprio punteggio inserendo il proprio nome e poi cliccando "Save Score" e/o si potrà chiudere il gioco 
+
 
 
 
