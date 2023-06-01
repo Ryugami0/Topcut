@@ -29,7 +29,7 @@ CAPITOLO 2
         Il gameloop invece è la sezione di programma che si occupa di aggiornare ciclicamente tutte le altre parti ed è la principale connessione tra view e model.
         Se si dovesse cambiare in blocco la libreria grafica non ci sarebbero grosse ripercussioni sul programma, idem per inserire nuovi "potenziamenti".
         Per aggiungere delle entità (in particolare per i nemici) invece andrebbe modificato l'algoritmo dello spawnmanager
-        Di seguito è riportato uno schema UML del progetto:
+        Un semplice UML che descrive queste relazioni: 
 
 
 
