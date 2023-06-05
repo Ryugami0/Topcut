@@ -33,4 +33,12 @@ public class GameImpl implements Game{
         currentPanel = panel;
         gameWindow.changeWindow(panel);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Class<? extends Panel> getCurrentPanelClass() {
+        return currentPanel.getClass();
+    }
 }

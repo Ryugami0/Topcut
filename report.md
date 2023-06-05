@@ -32,6 +32,24 @@ CAPITOLO 2
         Un semplice UML che descrive queste relazioni: 
 
 
+    2.2 DESIGN DETTAGLIATO
+
+        BADIOLI
+
+            Spawn di entità nemiche 
+
+            Problema: il software richiede lo spawn di ondate di nemici con difficoltà incrementale e presenza di diverse entità
+
+            Soluzione:  La gestione dello spawn è realizzata attraverso il pattern Singleton della classe WaveManager, creando una classe che si occupa di gestire internamente la composizione e la distanza temporale tra ondate di nemici.
+
+
+            Gestione file
+
+            Problema: a fine partita il software deve essere in grado di poter scrivere e leggere un file su cui salvare/consultare i migliori risultati
+
+            Soluzione: 
+
+
 
 GUIDA UTENTE
 

@@ -1,8 +1,12 @@
 package towerDefense.gameLogic.impl;
 import towerDefense.entities.api.MovingEntity;
 import towerDefense.entities.impl.TowerSingleton;
+import towerDefense.game.impl.MenuPanel;
+import towerDefense.game.impl.RulePanel;
 import towerDefense.game.impl.EndPanel;
 import towerDefense.game.impl.GameImpl;
+import towerDefense.game.impl.GamePanel;
+
 import java.awt.Graphics;
 
 public class GameLoop extends Thread{
@@ -28,11 +32,17 @@ public class GameLoop extends Thread{
      */
     @Override
     public void run() {
-        
-        while (TowerSingleton.getInstance().getHp() >= 0) {
-            update();  
+       
+        while(true) {
+            System.out.println();
+            if(!(game.getCurrentPanel() instanceof MenuPanel || game.getCurrentPanel() instanceof RulePanel)) {
+                while(TowerSingleton.getInstance().getHp() >= 0 && game.getCurrentPanel() instanceof GamePanel) {
+                    update();  
+                }
+                GameImpl.setCurrentPanel(new EndPanel());
+                break;
+            }
         }
-        GameImpl.setCurrentPanel(new EndPanel());
     }
 
     private void update() {

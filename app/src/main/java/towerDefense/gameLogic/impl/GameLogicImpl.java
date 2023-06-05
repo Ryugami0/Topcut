@@ -39,7 +39,7 @@ public class GameLogicImpl implements GameLogic {
      * {@inheritDoc}
      */
     public void update(){
-        tower.getWaveManager().spawnWave();
+        this.getWaveManager().spawnWave();
         tower.removeDeads();
         ai.useAI();
         tower.updateScoreMoney();
@@ -82,6 +82,15 @@ public class GameLogicImpl implements GameLogic {
         else {
             tower.addEnemy(new Wizard());
         }    
+    }
+
+    /**
+     * 
+     * @return
+     *        The only instance of WaveManager
+     */
+    public WaveManagerSingleton getWaveManager() {
+        return WaveManagerSingleton.getInstance();
     }
 
 }
