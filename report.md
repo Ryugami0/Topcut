@@ -17,6 +17,12 @@ CAPITOLO 1
         -Una volta finita la partita all'utente sarà possibile effettuare un salvataggio del proprio punteggio
         -Una classifica dei punteggi migliori può essere consultata dal menù iniziale
 
+        1.2 ANALISI E MODELLO DEL DOMINIO
+
+        L'entità TowerSingleton ricoprirà il ruolo principale rappresentando il giocatore e gestendo lo spawn delle MovingEntity. Esse saranno, come deducibile dal nome, delle entità mobili con statistiche predeterminate(attacco, velocità, vita e costo) e si divideranno in due tipi, amiche e nemiche, diverse tra loro. Ognuna delle "MovingEntity" avrà determinate differenze volte a caratterizzarle, come ad esempio, una maggiore vita per il Barbarian ma una velocità bassa.
+        Ci sarà infine un'ultima entità amica, ovvero la Turret, che sarà fissa sopra la TowerSingleton e, al pari delle MovingEntity, presenterà un attacco, una vita, un costo e una velocità pari a zero.
+        Le entità amiche e nemiche spawneranno ai lati opposti dello schermo e una volta entrate nel range di attacco, si scontreranno vicendevolmente, provocando danni fino alla morte di una delle due.
+        AGGIUNGERE UML DISEGNATO SU CARTA (Francesco)
 
 CAPITOLO 2
     DESIGN
@@ -31,6 +37,39 @@ CAPITOLO 2
         Per aggiungere delle entità (in particolare per i nemici) invece andrebbe modificato l'algoritmo dello spawnmanager
         Di seguito è riportato uno schema UML del progetto:
 
+        2.2 Petrassi-Design dettagliato
+
+        Da suddivisione del progetto, stabilito dopo una discussione iniziale approfondita con i miei colleghi su come dividerci in maniera quanto più equidistribuita il progetto in questione, riporto quanto emerso in termini di risultati da me ottenuti e di problematicità riscontrate.
+
+        Problema: Come gestire la musica nei vari pannelli? E gli effetti sonori?
+        Questi problemi nascono dal fatto che ogni pannello presente deve avere una propria musica di accompagnamento che deve accompagnare il giocatore nelle varie fasi del gioco, oltre che per marcare la differenza tra le varie fasi di gioco. Troviamo, inoltre, anche gli effetti sonori che devono essere riprodotti in contemporanea alla musica senza interromperla o sovrastarla.
+
+        INSERIRE SCHEMA UML
+
+        Soluzione proposta: Inseriamo una classe Music che gestisce la musica in modo tale che ogni pannello quando viene creato, inserendo la stringa che fa riferimento al pannello nel metodo startMusic, può far partire la canzone corrispondente. E nel momento in cui viene generato un altro panello, dello stesso tipo o diverso, è possibile interrompere la musica, affinché il pannello successivo possa riprodurre la propria senza sovrapposizioni.
+        Per quanto riguarda invece gli effetti sonori, per evitare problemi con la musica e per il funzionamento lievemente diverso che presentano, inseriamo una classe Sfx che genera quindi un suono che si sovrappone alla musica ma che può essere gestito indipendentemente.
+
+CAPITOLO 3
+    SVILUPPO
+
+        3.3 Petrassi-Note di sviluppo
+
+        Utilizzo della livreria ImageIO
+        Attraverso l’implementazione della seguente funzione “ void updateSprite(String activity)”, collocata nella classe “movingentity” mi è stato possibile restituire il giusto percorso dove reperire lo sprite da riutilizzare in quel momento sulla data entità.
+        https://github.com/FilippoBadioli/OOP22-towerdefense/blob/4a967e1b4d0411394034a6abb119a4d6deef0e38/app/src/main/java/towerDefense/entities/api/MovingEntity.java#LL73C5-L108C6
+
+CAPITOLO 4
+    COMMENTI FINALI
+
+        4.1 Petrassi-Autovalutazione
+
+
+        Nel fornire un’autovalutazione quanto più oggettiva possibile, ciò che ritengo necessario far emergere in primis, è l’insegnamento acquisito mediante lo svolgimento del lavoro in gruppo. 
+
+        Da questo lavoro di gruppo traggo come risultato fondamentale l’aver compreso le difficoltà che sorgono nell’ambito della collaborazione, per quanto riguarda il riuscire a mettere insieme esigenze e modus operandi completamente distinti. Come in un puzzle, è stato necessario trovare ogni singolo pezzo che riuscisse a incastrarsi in una cornice coerente e continua, con l’eccezione che a mettere mano su ogni pezzo non vi sia stata un’unica persona. La costanza, il dialogo e l’ascolto hanno fatto in modo che seppur ogni singolo componente del gruppo abbia avuto un proprio principale compito nella progettazione, tutti gli altri vi abbiano in qualche modo messo mano e dunque preso parte, facendo si che il risultato fosse il più omogeneo auspicabile.
+        Nonostante sia stata per me una delle primissime esperienze in un progetto di tale portata e complessità, ritengo di essermi impegnato nel mettere insieme le conoscenze acquisite lungo la durata dell’intero corso, ed insieme al background fornito dalle altre materie e alla mia curiosità di andare oltre l’insegnamento frontale, complessivamente mi ritengo soddisfatto del lavoro. 
+
+        Essendo però questa una valutazione oggettiva, è necessario che faccia luce anche sui punti oscuri. Non posso ritenere che si tratti di una vera e propria dimostrazione di esser un capace progettista, ma è sicuramente un punto di partenza, dal quale solo l’esperienza e la continua dedizione riusciranno a mettere insieme quello che ho scoperto essere un mio forte interesse: la progettazione di videogiochi. 
 
 
 GUIDA UTENTE
