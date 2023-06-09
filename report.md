@@ -52,6 +52,12 @@ CAPITOLO 2
 CAPITOLO 3
     SVILUPPO
 
+        3.1 testing automatizzato
+        
+        Nel contesto del progetto towerdefense abbiamo scelto di sottoporre a test automatizzato tutte le entità appartenti alle classi MovingEntity, RangedEntity e Projectile attraverso la suite di test specifica JUnit 5.
+        Abbiamo testato ogni metodo di ognuna delle superclassi elecante sopra per ogni caso specifico di implementazione ( MovingEntity: Barbarian, Knight, Goblin... ; RangedEntity: Archer, Turret ecc) attraverso l'utilizzo del metodo assertEquals() per confrontare il risultato dei test specifici con i valori attesi.
+
+
         3.3 Petrassi-Note di sviluppo
 
         Utilizzo della livreria ImageIO

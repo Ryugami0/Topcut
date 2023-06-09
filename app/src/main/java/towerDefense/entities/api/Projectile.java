@@ -32,13 +32,13 @@ public class Projectile {
     public Projectile(int damage, Point position, String type, Entity target){
         this.damage = damage;
         this.position = position;
-        this.initialPos = position;
+        this.initialPos = new Point(position);
         if(type == Constants.arrow){
             this.speed = 4;
             this.hitbox = new Rectangle(this.position);
             this.hitbox.setSize(10, 5);
             try{
-                this.currentSprite = ImageIO.read(getClass().getResource("../../Assets/Projectile/Arrow.png"));
+                this.currentSprite = ImageIO.read(getClass().getResource("/Assets/Projectile/Arrow.png"));
             }catch(Exception e){
                 e.printStackTrace();
             }
@@ -47,7 +47,7 @@ public class Projectile {
             this.hitbox = new Rectangle(this.position);
             this.hitbox.setSize(15, 15);
             try{
-                this.currentSprite = ImageIO.read(getClass().getResource("../../Assets/Projectile/Boulder.png"));
+                this.currentSprite = ImageIO.read(getClass().getResource("/Assets/Projectile/Boulder.png"));
             }catch(Exception e){
                 e.printStackTrace();
             }

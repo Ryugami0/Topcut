@@ -100,7 +100,7 @@ public abstract class MovingEntity implements Entity{
                     currentSpriteAttack++;
                     currentSprite=this.currentSpriteAttack;
                 }
-                this.sprite = ImageIO.read(getClass().getResource("../../Assets/"+nameEntity+"/"+activity+"/"+currentSprite+"/"+currentSprite+".png"));  
+                this.sprite = ImageIO.read(getClass().getResource("/Assets/"+nameEntity+"/"+activity+"/"+currentSprite+"/"+currentSprite+".png"));  
             } catch (IOException e) {
                 System.out.println("error loading image " + e.getMessage());
             }
@@ -163,6 +163,22 @@ public abstract class MovingEntity implements Entity{
      */
     public BufferedImage getSprite(){
         return this.sprite;
+    }
+
+    /**
+     * 
+     * @return the currentspritewalk index
+     */
+    public int getCurrentSpriteWalk(){
+        return this.currentSpriteWalk;
+    }
+
+    /**
+     * 
+     * @return the currentspritewalk index
+     */
+    public int getCurrentSpriteAttack(){
+        return this.currentSpriteAttack;
     }
 
     /**
