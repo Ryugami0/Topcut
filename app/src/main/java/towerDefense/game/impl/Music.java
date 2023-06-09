@@ -14,7 +14,7 @@ public class Music {
      */
     public void startMusic(String song){
         try {
-            audioStream = AudioSystem.getAudioInputStream(this.getClass().getResource("../../music/"+song+".wav"));
+            audioStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/music/"+song+".wav"));
             music = AudioSystem.getClip();
             music.open(audioStream);
             music.setFramePosition(0);

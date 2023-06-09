@@ -33,8 +33,8 @@ public class EndPanel extends Panel{
         super.startSound(Constants.endPanel);
 
         try {
-            this.castle = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/castle2.png"));
-            this.background = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/End.png"));
+            this.castle = ImageIO.read(this.getClass().getResource("/Assets/Backgrounds/castle2.png"));
+            this.background = ImageIO.read(this.getClass().getResource("/Assets/Backgrounds/End.png"));
         } catch (IOException e) {
             System.out.println("error loading background " + e.getMessage());
         }
@@ -43,7 +43,7 @@ public class EndPanel extends Panel{
         Exit.addActionListener((arg) ->System.exit(0));
         this.add(Exit);
 
-        saveFile = Paths.get("").toAbsolutePath().resolve("app/src/main/java/TowerDefense/Assets/SaveFile.txt");
+        saveFile = Paths.get("").toAbsolutePath().resolve("app/src/main/resources/Assets/SaveFile.txt");
         JButton saveScore = new JButton("Save Score");
         JTextField nameScore = new JTextField("             ");
         TowerSingleton tower = TowerSingleton.getInstance();

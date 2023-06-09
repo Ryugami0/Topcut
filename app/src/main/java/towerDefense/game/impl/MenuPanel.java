@@ -26,8 +26,8 @@ public class MenuPanel extends Panel{
         super.startSound(Constants.menuPanel);
 
         try {
-            this.castle = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/castle2.png"));
-            this.background = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/Menu.png"));
+            this.castle = ImageIO.read(this.getClass().getResource("/Assets/Backgrounds/castle2.png"));
+            this.background = ImageIO.read(this.getClass().getResource("/Assets/Backgrounds/Menu.png"));
         } catch (IOException e) {
             System.out.println("error loading background " + e.getMessage());
         }
@@ -43,7 +43,7 @@ public class MenuPanel extends Panel{
         bestScores.addActionListener((arg) -> {
             try {
                 super.startSound(Constants.buttonSFX);
-                Desktop.getDesktop().open(Paths.get("").toAbsolutePath().resolve("app/src/main/java/TowerDefense/Assets/SaveFile.txt").toFile());
+                Desktop.getDesktop().open(Paths.get("").toAbsolutePath().resolve("app/src/main/resources/Assets/SaveFile.txt").toFile());
             } catch (IOException e) {
                 e.printStackTrace();
             }

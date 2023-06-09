@@ -39,8 +39,8 @@ public class GamePanel extends Panel{
         super.startSound(Constants.gamePanel);
         
         try{
-            this.background = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/Game.jpg"));
-            this.castle = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/castle.png"));
+            this.background = ImageIO.read(this.getClass().getResource("/Assets/Backgrounds/Game.jpg"));
+            this.castle = ImageIO.read(this.getClass().getResource("/Assets/Backgrounds/castle.png"));
         }catch(Exception e){
             System.out.println("error loading background " + e.getMessage());
         }
