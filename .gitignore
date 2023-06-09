@@ -9,8 +9,7 @@ bin
 *.gradle
 build.gradle
 gradle
-/gradlew
-/gradlew.bat
+
 
 # IntelliJ IDEA specific files
 .idea/
