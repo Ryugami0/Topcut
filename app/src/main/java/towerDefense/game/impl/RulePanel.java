@@ -20,7 +20,7 @@ public class RulePanel extends Panel{
         super.startSound(Constants.rulePanel);
 
         try{
-            this.background = ImageIO.read(this.getClass().getResource("../../Assets/Backgrounds/Rules.jpg"));
+            this.background = ImageIO.read(this.getClass().getResource("/Assets/Backgrounds/Rules.jpg"));
         }catch(Exception e){
             System.out.println("error loading background " + e.getMessage());
         }

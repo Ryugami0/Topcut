@@ -39,7 +39,7 @@ public class TowerSingleton implements Entity{
         this.position = new Point(50, 400);
 
         try {
-            this.sprite= ImageIO.read(getClass().getResource("../../Assets/Tower/1.png"));
+            this.sprite= ImageIO.read(getClass().getResource("/Assets/Tower/1.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

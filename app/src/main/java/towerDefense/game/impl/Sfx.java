@@ -9,7 +9,7 @@ public class Sfx {
     
     public void startSFX(String sfx){
         try {
-            audioStream = AudioSystem.getAudioInputStream(this.getClass().getResource("../../music/SFX/"+sfx+".wav"));
+            audioStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/music/SFX/"+sfx+".wav"));
             SFX = AudioSystem.getClip();
             SFX.open(audioStream);
             SFX.setFramePosition(0);

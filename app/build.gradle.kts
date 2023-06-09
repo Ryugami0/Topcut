@@ -20,7 +20,10 @@ repositories {
 
 dependencies {
     // Use JUnit Jupiter for testing.
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.9.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.1")
+
 
     // This dependency is used by the application.
     implementation("com.google.guava:guava:31.0.1-jre")
@@ -31,7 +34,6 @@ application {
     mainClass.set("towerDefense.mainClass.MainClass")
 }
 
-tasks.named<Test>("test") {
-    // Use JUnit Platform for unit tests.
+tasks.test {
     useJUnitPlatform()
 }
