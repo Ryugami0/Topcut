@@ -77,77 +77,112 @@ public class TestMovingEntity {
         this.entity = new Barbarian();
         try {
             synchronized(entity){
-                entity.wait(125);
+                entity.wait(126);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         this.entity.updateSprite(Constants.walk);
         assertEquals(1, this.entity.getCurrentSpriteWalk());
-        for(int i = 0; i < 7; i++){
+        for(int i = 0; i < 8; i++){
+            try {
+                synchronized(entity){
+                    entity.wait(126);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             this.entity.updateSprite(Constants.walk);
         }
         assertEquals(entity.getCurrentSpriteWalk(), 1);
         this.entity = new Knight();
         try {
             synchronized(entity){
-                entity.wait(125);
+                entity.wait(126);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         this.entity.updateSprite(Constants.walk);
         assertEquals(1, this.entity.getCurrentSpriteWalk());       
-        for(int i = 0; i < 7; i++){
+        for(int i = 0; i < 8; i++){
+            try {
+                synchronized(entity){
+                    entity.wait(126);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             this.entity.updateSprite(Constants.walk);
         }
         assertEquals(entity.getCurrentSpriteWalk(), 1);
         this.entity = new Goblin();
         try {
             synchronized(entity){
-                entity.wait(125);
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        this.entity.updateSprite(Constants.walk);
-        assertEquals(entity.getCurrentSpriteWalk(), 1);
-        for(int i = 0; i < 4; i++){
-            this.entity.updateSprite(Constants.walk);
-        }
-        assertEquals(entity.getCurrentSpriteWalk(), 1);
-        this.entity = new Wizard();
-        try {
-            synchronized(entity){
-                entity.wait(125);
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        this.entity.updateSprite(Constants.walk);
-        assertEquals(entity.getCurrentSpriteWalk(), 1);
-        for(int i = 0; i < 7; i++){
-            this.entity.updateSprite(Constants.walk);
-        }
-        assertEquals(entity.getCurrentSpriteWalk(), 1);
-        this.entity = new Archer();
-        try {
-            synchronized(entity){
-                entity.wait(125);
+                entity.wait(126);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         this.entity.updateSprite(Constants.walk);
         assertEquals(1, this.entity.getCurrentSpriteWalk());
-        for(int i = 0; i < 7; i++){
+        for(int i = 0; i < 6; i++){
+            try {
+                synchronized(entity){
+                    entity.wait(126);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            this.entity.updateSprite(Constants.walk);
+        }
+        assertEquals(1, this.entity.getCurrentSpriteWalk());
+        this.entity = new Wizard();
+        try {
+            synchronized(entity){
+                entity.wait(126);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        this.entity.updateSprite(Constants.walk);
+        assertEquals(1, this.entity.getCurrentSpriteWalk());
+        for(int i = 0; i < 6; i++){
+            try {
+                synchronized(entity){
+                    entity.wait(126);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            this.entity.updateSprite(Constants.walk);
+        }
+        assertEquals(1, this.entity.getCurrentSpriteWalk());
+        this.entity = new Archer();
+        try {
+            synchronized(entity){
+                entity.wait(126);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        this.entity.updateSprite(Constants.walk);
+        assertEquals(1, this.entity.getCurrentSpriteWalk());
+        for(int i = 0; i < 8; i++){
+            try {
+                synchronized(entity){
+                    entity.wait(126);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             this.entity.updateSprite(Constants.walk);
         }
         assertEquals(entity.getCurrentSpriteWalk(), 1);
         this.entity = new Turret();
         try {
             synchronized(entity){
-                entity.wait(125);
+                entity.wait(126);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -169,6 +204,13 @@ public class TestMovingEntity {
         this.entity.updateSprite(Constants.attack);
         assertEquals(1, this.entity.getCurrentSpriteAttack());
         for(int i = 0; i < 30; i++){
+            try {
+                synchronized(entity){
+                    entity.wait(250);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             this.entity.updateSprite(Constants.attack);
         }
         assertEquals(entity.getCurrentSpriteAttack(), 1);
@@ -183,6 +225,13 @@ public class TestMovingEntity {
         this.entity.updateSprite(Constants.attack);
         assertEquals(1, this.entity.getCurrentSpriteAttack());
         for(int i = 0; i < 9; i++){
+            try {
+                synchronized(entity){
+                    entity.wait(250);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             this.entity.updateSprite(Constants.attack);
         }
         assertEquals(entity.getCurrentSpriteAttack(), 1);
@@ -197,6 +246,13 @@ public class TestMovingEntity {
         this.entity.updateSprite(Constants.attack);
         assertEquals(1, this.entity.getCurrentSpriteAttack());
         for(int i = 0; i < 7; i++){
+            try {
+                synchronized(entity){
+                    entity.wait(250);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             this.entity.updateSprite(Constants.attack);
         }
         assertEquals(entity.getCurrentSpriteAttack(), 1);
@@ -211,6 +267,13 @@ public class TestMovingEntity {
         this.entity.updateSprite(Constants.attack);
         assertEquals(1, this.entity.getCurrentSpriteAttack());
         for(int i = 0; i < 10; i++){
+            try {
+                synchronized(entity){
+                    entity.wait(250);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             this.entity.updateSprite(Constants.attack);
         }
         assertEquals(entity.getCurrentSpriteAttack(), 1);
@@ -224,7 +287,14 @@ public class TestMovingEntity {
         }
         this.entity.updateSprite(Constants.attack);
         assertEquals(1, this.entity.getCurrentSpriteAttack());
-        for(int i = 0; i < 16; i++){
+        for(int i = 0; i < 17; i++){
+            try {
+                synchronized(entity){
+                    entity.wait(250);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             this.entity.updateSprite(Constants.attack);
         }
         assertEquals(entity.getCurrentSpriteAttack(), 1);
@@ -238,7 +308,14 @@ public class TestMovingEntity {
         }
         this.entity.updateSprite(Constants.attack);
         assertEquals(1, this.entity.getCurrentSpriteAttack());
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 6; i++){
+            try {
+                synchronized(entity){
+                    entity.wait(250);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             this.entity.updateSprite(Constants.attack);
         }
         assertEquals(entity.getCurrentSpriteAttack(), 1);

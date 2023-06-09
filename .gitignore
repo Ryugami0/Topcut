@@ -1,0 +1,35 @@
+# Compiled class files
+build
+bin
+
+# Log files
+*.log
+
+# Gradle specific files
+*.gradle
+build.gradle
+gradle
+/gradlew
+/gradlew.bat
+
+# IntelliJ IDEA specific files
+.idea/
+
+# Eclipse specific files
+.classpath
+.project
+.settings/
+
+# macOS specific files
+.DS_Store
+
+# Exclude IDE and editor specific files
+*.iml
+*.ipr
+*.iws
+*.idea/
+*.vscode/
+
+# Exclude build output and temporary files
+/out/
+/tmp/
