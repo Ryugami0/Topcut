@@ -21,7 +21,7 @@ gradle
 .settings/
 
 # macOS specific files
-.DS_Store
+*.DS_Store
 
 # Exclude IDE and editor specific files
 *.iml
