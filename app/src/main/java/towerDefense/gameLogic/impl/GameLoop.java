@@ -34,7 +34,6 @@ public class GameLoop extends Thread{
     public void run() {
        
         while(true) {
-            System.out.println();
             if(!(game.getCurrentPanel() instanceof MenuPanel || game.getCurrentPanel() instanceof RulePanel)) {
                 while(TowerSingleton.getInstance().getHp() >= 0 && game.getCurrentPanel() instanceof GamePanel) {
                     update();  
