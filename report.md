@@ -1,4 +1,5 @@
 CAPITOLO 1
+
     ANALISI
 
         1.1 REQUISITI
@@ -24,7 +25,9 @@ CAPITOLO 1
         Le entità amiche e nemiche spawneranno ai lati opposti dello schermo e una volta entrate nel range di attacco, si scontreranno vicendevolmente, provocando danni fino alla morte di una delle due.
         AGGIUNGERE UML DISEGNATO SU CARTA (Francesco)
 
+
 CAPITOLO 2
+
     DESIGN
 
         2.1 ARCHITETTURA
@@ -60,14 +63,26 @@ CAPITOLO 2
             Soluzione proposta: Inseriamo una classe Music che gestisce la musica in modo tale che ogni pannello quando viene creato, inserendo la stringa che fa riferimento al pannello nel metodo startMusic, può far partire la canzone corrispondente. E nel momento in cui viene generato un altro panello, dello stesso tipo o diverso, è possibile interrompere la musica, affinché il pannello successivo possa riprodurre la propria senza sovrapposizioni.
             Per quanto riguarda invece gli effetti sonori, per evitare problemi con la musica e per il funzionamento lievemente diverso che presentano, inseriamo una classe Sfx che genera quindi un suono che si sovrappone alla musica ma che può essere gestito indipendentemente.
 
+
 CAPITOLO 3
+
     SVILUPPO
 
-        3.1 testing automatizzato
+        3.1 TESTING AUTOMATIZZATO
         
         Nel contesto del progetto towerdefense abbiamo scelto di sottoporre a test automatizzato tutte le entità appartenti alle classi MovingEntity, RangedEntity e Projectile attraverso la suite di test specifica JUnit 5.
         Abbiamo testato ogni metodo di ognuna delle superclassi elecante sopra per ogni caso specifico di implementazione ( MovingEntity: Barbarian, Knight, Goblin... ; RangedEntity: Archer, Turret ecc) attraverso l'utilizzo del metodo assertEquals() per confrontare il risultato dei test specifici con i valori attesi.
 
+        3.2 METODOLOGIA DI LAVORO
+
+        Nelle prime fasi di lavoro abbiamo delineato uno scheletro del progetto da seguire e ci siamo divisi le parti (poi dovute ricalibrare dopo l'abbandono di un membro del gruppo).
+        Il DVCS è stato usato in modo molto lineare, con merge molto frequenti.
+
+            BADIOLI
+            
+            Dal punto di vista della logica del programma mi sono occupato principalmente di realizzare le classi GameLoop, WaveManagerSingleton, FinalMove, e le funzioni di salvataggio e lettura dei punteggi su file.
+            Dal punto di vista grafico invece ho realizzato i pannelli di regole, menù e finale (esclusa la musica e negli ultimi due le immagini di sfondo) e implementato gli sprite del Wizard.
+            Altre cose di cui mi sono occupato è stato il code refactoring generale del programma e la documentazione javadoc.
 
         3.3 NOTE DI SVILUPPO
 
@@ -92,7 +107,9 @@ CAPITOLO 3
                 https://github.com/FilippoBadioli/OOP22-towerdefense/blob/4a967e1b4d0411394034a6abb119a4d6deef0e38/app/src/main/java/towerDefense/game/impl/MenuPanel.java#LL35C8-L57C12
                 https://github.com/FilippoBadioli/OOP22-towerdefense/blob/4a967e1b4d0411394034a6abb119a4d6deef0e38/app/src/main/java/towerDefense/game/impl/RulePanel.java#LL28C8-L33C12
 
+
 CAPITOLO 4
+
     COMMENTI FINALI
 
         4.1 AUTOVALUTAZIONE
