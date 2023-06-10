@@ -84,13 +84,24 @@ CAPITOLO 3
             Dal punto di vista grafico invece ho realizzato i pannelli di regole, menù e finale (esclusa la musica e negli ultimi due le immagini di sfondo) e implementato gli sprite del Wizard.
             Altre cose di cui mi sono occupato è stato il code refactoring generale del programma e la documentazione javadoc.
 
+            PETRASSI
+
+            Il ruolo a me assegnato riguardava inizialmente la gestione dello spawn e despawn delle entità e l'implementazione della musica di sottofondo.
+            Nello svolgere nel dettaglio il lavoro, oltre ai punti sopra riportati, mi sono poi occupato personalmente della gestione delle diverse entità e delle relative immagini ad esse assegnate, ricoprendo dunque la parte grafica del progetto.
+            Ho contribuito nella gestione del "game panel", per quanto concerne i pulsanti assegnati alle entità stesse e il loro comportamento.
+            
+
         3.3 NOTE DI SVILUPPO
 
             PETRASSI
 
-                Utilizzo della libreria ImageIO
+                Utilizzo della libreria javax.imageio.ImageIO e java.awt.image.BufferedImage
                 Attraverso l’implementazione della seguente funzione “ void updateSprite(String activity)”, collocata nella classe “movingentity” mi è stato possibile restituire il giusto percorso dove reperire lo sprite da riutilizzare in quel momento sulla data entità.
                 https://github.com/FilippoBadioli/OOP22-towerdefense/blob/4a967e1b4d0411394034a6abb119a4d6deef0e38/app/src/main/java/towerDefense/entities/api/MovingEntity.java#LL73C5-L108C6
+
+                Utilizzo della libreria javax.sound.sampled.*
+                Utilizzata per l'implementazione della musica e degli effetti sonori.
+                https://github.com/FilippoBadioli/OOP22-towerdefense/blob/eedded9723afc711b267b596e03116ef3d2d3a7f/app/src/main/java/towerDefense/game/impl/Music.java#L3
 
             BADIOLI
 
