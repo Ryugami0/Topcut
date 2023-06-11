@@ -11,16 +11,16 @@ import towerDefense.entities.impl.Turret;
 public class AI {
     
     public void useAI(){
-        TowerSingleton tower = TowerSingleton.getInstance();
+        final TowerSingleton tower = TowerSingleton.getInstance();
         MovingEntity entity;
         Entity target;
         MovingEntity ally;
-        GameLogicImpl gameLogicImpl = new GameLogicImpl();
+        final GameLogicImpl gameLogicImpl = new GameLogicImpl();
         
         for(int i = 0; i< tower.getEntitiesNumber(); i++){
             entity = tower.getEntities().get(i);
                 if(i != 0){
-                    ally = tower.getEntities().get( i - 1);
+                    ally = tower.getEntities().get(i - 1);
                     if(entity.getNameEntity() == Constants.archer){
                         if(tower.getEnemies().size() > 0){
                             target = tower.getEnemies().getFirst();
@@ -91,7 +91,7 @@ public class AI {
 
     //-------------------------------
 
-    public void checkAllyAhead(MovingEntity entity, MovingEntity ally){
+    private void checkAllyAhead(MovingEntity entity, MovingEntity ally){
         GameLogicImpl gameLogicImpl = new GameLogicImpl();
         if(!gameLogicImpl.checkCollision(entity, ally)){
             entity.updatePosition();
@@ -103,7 +103,7 @@ public class AI {
         }
     }
 
-    public void checkEnemyAhead(MovingEntity entity, Entity target){
+    private void checkEnemyAhead(MovingEntity entity, Entity target){
         GameLogicImpl gameLogicImpl = new GameLogicImpl();
         if(gameLogicImpl.checkCollision(entity, target)){
             entity.attack(target);
@@ -126,7 +126,7 @@ public class AI {
         }
     }
 
-    public void moveProjectiles(RangedEntity ranged, TowerSingleton tower){
+    private void moveProjectiles(RangedEntity ranged, TowerSingleton tower){
         Entity target;
         for(int j = 0; j < ranged.getProjectiles().size(); j ++){
             Projectile arrow = ranged.getProjectiles().get(j);
