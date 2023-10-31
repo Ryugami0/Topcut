@@ -8,19 +8,18 @@ import javax.swing.*;
 
 public class Window extends JFrame{
 
+    public static boolean isDownloadFolder;
+
     public Window() {
 
         int width = Toolkit.getDefaultToolkit().getScreenSize().width;
 
         this.setSize((int)(width*0.8), (int)(width*0.5));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.getContentPane().setLayout(new GridLayout(32,8));
+		this.getContentPane().setLayout(new GridLayout(32,7));
 
         JLabel nameText = new JLabel("Name");
         this.add(nameText);
-
-        JLabel placementText = new JLabel("Placement");
-        this.add(placementText);
 
         JLabel p1 = new JLabel("Pokemon 1");
         this.add(p1);
@@ -46,9 +45,6 @@ public class Window extends JFrame{
         JTextField name = new JTextField();
         this.add(name);
 
-        JTextField placement = new JTextField();
-        this.add(placement);
-
         JTextField pokemon1 = new JTextField();
         this.add(pokemon1);
 
@@ -67,14 +63,11 @@ public class Window extends JFrame{
         JTextField pokemon6 = new JTextField();
         this.add(pokemon6);
 
-        JButton saveImage = new JButton("Save to Image");
+        JButton saveImage = new JButton("Save in download folder");
         this.add(saveImage);
 
-        JLabel filler = new JLabel("Tera");
+        JLabel filler = new JLabel("Tera Types");
         this.add(filler);
-
-        JLabel filler2 = new JLabel("types");
-        this.add(filler2);
 
         JTextField tera1 = new JTextField();
         this.add(tera1);
@@ -94,14 +87,11 @@ public class Window extends JFrame{
         JTextField tera6 = new JTextField();
         this.add(tera6);
 
-        JLabel filller = new JLabel();
-        this.add(filller);
+        JButton save2 = new JButton("Save here");
+        this.add(save2);
 
-        JLabel filler3 = new JLabel("Items");
+        JLabel filler3 = new JLabel("Items held");
         this.add(filler3);
-
-        JLabel filler4 = new JLabel("Held");
-        this.add(filler4);
 
         JTextField item1 = new JTextField();
         this.add(item1);
@@ -127,9 +117,6 @@ public class Window extends JFrame{
         JLabel nameText_2 = new JLabel("Name");
         this.add(nameText_2);
 
-        JLabel placementText_2 = new JLabel("Placement");
-        this.add(placementText_2);
-
         JLabel p1_2 = new JLabel("Pokemon 1");
         this.add(p1_2);
 
@@ -154,9 +141,6 @@ public class Window extends JFrame{
         JTextField name_2 = new JTextField();
         this.add(name_2);
 
-        JTextField placement_2 = new JTextField();
-        this.add(placement_2);
-
         JTextField pokemon1_2 = new JTextField();
         this.add(pokemon1_2);
 
@@ -178,11 +162,8 @@ public class Window extends JFrame{
         JLabel saveFiller_2 = new JLabel();
         this.add(saveFiller_2);
 
-        JLabel filler_2 = new JLabel("Tera");
+        JLabel filler_2 = new JLabel("Tera types");
         this.add(filler_2);
-
-        JLabel filler2_2 = new JLabel("types");
-        this.add(filler2_2);
 
         JTextField tera1_2 = new JTextField();
         this.add(tera1_2);
@@ -205,11 +186,8 @@ public class Window extends JFrame{
         JLabel filller_2 = new JLabel();
         this.add(filller_2);
 
-        JLabel filler3_2 = new JLabel("Items");
+        JLabel filler3_2 = new JLabel("Items held");
         this.add(filler3_2);
-
-        JLabel filler4_2 = new JLabel("Held");
-        this.add(filler4_2);
 
         JTextField item1_2 = new JTextField();
         this.add(item1_2);
@@ -235,9 +213,6 @@ public class Window extends JFrame{
         JLabel nameText_3 = new JLabel("Name");
         this.add(nameText_3);
 
-        JLabel placementText_3 = new JLabel("Placement");
-        this.add(placementText_3);
-
         JLabel p1_3 = new JLabel("Pokemon 1");
         this.add(p1_3);
 
@@ -262,9 +237,6 @@ public class Window extends JFrame{
         JTextField name_3 = new JTextField();
         this.add(name_3);
 
-        JTextField placement_3 = new JTextField();
-        this.add(placement_3);
-
         JTextField pokemon1_3 = new JTextField();
         this.add(pokemon1_3);
 
@@ -286,11 +258,8 @@ public class Window extends JFrame{
         JLabel saveFiller_3 = new JLabel();
         this.add(saveFiller_3);
 
-        JLabel filler_3 = new JLabel("Tera");
+        JLabel filler_3 = new JLabel("Tera types");
         this.add(filler_3);
-
-        JLabel filler2_3 = new JLabel("types");
-        this.add(filler2_3);
 
         JTextField tera1_3 = new JTextField();
         this.add(tera1_3);
@@ -313,11 +282,8 @@ public class Window extends JFrame{
         JLabel filller_3 = new JLabel();
         this.add(filller_3);
 
-        JLabel filler3_3 = new JLabel("Items");
+        JLabel filler3_3 = new JLabel("Items held");
         this.add(filler3_3);
-
-        JLabel filler4_3 = new JLabel("Held");
-        this.add(filler4_3);
 
         JTextField item1_3 = new JTextField();
         this.add(item1_3);
@@ -343,9 +309,6 @@ public class Window extends JFrame{
         JLabel nameText_4 = new JLabel("Name");
         this.add(nameText_4);
 
-        JLabel placementText_4 = new JLabel("Placement");
-        this.add(placementText_4);
-
         JLabel p1_4 = new JLabel("Pokemon 1");
         this.add(p1_4);
 
@@ -370,9 +333,6 @@ public class Window extends JFrame{
         JTextField name_4 = new JTextField();
         this.add(name_4);
 
-        JTextField placement_4 = new JTextField();
-        this.add(placement_4);
-
         JTextField pokemon1_4 = new JTextField();
         this.add(pokemon1_4);
 
@@ -394,11 +354,8 @@ public class Window extends JFrame{
         JLabel saveFiller_4 = new JLabel();
         this.add(saveFiller_4);
 
-        JLabel filler_4 = new JLabel("Tera");
+        JLabel filler_4 = new JLabel("Tera types");
         this.add(filler_4);
-
-        JLabel filler2_4 = new JLabel("types");
-        this.add(filler2_4);
 
         JTextField tera1_4 = new JTextField();
         this.add(tera1_4);
@@ -421,11 +378,8 @@ public class Window extends JFrame{
         JLabel filller_4 = new JLabel();
         this.add(filller_4);
 
-        JLabel filler3_4 = new JLabel("Items");
+        JLabel filler3_4 = new JLabel("Items held");
         this.add(filler3_4);
-
-        JLabel filler4_4 = new JLabel("Held");
-        this.add(filler4_4);
 
         JTextField item1_4 = new JTextField();
         this.add(item1_4);
@@ -451,9 +405,6 @@ public class Window extends JFrame{
         JLabel nameText_5 = new JLabel("Name");
         this.add(nameText_5);
 
-        JLabel placementText_5 = new JLabel("Placement");
-        this.add(placementText_5);
-
         JLabel p1_5 = new JLabel("Pokemon 1");
         this.add(p1_5);
 
@@ -478,9 +429,6 @@ public class Window extends JFrame{
         JTextField name_5 = new JTextField();
         this.add(name_5);
 
-        JTextField placement_5 = new JTextField();
-        this.add(placement_5);
-
         JTextField pokemon1_5 = new JTextField();
         this.add(pokemon1_5);
 
@@ -502,11 +450,8 @@ public class Window extends JFrame{
         JLabel saveFiller_5 = new JLabel();
         this.add(saveFiller_5);
 
-        JLabel filler_5 = new JLabel("Tera");
+        JLabel filler_5 = new JLabel("Tera types");
         this.add(filler_5);
-
-        JLabel filler2_5 = new JLabel("types");
-        this.add(filler2_5);
 
         JTextField tera1_5 = new JTextField();
         this.add(tera1_5);
@@ -529,11 +474,8 @@ public class Window extends JFrame{
         JLabel filller_5 = new JLabel();
         this.add(filller_5);
 
-        JLabel filler3_5 = new JLabel("Items");
+        JLabel filler3_5 = new JLabel("Items held");
         this.add(filler3_5);
-
-        JLabel filler4_5 = new JLabel("Held");
-        this.add(filler4_5);
 
         JTextField item1_5 = new JTextField();
         this.add(item1_5);
@@ -559,9 +501,6 @@ public class Window extends JFrame{
         JLabel nameText_6 = new JLabel("Name");
         this.add(nameText_6);
 
-        JLabel placementText_6 = new JLabel("Placement");
-        this.add(placementText_6);
-
         JLabel p1_6 = new JLabel("Pokemon 1");
         this.add(p1_6);
 
@@ -586,9 +525,6 @@ public class Window extends JFrame{
         JTextField name_6 = new JTextField();
         this.add(name_6);
 
-        JTextField placement_6 = new JTextField();
-        this.add(placement_6);
-
         JTextField pokemon1_6 = new JTextField();
         this.add(pokemon1_6);
 
@@ -610,11 +546,8 @@ public class Window extends JFrame{
         JLabel saveFiller_6 = new JLabel();
         this.add(saveFiller_6);
 
-        JLabel filler_6 = new JLabel("Tera");
+        JLabel filler_6 = new JLabel("Tera types");
         this.add(filler_6);
-
-        JLabel filler2_6 = new JLabel("types");
-        this.add(filler2_6);
 
         JTextField tera1_6 = new JTextField();
         this.add(tera1_6);
@@ -637,11 +570,8 @@ public class Window extends JFrame{
         JLabel filller_6 = new JLabel();
         this.add(filller_6);
 
-        JLabel filler3_6 = new JLabel("Items");
+        JLabel filler3_6 = new JLabel("Items held");
         this.add(filler3_6);
-
-        JLabel filler4_6 = new JLabel("Held");
-        this.add(filler4_6);
 
         JTextField item1_6 = new JTextField();
         this.add(item1_6);
@@ -667,9 +597,6 @@ public class Window extends JFrame{
         JLabel nameText_7 = new JLabel("Name");
         this.add(nameText_7);
 
-        JLabel placementText_7 = new JLabel("Placement");
-        this.add(placementText_7);
-
         JLabel p1_7 = new JLabel("Pokemon 1");
         this.add(p1_7);
 
@@ -694,9 +621,6 @@ public class Window extends JFrame{
         JTextField name_7 = new JTextField();
         this.add(name_7);
 
-        JTextField placement_7 = new JTextField();
-        this.add(placement_7);
-
         JTextField pokemon1_7 = new JTextField();
         this.add(pokemon1_7);
 
@@ -718,12 +642,8 @@ public class Window extends JFrame{
         JLabel saveFiller_7 = new JLabel();
         this.add(saveFiller_7);
 
-        JLabel filler_7 = new JLabel("Tera");
+        JLabel filler_7 = new JLabel("Tera types");
         this.add(filler_7);
-
-        JLabel filler2_7 = new JLabel("types");
-        this.add(filler2_7);
-
         JTextField tera1_7 = new JTextField();
         this.add(tera1_7);
 
@@ -745,11 +665,8 @@ public class Window extends JFrame{
         JLabel filller_7 = new JLabel();
         this.add(filller_7);
 
-        JLabel filler3_7 = new JLabel("Items");
+        JLabel filler3_7 = new JLabel("Items held");
         this.add(filler3_7);
-
-        JLabel filler4_7 = new JLabel("Held");
-        this.add(filler4_7);
 
         JTextField item1_7 = new JTextField();
         this.add(item1_7);
@@ -775,9 +692,6 @@ public class Window extends JFrame{
         JLabel nameText_8 = new JLabel("Name");
         this.add(nameText_8);
 
-        JLabel placementText_8 = new JLabel("Placement");
-        this.add(placementText_8);
-
         JLabel p1_8 = new JLabel("Pokemon 1");
         this.add(p1_8);
 
@@ -802,9 +716,6 @@ public class Window extends JFrame{
         JTextField name_8 = new JTextField();
         this.add(name_8);
 
-        JTextField placement_8 = new JTextField();
-        this.add(placement_8);
-
         JTextField pokemon1_8 = new JTextField();
         this.add(pokemon1_8);
 
@@ -826,11 +737,8 @@ public class Window extends JFrame{
         JLabel saveFiller_8 = new JLabel();
         this.add(saveFiller_8);
 
-        JLabel filler_8 = new JLabel("Tera");
+        JLabel filler_8 = new JLabel("Tera types");
         this.add(filler_8);
-
-        JLabel filler2_8 = new JLabel("types");
-        this.add(filler2_8);
 
         JTextField tera1_8 = new JTextField();
         this.add(tera1_8);
@@ -853,11 +761,8 @@ public class Window extends JFrame{
         JLabel filller_8 = new JLabel();
         this.add(filller_8);
 
-        JLabel filler3_8 = new JLabel("Items");
+        JLabel filler3_8 = new JLabel("Items held");
         this.add(filler3_8);
-
-        JLabel filler4_8 = new JLabel("Held");
-        this.add(filler4_8);
 
         JTextField item1_8 = new JTextField();
         this.add(item1_8);
@@ -879,6 +784,16 @@ public class Window extends JFrame{
 
         JLabel filller2_8 = new JLabel();
         this.add(filller2_8);
+
+        LinkedList<JTextField> names = new LinkedList<>();
+        names.add(name);
+        names.add(name_2);
+        names.add(name_3);
+        names.add(name_4);
+        names.add(name_5);
+        names.add(name_6);
+        names.add(name_7);
+        names.add(name_8);
 
         LinkedList<JTextField> mons = new LinkedList<>();
         mons.add(pokemon1);
@@ -937,6 +852,48 @@ public class Window extends JFrame{
         items.add(item4);
         items.add(item5);
         items.add(item6);
+        items.add(item1_2);
+        items.add(item2_2);
+        items.add(item3_2);
+        items.add(item4_2);
+        items.add(item5_2);
+        items.add(item6_2);
+        items.add(item1_3);
+        items.add(item2_3);
+        items.add(item3_3);
+        items.add(item4_3);
+        items.add(item5_3);
+        items.add(item6_3);
+        items.add(item1_4);
+        items.add(item2_4);
+        items.add(item3_4);
+        items.add(item4_4);
+        items.add(item5_4);
+        items.add(item6_4);
+        items.add(item1_5);
+        items.add(item2_5);
+        items.add(item3_5);
+        items.add(item4_5);
+        items.add(item5_5);
+        items.add(item6_5);
+        items.add(item1_6);
+        items.add(item2_6);
+        items.add(item3_6);
+        items.add(item4_6);
+        items.add(item5_6);
+        items.add(item6_6);
+        items.add(item1_7);
+        items.add(item2_7);
+        items.add(item3_7);
+        items.add(item4_7);
+        items.add(item5_7);
+        items.add(item6_7);
+        items.add(item1_8);
+        items.add(item2_8);
+        items.add(item3_8);
+        items.add(item4_8);
+        items.add(item5_8);
+        items.add(item6_8);
 
         LinkedList<JTextField> teras = new LinkedList<>();
         teras.add(tera1);
@@ -945,17 +902,67 @@ public class Window extends JFrame{
         teras.add(tera4);
         teras.add(tera5);
         teras.add(tera6);
+        teras.add(tera1_2);
+        teras.add(tera2_2);
+        teras.add(tera3_2);
+        teras.add(tera4_2);
+        teras.add(tera5_2);
+        teras.add(tera6_2);
+        teras.add(tera1_3);
+        teras.add(tera2_3);
+        teras.add(tera3_3);
+        teras.add(tera4_3);
+        teras.add(tera5_3);
+        teras.add(tera6_3);
+        teras.add(tera1_4);
+        teras.add(tera2_4);
+        teras.add(tera3_4);
+        teras.add(tera4_4);
+        teras.add(tera5_4);
+        teras.add(tera6_4);
+        teras.add(tera1_5);
+        teras.add(tera2_5);
+        teras.add(tera3_5);
+        teras.add(tera4_5);
+        teras.add(tera5_5);
+        teras.add(tera6_5);
+        teras.add(tera1_6);
+        teras.add(tera2_6);
+        teras.add(tera3_6);
+        teras.add(tera4_6);
+        teras.add(tera5_6);
+        teras.add(tera6_6);
+        teras.add(tera1_7);
+        teras.add(tera2_7);
+        teras.add(tera3_7);
+        teras.add(tera4_7);
+        teras.add(tera5_7);
+        teras.add(tera6_7);
+        teras.add(tera1_8);
+        teras.add(tera2_8);
+        teras.add(tera3_8);
+        teras.add(tera4_8);
+        teras.add(tera5_8);
+        teras.add(tera6_8);
 
 
 
 
 
         saveImage.addActionListener((arg) -> {
-            new ImageFile(name.getText(), placement.getText(), mons, teras, items);
+            isDownloadFolder = true;
+            new ImageFile(names, mons, teras, items);
+        });
+
+        save2.addActionListener((arg) -> {
+            isDownloadFolder = false;
+            new ImageFile(names, mons, teras, items);
         });
 
 		this.setVisible(true);
-
     }
-    
+
+    public static boolean getDownload() {
+        return isDownloadFolder;
+    }
 }
